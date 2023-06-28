@@ -70,6 +70,7 @@
              
   <h1>Source code for docker_debrief.access_file</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="get_secret"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.access_file.get_secret">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_secret</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;It get the secrets&quot;&quot;&quot;</span>
     <span class="n">secret_name</span> <span class="o">=</span> <span class="s1">&#39;FABRIC-RDS-Secret-Keys&#39;</span>
     <span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="n">service_name</span><span class="o">=</span><span class="s1">&#39;secretsmanager&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="n">region_name</span><span class="p">)</span>
