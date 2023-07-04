@@ -60,6 +60,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.crawl_news_by_keyword"><code class="docutils literal notranslate"><span class="pre">crawl_news_by_keyword()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.get_content"><code class="docutils literal notranslate"><span class="pre">get_content()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.news_lang_check"><code class="docutils literal notranslate"><span class="pre">news_lang_check()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.news_longDesc_check"><code class="docutils literal notranslate"><span class="pre">news_longDesc_check()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_tweets.tweets_ingestion_aws">docker_tweets.tweets_ingestion_aws module</a><ul>
@@ -111,95 +112,72 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.Find_url">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">Find_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#Find_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.Find_url" title="Permalink to this definition"></a></dt>
-<dd><p>Function to find if a url is present in news article.
-This function will be used for cleaning news articles from Business Standard source, as Business standard
-returns unnecessary content while scrapping before the main article.</p>
-<section id="prameters">
-<h3>Prameters:<a class="headerlink" href="#prameters" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>string<span class="classifier">str</span></dt><dd><p>We will pass the scrapped article from business standard and find the first link.</p>
+<dd><p>Finds if a url is present in news article. This function is used for cleaning news articles 
+from Business Standard source, as Business standard returns unnecessary content while scraping 
+before the main article.</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>string (str) : The scraped article from “business standard” news source.</p>
+</dd>
+<dt>Returns: </dt><dd><p>element (str): First URL from the list of urls extracted from the scraped news article.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
-<section id="returns">
-<h3>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><p>List: It returns a list of urls from the string</p>
-</div></blockquote>
-</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.crawl_news_by_keyword">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">crawl_news_by_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_news_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#crawl_news_by_keyword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.crawl_news_by_keyword" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">crawl_news_by_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_news_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longDesc_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_search</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#crawl_news_by_keyword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.crawl_news_by_keyword" title="Permalink to this definition"></a></dt>
 <dd><p>Main Function for crawling news using pygooglenews library</p>
-<section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>news_table<span class="classifier">AWS DynamoDB Table</span></dt><dd><p>“News” Table from DynamoDB</p>
-</dd>
-<dt>frequency<span class="classifier">Str </span></dt><dd><p>The time duration from which the user wants to get the news</p>
-</dd>
-<dt>ticker_news_keywords<span class="classifier">Str </span></dt><dd><p>The query string which has to be passed to google news which will return news about 
-the specific company.</p>
-</dd>
-<dt>ticker_symbol<span class="classifier">Str </span></dt><dd><p>The string which will be used to store news along with the Ticker name in DynamoDB Table.</p>
-</dd>
-<dt>sector: Str</dt><dd><p>The Sector which each ticker belongs to.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>news_table (AWS DynamoDB Table) : “News” Table from DynamoDB
+frequency (str) : The time duration from which the user wants to get the news
+ticker_news_keywords (str) : The query string which has to be passed to google news which will return news about the specific company.
+ticker_symbol (str) :  The string which will be used to store news along with the Ticker name in DynamoDB Table.
+longDesc_keywords (str) : Keywords that will be used to search them in the scraped news article
+text_search (int) : Value that is used to decide if to find news using text if the results returned by finding news using title is 0</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
+<p>LastUpdated: 04th-July-2023</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.get_content">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">get_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#get_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.get_content" title="Permalink to this definition"></a></dt>
-<dd><p>Fuction that returns long description (content) of news crawled
-Uses Article library from newspaper</p>
-<section id="id1">
-<h3>Parameters:<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>link<span class="classifier">str</span></dt><dd><p>The link or url of the article</p>
+<dd><p>Uses “Article” function from “newspaper3k” library to scrape the news article.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>link (str) : The link or url of the article to be scraped.</p>
+</dd>
+<dt>Returns:</dt><dd><p>text (str) : content of the link or url provided.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
-<section id="id2">
-<h3>Returns:<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>text: str</dt><dd><p>content of the article</p>
-</dd>
-</dl>
-</div></blockquote>
-</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.news_lang_check">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">news_lang_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#news_lang_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.news_lang_check" title="Permalink to this definition"></a></dt>
-<dd><p>Function to check if the language of the news article 
-we want to add only those news which are of english language</p>
-<section id="id3">
-<h3>Parameters:<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>long_description - str</dt><dd><p>content of the article</p>
+<dd><p>Checks if the news article scraped is of english language.</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>description (str) : scraped content of the news article</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the language of the article is English, else False.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
-<section id="id4">
-<h3>Returns:<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><p>bool: True if the language of the article is English, else False.</p>
-</div></blockquote>
-</section>
+<p>CreatedBy: Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;
+LastUpdated: 07th-June-2023</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.news_longDesc_check">
+<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">news_longDesc_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_words</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#news_longDesc_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.news_longDesc_check" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if certain keywords are present in the scraped news article.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>description (str) : scraped content of the news article.
+keywords (str): string of keywords to check their presence in the scraped news article.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if any one of the keywords are present in the scraped news article.</p>
+</dd>
+</dl>
+<p>CreatedBy: Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;
+LastUpdated: 04th-July-2023</p>
 </dd></dl>
 
 </section>
@@ -209,8 +187,8 @@ we want to add only those news which are of english language</p>
 <dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.contains_irrelavant_words">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">contains_irrelavant_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blacklist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#contains_irrelavant_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words" title="Permalink to this definition"></a></dt>
 <dd><p>Function to check if tweet contains words from blacklist.</p>
-<section id="id5">
-<h3>Parameters:<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><dl class="simple">
 <dt>tweet_text: str</dt><dd><p>scraped tweet text</p>
@@ -220,8 +198,8 @@ we want to add only those news which are of english language</p>
 </dl>
 </div></blockquote>
 </section>
-<section id="id6">
-<h3>Returns:<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<section id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>Bool: True if the sentence contains word/words from the blacklist, False otherwise.</p>
 </div></blockquote>
@@ -232,8 +210,8 @@ we want to add only those news which are of english language</p>
 <dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.contains_minimum_tokens">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">contains_minimum_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_full_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_num_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_num_chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#contains_minimum_tokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.contains_minimum_tokens" title="Permalink to this definition"></a></dt>
 <dd><p>Function to check if tweet contains minimum(min_num_tokens) number of tokens or not.</p>
-<section id="id7">
-<h3>Parameters:<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<section id="id1">
+<h3>Parameters:<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><dl class="simple">
 <dt>tweet_full_text: str</dt><dd><p>scraped tweet text</p>
@@ -245,8 +223,8 @@ we want to add only those news which are of english language</p>
 </dl>
 </div></blockquote>
 </section>
-<section id="id8">
-<h3>Returns:<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<section id="id2">
+<h3>Returns:<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>Bool: True if the tweet have minimum number of tokens, otherwise False.</p>
 </div></blockquote>
@@ -257,8 +235,8 @@ we want to add only those news which are of english language</p>
 <dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">crawl_tweets_by_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Temp_Tweets_Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_tweet_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_tweet_exclusions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_followersCount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_minimum_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_minimum_chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#crawl_tweets_by_keyword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword" title="Permalink to this definition"></a></dt>
 <dd><p>Main Function for crawling tweets using snscrape library</p>
-<section id="id9">
-<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><dl class="simple">
 <dt>tweets_table<span class="classifier">AWS DynamoDB Table</span></dt><dd><p>“Tweets” Table from DynamoDB</p>
@@ -290,8 +268,8 @@ is greater than the defined number.</p>
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">filter_tweet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#filter_tweet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.filter_tweet" title="Permalink to this definition"></a></dt>
 <dd><p>Function to check if a given sentence contains at least one word or bigram or phrase
 from the RELEVANT_WORDS list and does not contain any word from the FILTER_OUT_WORDS list.</p>
-<section id="id10">
-<h3>Parameters:<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<section id="id4">
+<h3>Parameters:<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><dl class="simple">
 <dt>tweet_text: str</dt><dd><p>scraped tweet text</p>
@@ -299,8 +277,8 @@ from the RELEVANT_WORDS list and does not contain any word from the FILTER_OUT_W
 </dl>
 </div></blockquote>
 </section>
-<section id="id11">
-<h3>Returns:<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<section id="id5">
+<h3>Returns:<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>Bool: True if the sentence is relevant, False otherwise.</p>
 </div></blockquote>
