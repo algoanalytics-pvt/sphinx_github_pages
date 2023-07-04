@@ -70,7 +70,7 @@
              
   <h1>Source code for docker_search.models</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="load_document_store"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_store">[docs]</a><span></span><span class="k">def</span> <span class="nf">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the FAISS Document Store Index, for the given type of &quot;news&quot; or &quot;tweets&quot;. The </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Load the FAISS Document Store Index, for the given type of &quot;news&quot; or &quot;tweets&quot;. The </span>
 <span class="sd">    DocumentStore index is assumed to be present at DOCUMENT_STORE_DIR environment variable </span>
 <span class="sd">    with a naming convention of f&quot;{type}_faiss_index.faiss&quot; </span>
 
@@ -95,8 +95,9 @@
 
 
 <div class="viewcode-block" id="load_retriever"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_retriever">[docs]</a><span class="k">def</span> <span class="nf">load_retriever</span><span class="p">(</span><span class="n">document_store</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a DensePassageRetriever (DPR) for the given type of &quot;news&quot; or &quot;tweets&quot;. The retriever</span>
-<span class="sd">    models are assumed to be present at RETRIEVER_DIR, with the query and passage encoding</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Load a DensePassageRetriever (DPR) for the given type of &quot;news&quot; or &quot;tweets&quot;. </span>
+<span class="sd">    </span>
+<span class="sd">    The retriever models are assumed to be present at RETRIEVER_DIR, with the query and passage encoding</span>
 <span class="sd">    models at QUERY_ENCODER_DIR and PASSAGE_ENCODER_DIR environment variables respectively.</span>
 <span class="sd">    </span>
 <span class="sd">    The current models used:</span>
@@ -122,7 +123,8 @@
 
 
 <div class="viewcode-block" id="load_document_search_pipeline"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_search_pipeline">[docs]</a><span class="k">def</span> <span class="nf">load_document_search_pipeline</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a DocumentSearchPipeline for the given type of &#39;news&#39; or &#39;tweets&#39;.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Returns a DocumentSearchPipeline for the given type of &#39;news&#39; or &#39;tweets&#39;.</span>
+<span class="sd">    </span>
 <span class="sd">    It loads DocumentStore and Retriever first, then constructs pipeline.</span>
 
 <span class="sd">    Args:</span>
@@ -140,7 +142,7 @@
 
 
 <div class="viewcode-block" id="load_preprocessor"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_preprocessor">[docs]</a><span class="k">def</span> <span class="nf">load_preprocessor</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Haystack PreProcessor to process documents.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Load Haystack PreProcessor to process documents.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        PreProcessor: A Haystack PreProcessor</span>
@@ -151,7 +153,7 @@
 
 
 <div class="viewcode-block" id="load_query_classifier"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_query_classifier">[docs]</a><span class="k">def</span> <span class="nf">load_query_classifier</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a Question vs Statement classifier.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Load a Question vs Statement classifier.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        TransformersQueryClassifier: A TransformersQueryClassifier for Question vs Statement classification.</span>
@@ -169,10 +171,13 @@
 
 
 <div class="viewcode-block" id="load_reader"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_reader">[docs]</a><span class="k">def</span> <span class="nf">load_reader</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Haystack FARMReader to extract answers from the documents.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Load Haystack FARMReader to extract answers from the documents.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        FARMReader: Haystack FARMReader</span>
+<span class="sd">        </span>
+<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
+<span class="sd">    LastUpdatedBy: 04th-July-2023</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">FARMReader</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;READER_DIR&#39;</span><span class="p">],</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>

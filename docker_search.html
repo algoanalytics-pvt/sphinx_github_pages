@@ -248,8 +248,8 @@ LastUpdated: 03rd-July-2023</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_search.models.load_document_search_pipeline">
 <span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_document_search_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_document_search_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_document_search_pipeline" title="Permalink to this definition"></a></dt>
-<dd><p>Returns a DocumentSearchPipeline for the given type of ‘news’ or ‘tweets’.
-It loads DocumentStore and Retriever first, then constructs pipeline.</p>
+<dd><p>Returns a DocumentSearchPipeline for the given type of ‘news’ or ‘tweets’.</p>
+<p>It loads DocumentStore and Retriever first, then constructs pipeline.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>type (str, optional): The type of retriever, either “news” or “tweets”. Defaults to “news”.</p>
 </dd>
@@ -300,13 +300,15 @@ with a naming convention of f”{type}_faiss_index.faiss”</p>
 <dt>Returns:</dt><dd><p>FARMReader: Haystack FARMReader</p>
 </dd>
 </dl>
+<p>CreatedBy: Farhan &lt;<a class="reference external" href="mailto:fahmad&#37;&#52;&#48;algoanalytics&#46;com">fahmad<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;
+LastUpdatedBy: 04th-July-2023</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_search.models.load_retriever">
 <span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_retriever</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_store</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_retriever"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_retriever" title="Permalink to this definition"></a></dt>
-<dd><p>Load a DensePassageRetriever (DPR) for the given type of “news” or “tweets”. The retriever
-models are assumed to be present at RETRIEVER_DIR, with the query and passage encoding
+<dd><p>Load a DensePassageRetriever (DPR) for the given type of “news” or “tweets”.</p>
+<p>The retriever models are assumed to be present at RETRIEVER_DIR, with the query and passage encoding
 models at QUERY_ENCODER_DIR and PASSAGE_ENCODER_DIR environment variables respectively.</p>
 <p>The current models used:
 query_embedding_model: soheeyang/rdr-question_encoder-single-nq-base
