@@ -70,11 +70,14 @@
              
   <h1>Source code for docker_search.remove_older_docs</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="remove_older_docs"><a class="viewcode-back" href="../../docker_search.html#docker_search.remove_older_docs.remove_older_docs">[docs]</a><span></span><span class="k">def</span> <span class="nf">remove_older_docs</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove documents older than the threshold date.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Remove documents older than the threshold date.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        threshold (datetime.date): Threshold date</span>
 <span class="sd">        type (str, optional): Type, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+<span class="sd">        </span>
+<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
+<span class="sd">    LastUpdatedBy: 04th-July-2023</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
     <span class="n">document_store</span> <span class="o">=</span> <span class="n">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>
