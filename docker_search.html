@@ -410,8 +410,8 @@ type (str, optional): Type, either “news” or “tweets”. Defaults to “ne
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_search.utils.get_documents_from_filenames">
 <span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">get_documents_from_filenames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#get_documents_from_filenames"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.get_documents_from_filenames" title="Permalink to this definition"></a></dt>
-<dd><p>Get formatted document entries for front-end from their filenames. It first creates a list of UUIDs,
-then gets Document IDs from UUIDs, then gets the documents from DynamoDB using these document IDs, and 
+<dd><p>Get formatted document entries for front-end from their filenames.</p>
+<p>It first creates a list of UUIDs,then gets Document IDs from UUIDs, then gets the documents from DynamoDB using these document IDs, and 
 then formats for front-end, all using helper functions.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>file_names (list): List of UUID
@@ -459,8 +459,8 @@ type (str, optional): Type of “news” or “tweets”. Defaults to “news”
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_search.utils.months_between">
 <span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">months_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#months_between"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.months_between" title="Permalink to this definition"></a></dt>
-<dd><p>Given two instances of <code class="docutils literal notranslate"><span class="pre">datetime.date</span></code>, generate a list of dates on the 
-1st of every month between the two dates (inclusive).</p>
+<dd><p>Given two instances of <code class="docutils literal notranslate"><span class="pre">datetime.date</span></code>,</p>
+<p>generate a list of dates on the 1st of every month between the two dates (inclusive).</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>start_date (datetime.date): Start date
 end_date (datetime.date): End date</p>
@@ -484,15 +484,19 @@ threshold_date (datetime.date): The threshold date</p>
 <dt>Returns:</dt><dd><p>bool: True if the given date is before the threshold date.</p>
 </dd>
 </dl>
+<p>CreatedBy: Farhan &lt;<a class="reference external" href="mailto:fahmad&#37;&#52;&#48;algoanalytics&#46;com">fahmad<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;
+LastUpdatedBy: 04th-July-2023</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_search.utils.process_prediction">
 <span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">process_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#process_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.process_prediction" title="Permalink to this definition"></a></dt>
-<dd><p>Process prediction given by the DocumentSearch pipeline. 3 things are returned.
-- search_results contains just the news/tweet content.
-- scores contains sentiment score for the news/tweets.
-- documents contains the entire information of news/tweets along with metadata.</p>
+<dd><p>Process prediction given by the DocumentSearch pipeline. 3 things are returned.</p>
+<ul class="simple">
+<li><p>search_results contains just the news/tweet content.</p></li>
+<li><p>scores contains sentiment score for the news/tweets.</p></li>
+<li><p>documents contains the entire information of news/tweets along with metadata.</p></li>
+</ul>
 <dl class="simple">
 <dt>Args:</dt><dd><p>pred (dict): DocumentSearch Pipeline’s output for a given query
 container (container.ContainerProxy): Cosmos Container, required for getting document entries using UUIDs

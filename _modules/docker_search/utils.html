@@ -70,7 +70,7 @@
              
   <h1>Source code for docker_search.utils</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="check_type"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.check_type">[docs]</a><span></span><span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the type is &quot;news&quot; or &quot;tweets&quot;. If not, raise error.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Check if the type is &quot;news&quot; or &quot;tweets&quot;. If not, raise error.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        type (str): String specifying &quot;news&quot; or &quot;tweets&quot;</span>
@@ -85,7 +85,7 @@
 
 
 <div class="viewcode-block" id="get_dynamodb_connection"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_dynamodb_connection">[docs]</a><span class="k">def</span> <span class="nf">get_dynamodb_connection</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get DynamoDB Connection</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Get DynamoDB Connection</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        dynamodb.ServiceResource: Connection to DynamoDB</span>
@@ -102,7 +102,7 @@
 
 
 <div class="viewcode-block" id="get_dynamodb_table"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_dynamodb_table">[docs]</a><span class="k">def</span> <span class="nf">get_dynamodb_table</span><span class="p">(</span><span class="n">ddb_connection</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get DynamoDB Table using the connection for a given type of &quot;news&quot; or &quot;tweets&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Get DynamoDB Table using the connection for a given type of &quot;news&quot; or &quot;tweets&quot;</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        ddb_connection (dynamodb.ServiceResource): Connection to DynamoDB</span>
@@ -123,7 +123,8 @@
 
 
 <div class="viewcode-block" id="process_prediction"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.process_prediction">[docs]</a><span class="k">def</span> <span class="nf">process_prediction</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process prediction given by the DocumentSearch pipeline. 3 things are returned.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Process prediction given by the DocumentSearch pipeline. 3 things are returned.</span>
+<span class="sd">    </span>
 <span class="sd">    - search_results contains just the news/tweet content.</span>
 <span class="sd">    - scores contains sentiment score for the news/tweets.</span>
 <span class="sd">    - documents contains the entire information of news/tweets along with metadata.</span>
@@ -164,8 +165,9 @@
 
 
 <div class="viewcode-block" id="get_documents_from_filenames"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_documents_from_filenames">[docs]</a><span class="k">def</span> <span class="nf">get_documents_from_filenames</span><span class="p">(</span><span class="n">file_names</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get formatted document entries for front-end from their filenames. It first creates a list of UUIDs,</span>
-<span class="sd">    then gets Document IDs from UUIDs, then gets the documents from DynamoDB using these document IDs, and </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Get formatted document entries for front-end from their filenames. </span>
+<span class="sd">    </span>
+<span class="sd">    It first creates a list of UUIDs,then gets Document IDs from UUIDs, then gets the documents from DynamoDB using these document IDs, and </span>
 <span class="sd">    then formats for front-end, all using helper functions.</span>
 
 <span class="sd">    Args:</span>
@@ -196,7 +198,7 @@
 
 
 <div class="viewcode-block" id="get_documentids_from_uuid"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_documentids_from_uuid">[docs]</a><span class="k">def</span> <span class="nf">get_documentids_from_uuid</span><span class="p">(</span><span class="n">uuid_list</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get document IDs mapped from UUIDs.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Get document IDs mapped from UUIDs.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        uuid_list (list): List of UUIDs</span>
@@ -221,7 +223,7 @@
 
 
 <div class="viewcode-block" id="get_documents_from_document_ids"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_documents_from_document_ids">[docs]</a><span class="k">def</span> <span class="nf">get_documents_from_document_ids</span><span class="p">(</span><span class="n">document_ids_list</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get document entries from DynamoDB given a list of their IDs and type.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Get document entries from DynamoDB given a list of their IDs and type.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        document_ids_list (list): List containing news_ID or tweets_ID values</span>
@@ -254,7 +256,7 @@
 
 
 <div class="viewcode-block" id="transform_to_ui_format"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.transform_to_ui_format">[docs]</a><span class="k">def</span> <span class="nf">transform_to_ui_format</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform a news/tweet entry to UI format. It replaces the news/tweet with an HTML formatted</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Transform a news/tweet entry to UI format. It replaces the news/tweet with an HTML formatted</span>
 <span class="sd">    string showing sentiment, and returns a dictionary consisting of elements required for front-end.</span>
 
 <span class="sd">    Args:</span>
@@ -307,7 +309,7 @@
 
 
 <div class="viewcode-block" id="process_qna_prediction"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.process_qna_prediction">[docs]</a><span class="k">def</span> <span class="nf">process_qna_prediction</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">news_pred</span><span class="p">,</span> <span class="n">news_search_results</span><span class="p">,</span> <span class="n">news</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process the predictions returned by Reader for Question and Answering.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Process the predictions returned by Reader for Question and Answering.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pred (dict): Prediction dictionary returned by the Reader</span>
@@ -344,8 +346,9 @@
 
 
 <div class="viewcode-block" id="months_between"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.months_between">[docs]</a><span class="k">def</span> <span class="nf">months_between</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given two instances of ``datetime.date``, generate a list of dates on the </span>
-<span class="sd">    1st of every month between the two dates (inclusive).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Given two instances of ``datetime.date``, </span>
+<span class="sd">    </span>
+<span class="sd">    generate a list of dates on the 1st of every month between the two dates (inclusive).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        start_date (datetime.date): Start date</span>
@@ -411,6 +414,9 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        bool: True if the given date is before the threshold date.</span>
+
+<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
+<span class="sd">    LastUpdatedBy: 04th-July-2023</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">item_date</span> <span class="o">&lt;</span> <span class="n">threshold_date</span></div>
 
