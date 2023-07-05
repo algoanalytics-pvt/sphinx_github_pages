@@ -69,7 +69,27 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_search.create_models</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="create_resources"><a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.create_resources">[docs]</a><span></span><span class="k">def</span> <span class="nf">create_resources</span><span class="p">():</span>
+<div class="viewcode-block" id="function_with_pep484_type_annotations"><a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.function_with_pep484_type_annotations">[docs]</a><span></span><span class="k">def</span> <span class="nf">function_with_pep484_type_annotations</span><span class="p">(</span><span class="n">param1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">param2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Example function with PEP 484 type annotations.</span>
+<span class="sd">       </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        param1: The first parameter.</span>
+<span class="sd">        param2: The second parameter.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The return value. True for success, False otherwise.</span>
+
+<span class="sd">    CreatedBy:</span>
+<span class="sd">    LastUpdatedBy:</span>
+<span class="sd">    ChangesMadeInCode:</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="create_resources"><a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.create_resources">[docs]</a><span class="k">def</span> <span class="nf">create_resources</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Create all resources required for running Semantic Search. This is meant to be executed only one time</span>
 <span class="sd">    around when starting with a fresh retriever model, or in case some mistake results in previous data to be lost.</span>
 <span class="sd">    This does not fetch the data, it only creates the resources. So, the fetch data program must be run</span>
