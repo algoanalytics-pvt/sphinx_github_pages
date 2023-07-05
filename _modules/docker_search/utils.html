@@ -69,7 +69,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_search.utils</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="check_type"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.check_type">[docs]</a><span></span><span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<div class="viewcode-block" id="intro"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is used to store all the utility functions used in the project.</span>
+
+<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
+<span class="sd">    </span>
+<span class="sd">    LastUpdatedDate: 05th July 2023</span>
+<span class="sd">    </span>
+<span class="sd">    ChangesMadeInCode: Add docstrings</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="check_type"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.check_type">[docs]</a><span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Check if the type is &quot;news&quot; or &quot;tweets&quot;. If not, raise error.</span>
 
 <span class="sd">    Args:</span>
@@ -415,8 +428,6 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        bool: True if the given date is before the threshold date.</span>
 
-<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
-<span class="sd">    LastUpdatedBy: 04th-July-2023</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">item_date</span> <span class="o">&lt;</span> <span class="n">threshold_date</span></div>
 

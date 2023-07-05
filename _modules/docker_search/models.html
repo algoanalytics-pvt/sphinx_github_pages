@@ -69,7 +69,32 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_search.models</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="load_document_store"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_store">[docs]</a><span></span><span class="k">def</span> <span class="nf">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="intro"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is used to load the models and document stores.</span>
+<span class="sd">    The models are assumed to be present at MODEL_DIR, with the query and passage encoding</span>
+<span class="sd">    models at QUERY_ENCODER_DIR and PASSAGE_ENCODER_DIR environment variables respectively.</span>
+<span class="sd">    </span>
+<span class="sd">    The current document stores used:</span>
+<span class="sd">    news: FAISS</span>
+<span class="sd">    tweets: FAISS</span>
+<span class="sd">    </span>
+<span class="sd">    The current pipeline used:</span>
+<span class="sd">    document_search: DensePassageRetriever + FARMReader</span>
+<span class="sd">    </span>
+<span class="sd">    The current pre-processor used:</span>
+<span class="sd">    pre_processor: Spacy</span>
+
+<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
+<span class="sd">    </span>
+<span class="sd">    LastUpdatedDate: 05th July 2023</span>
+<span class="sd">    </span>
+<span class="sd">    ChangesMadeInCode: Add docstrings</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="load_document_store"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_store">[docs]</a><span class="k">def</span> <span class="nf">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Load the FAISS Document Store Index, for the given type of &quot;news&quot; or &quot;tweets&quot;. The </span>
 <span class="sd">    DocumentStore index is assumed to be present at DOCUMENT_STORE_DIR environment variable </span>
 <span class="sd">    with a naming convention of f&quot;{type}_faiss_index.faiss&quot; </span>
@@ -175,9 +200,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        FARMReader: Haystack FARMReader</span>
-<span class="sd">        </span>
-<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
-<span class="sd">    LastUpdatedBy: 04th-July-2023</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">FARMReader</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;READER_DIR&#39;</span><span class="p">],</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>

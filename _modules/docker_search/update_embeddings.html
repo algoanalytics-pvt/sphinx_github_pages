@@ -69,14 +69,25 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_search.update_embeddings</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="update_embeddings"><a class="viewcode-back" href="../../docker_search.html#docker_search.update_embeddings.update_embeddings">[docs]</a><span></span><span class="k">def</span> <span class="nf">update_embeddings</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="intro"><a class="viewcode-back" href="../../docker_search.html#docker_search.update_embeddings.intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; The file is used to update embeddings in DocumentStore.</span>
+
+<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
+<span class="sd">    </span>
+<span class="sd">    LastUpdatedDate: 05th July 2023</span>
+<span class="sd">    </span>
+<span class="sd">    ChangesMadeInCode: Add docstrings</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="update_embeddings"><a class="viewcode-back" href="../../docker_search.html#docker_search.update_embeddings.update_embeddings">[docs]</a><span class="k">def</span> <span class="nf">update_embeddings</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Write new documents to DocumentStore and update embeddings.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        type (str, optional): Type, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
-<span class="sd">        </span>
-<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
-<span class="sd">    LastUpdatedBy: 04th-July-2023</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
     <span class="n">document_store</span> <span class="o">=</span> <span class="n">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>

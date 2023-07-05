@@ -69,7 +69,25 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_search.fetch_from_DB</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="fetch_data"><a class="viewcode-back" href="../../docker_search.html#docker_search.fetch_from_DB.fetch_data">[docs]</a><span></span><span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="intro"><a class="viewcode-back" href="../../docker_search.html#docker_search.fetch_from_DB.intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is used to fetch data from the DynamoDB tables, and return</span>
+<span class="sd">    the list of items. It is runs only once a day.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        python fetch_from_DB.py --from_date 2021-01-01 --to_date 2021-01-31</span>
+<span class="sd">        python fetch_from_DB.py --from_date 2021-01-01 --to_date 2021-01-31 --type news</span>
+<span class="sd">        python fetch_from_DB.py --from_date 2021-01-01 --to_date 2021-01-31 --type tweets</span>
+<span class="sd">    </span>
+<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
+<span class="sd">    </span>
+<span class="sd">    LastUpdatedDate: 05th July 2023</span>
+<span class="sd">    </span>
+<span class="sd">    ChangesMadeInCode: Add docstrings</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="fetch_data"><a class="viewcode-back" href="../../docker_search.html#docker_search.fetch_from_DB.fetch_data">[docs]</a><span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Fetch data from the DynamoDB, between the from and to dates sent in</span>
 <span class="sd">    as command line arguments, and return the list of items.</span>
 
@@ -175,9 +193,6 @@
 <span class="sd">    Args:</span>
 <span class="sd">        item_list (list): List of items fetched from database, after removing duplicates and assigning UUIDS.</span>
 <span class="sd">        type (str, optional): Type, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
-
-<span class="sd">    CreatedBy: Farhan &lt;fahmad@algoanalytics.com&gt;</span>
-<span class="sd">    LastUpdated: 03rd-July-2023</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
     <span class="n">file_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s1">_DIR&#39;</span><span class="p">]</span>
