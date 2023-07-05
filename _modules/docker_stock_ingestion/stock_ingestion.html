@@ -70,6 +70,14 @@
              
   <h1>Source code for docker_stock_ingestion.stock_ingestion</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="get_secret"><a class="viewcode-back" href="../../docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.get_secret">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_secret</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create Secret Manager Client, perform various operations &amp; API calls specific to Secret Manager.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        No Parameters</span>
+
+<span class="sd">    Output:</span>
+<span class="sd">        get_secret_value_response: Returns the secret value of a secret name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">secret_name</span> <span class="o">=</span> <span class="s1">&#39;FABRIC-RDS-Secret-Keys&#39;</span>
     <span class="n">region_name</span> <span class="o">=</span> <span class="s1">&#39;ap-south-1&#39;</span>
     <span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
@@ -80,12 +88,37 @@
 
 
 <div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.get_connection">[docs]</a><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
-    <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;fabric-database-1.cptxszv3ahgy.ap-south-1.rds.amazonaws.com&#39;</span>
-    <span class="k">return</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="n">password</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">buffered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This method is used to establish a connection to the MySQL database.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        No Parameters</span>
+
+<span class="sd">    Output:</span>
+<span class="sd">        Returns the connection to MySQL database for required connection parameters - &#39;host&#39;,&#39;user&#39;,&#39;password&#39; and &#39;buffered=True&#39; to enable         buffered queries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">buffered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="crawl_stock"><a class="viewcode-back" href="../../docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.crawl_stock">[docs]</a><span class="k">def</span> <span class="nf">crawl_stock</span><span class="p">(</span><span class="n">list_ticker_ids</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main Function for crawling stocks using yfinance library</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    </span>
+<span class="sd">    list_ticker_ids: list containing all ticker_ids</span>
+<span class="sd">        The query string which has to be passed to yfinance which will return stocks&#39; data about all the companies in the column     </span>
+
+<span class="sd">    frequency : int  (example = 1 )</span>
+<span class="sd">        Fetches data by interval</span>
+<span class="sd">        example if frequency is 1 hour then last one hour data (from current time) will be fetched </span>
+<span class="sd">    </span>
+<span class="sd">    database : AWS RDS database in which table are present</span>
+<span class="sd">    table : name of table located inside database in which data is to be stored</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">get_connection</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connection Succeeded.&#39;</span><span class="p">)</span>
