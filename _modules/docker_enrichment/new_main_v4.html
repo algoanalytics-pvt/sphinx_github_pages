@@ -158,7 +158,13 @@
 
 <div class="viewcode-block" id="compute_summary"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary">[docs]</a><span class="k">def</span> <span class="nf">compute_summary</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the summary of the provided text</span>
+<span class="sd">    Compute a summary of the input text using a pre-trained summarization model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): The input text to be summarized.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The generated summary of the input text.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">SUMMARIZATION_MODEL_NAME</span> <span class="o">=</span> <span class="s1">&#39;sshleifer/distilbart-cnn-12-6&#39;</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loading the </span><span class="si">{</span><span class="n">SUMMARIZATION_MODEL_NAME</span><span class="si">}</span><span class="s1"> model...&#39;</span><span class="p">)</span>
