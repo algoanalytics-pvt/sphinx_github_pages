@@ -70,6 +70,12 @@
              
   <h1>Source code for docker_debrief.rds_db</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="rds_con"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.rds_db.rds_con">[docs]</a><span></span><span class="k">def</span> <span class="nf">rds_con</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Establishes a connection to an RDS database and returns a cursor object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        mysql.connector.cursor.MySQLCursor: Cursor object for executing SQL queries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">token</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">generate_db_auth_token</span><span class="p">(</span><span class="n">DBHostname</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">Port</span><span class="o">=</span><span class="s1">&#39;3306&#39;</span><span class="p">,</span> <span class="n">DBUsername</span><span class="o">=</span><span class="s1">&#39;fabric_user&#39;</span><span class="p">,</span> <span class="n">Region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TOKEN IS:&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
     <span class="n">con</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">)</span>
