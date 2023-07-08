@@ -70,21 +70,45 @@
              
   <h1>Source code for docker_debrief.create_json</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="dict_None_output"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.dict_None_output">[docs]</a><span></span><span class="k">def</span> <span class="nf">dict_None_output</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a None value.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None: None value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
 
 
 <div class="viewcode-block" id="dict_output"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.dict_output">[docs]</a><span class="k">def</span> <span class="nf">dict_output</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create and return a defaultdict with default value as None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        defaultdict: Default dictionary with None as the default value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">dict_None_output</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="updated_dict"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.updated_dict">[docs]</a><span class="k">def</span> <span class="nf">updated_dict</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create and return a defaultdict with default value as float.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        defaultdict: Default dictionary with float as the default value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="working_check"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.working_check">[docs]</a><span class="k">def</span> <span class="nf">working_check</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check and return a list of working days in the BSE calendar.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of working days as strings in the format &#39;YYYY-MM-DD&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">start_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">end_date</span> <span class="o">=</span> <span class="n">start_date</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
     <span class="n">bse</span> <span class="o">=</span> <span class="n">mcal</span><span class="o">.</span><span class="n">get_calendar</span><span class="p">(</span><span class="s1">&#39;BSE&#39;</span><span class="p">)</span>
@@ -98,6 +122,16 @@
 
 
 <div class="viewcode-block" id="read_data_from_s3"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.read_data_from_s3">[docs]</a><span class="k">def</span> <span class="nf">read_data_from_s3</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read data from an S3 bucket and return the JSON content.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        bucket (str): S3 bucket name.</span>
+<span class="sd">        filename (str): Name of the file to read from.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: JSON content read from the file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">content_object</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="s1">&#39;Json/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
     <span class="n">file_content</span> <span class="o">=</span> <span class="n">content_object</span><span class="o">.</span><span class="n">get</span><span class="p">()[</span><span class="s1">&#39;Body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="n">json_content</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
@@ -346,6 +380,21 @@
 
 
 <div class="viewcode-block" id="create_overview"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.create_overview">[docs]</a><span class="k">def</span> <span class="nf">create_overview</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">list_months</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">summary_data_days</span><span class="p">,</span> <span class="n">all_news</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create an overview containing volume, news, and tweet data for a ticker.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (dict): Ticker data.</span>
+<span class="sd">        list_months (list): List of months.</span>
+<span class="sd">        today_date (str): Today&#39;s date.</span>
+<span class="sd">        index: Index value.</span>
+<span class="sd">        summary_data_days: Summary data days.</span>
+<span class="sd">        all_news (dict): Dictionary of news data.</span>
+<span class="sd">        all_tweets (dict): Dictionary of tweet data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Overview data including graph and events.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">nw</span> <span class="o">&gt;=</span> <span class="n">time1</span> <span class="ow">and</span> <span class="n">nw</span> <span class="o">&lt;=</span> <span class="n">time2</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">nw</span><span class="o">.</span><span class="n">date</span><span class="p">())</span> <span class="ow">in</span> <span class="n">list_working_days</span><span class="p">:</span>
             <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select Volume, DATE_FORMAT(date, &#39;%Y-%m-</span><span class="si">%d</span><span class="s2">&#39;)  from </span><span class="si">{}</span><span class="s2"> where ticker_id=&#39;</span><span class="si">{}</span><span class="s2">&#39; and DATE_FORMAT(date, &#39;%Y-%m-</span><span class="si">%d</span><span class="s2">&#39;) between &#39;</span><span class="si">{}</span><span class="s2">&#39; and &#39;</span><span class="si">{}</span><span class="s2">&#39; and DATE_FORMAT(date, &#39;%H&#39;) &gt;= &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rds_stock_data_table</span><span class="p">,</span> <span class="n">ticker_data</span><span class="p">[</span><span class="s1">&#39;Stock_Ticker_Symbol&#39;</span><span class="p">],</span> <span class="n">summary_data_days</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="s1">&#39;15&#39;</span><span class="p">))</span>
@@ -416,6 +465,16 @@
 
 
 <div class="viewcode-block" id="create_tweets"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.create_tweets">[docs]</a><span class="k">def</span> <span class="nf">create_tweets</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a list of tweets with sentiment analysis and event information for a given ticker.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (str): Ticker data.</span>
+<span class="sd">        all_tweets (dict): Dictionary of tweet data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Word cloud frequency and list of tweets.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">data_collect</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">events_json</span> <span class="o">=</span> <span class="p">{}</span>
@@ -489,6 +548,16 @@
 
 
 <div class="viewcode-block" id="create_news"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.create_news">[docs]</a><span class="k">def</span> <span class="nf">create_news</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">all_news</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a list of news with sentiment analysis and event information for a given ticker.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (str): Ticker data.</span>
+<span class="sd">        all_news (dict): Dictionary of news data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Word cloud frequency and list of news.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="n">events_json</span> <span class="o">=</span> <span class="p">{}</span>
@@ -562,6 +631,17 @@
 
 
 <div class="viewcode-block" id="create_prediction"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.create_prediction">[docs]</a><span class="k">def</span> <span class="nf">create_prediction</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="n">summary_data_days</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a prediction for a given ticker using historical data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (dict): Ticker data.</span>
+<span class="sd">        today_date (str): Current date.</span>
+<span class="sd">        summary_data_days (str): Summary data days.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Prediction and historical prediction accuracy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">nw</span> <span class="o">&gt;=</span> <span class="n">time1</span> <span class="ow">and</span> <span class="n">nw</span> <span class="o">&lt;=</span> <span class="n">time2</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">nw</span><span class="o">.</span><span class="n">date</span><span class="p">())</span> <span class="ow">in</span> <span class="n">list_working_days</span><span class="p">:</span>
             <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;show columns FROM </span><span class="si">{last5}</span><span class="s1">  &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">last5</span><span class="o">=</span><span class="n">trends_prediction_stock_table</span><span class="p">))</span>
@@ -749,6 +829,28 @@
 
 
 <div class="viewcode-block" id="create_technical_analysis"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.create_technical_analysis">[docs]</a><span class="k">def</span> <span class="nf">create_technical_analysis</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">summary_data_days</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="n">all_news</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">,</span> <span class="n">sect_dict</span><span class="p">,</span> <span class="n">sector</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create technical analysis based on the provided data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (dict): Information about the ticker.</span>
+<span class="sd">        summary_data_days (str): Summary data days.</span>
+<span class="sd">        today_date (str): Current date.</span>
+<span class="sd">        all_news (dict): All news data.</span>
+<span class="sd">        all_tweets (dict): All tweets data.</span>
+<span class="sd">        sect_dict (dict): Dictionary mapping sectors to ticker names.</span>
+<span class="sd">        sector (str): Sector name.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Technical analysis data.</span>
+<span class="sd">        &quot;Stock_Candle_Stick_Data&quot;: candle_stick_data,</span>
+<span class="sd">        &quot;Stock_Candle_Stick_Data_y_format&quot;: &quot;[open, high, low, close]&quot;,</span>
+<span class="sd">        &quot;close_vs_volume&quot;: close_vs_volume,</span>
+<span class="sd">        &quot;news_count_vs_total_news&quot;: res_total_vs_ticker_news,</span>
+<span class="sd">        &quot;news_sentiment_vs_volume&quot;: res_sentiment_vs_volume,</span>
+<span class="sd">        &quot;tweet_count_vs_total_tweet&quot;: res_total_vs_ticker_tweet,</span>
+<span class="sd">        &quot;tweet_sentiment_vs_volume&quot;: res_tweet_sentiment_vs_volume,</span>
+<span class="sd">        &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">total_news</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">total_vs_ticker_news</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">updated_dict</span><span class="p">)</span>
@@ -910,6 +1012,18 @@
 
 
 <div class="viewcode-block" id="create_header"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.create_header">[docs]</a><span class="k">def</span> <span class="nf">create_header</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">list_months</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create header data based on the provided information.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (dict): Ticker data.</span>
+<span class="sd">        list_months (list): List of months.</span>
+<span class="sd">        today_date (str): Today&#39;s date.</span>
+<span class="sd">        index (int): Stock ID.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Header data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">nw</span> <span class="o">&gt;=</span> <span class="n">time1</span> <span class="ow">and</span> <span class="n">nw</span> <span class="o">&lt;=</span> <span class="n">time2</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">nw</span><span class="o">.</span><span class="n">date</span><span class="p">())</span> <span class="ow">in</span> <span class="n">list_working_days</span><span class="p">:</span>
             <span class="n">Last_Updated</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M&#39;</span><span class="p">)</span>
@@ -988,6 +1102,17 @@
 
 
 <div class="viewcode-block" id="create_company_docs"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.create_company_docs">[docs]</a><span class="k">def</span> <span class="nf">create_company_docs</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create company docs with given ticker data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (str): Ticker data for the company.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Dictionary containing earnings and quarterly reports.</span>
+<span class="sd">        &quot;Earnings&quot;:earnings_result,</span>
+<span class="sd">        &quot;QuarterlyReports&quot;: quaterly_annual_reports</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data_collect</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">earnings_result</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">list_objects</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">pdf_topic_bucket</span><span class="p">,</span> <span class="n">Prefix</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;EarningCalls&#39;</span><span class="p">,</span> <span class="n">ticker_data</span><span class="p">),</span> <span class="n">Delimiter</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
@@ -1045,6 +1170,30 @@
 
 
 <div class="viewcode-block" id="fetch_debrief_data"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.create_json.fetch_debrief_data">[docs]</a><span class="k">def</span> <span class="nf">fetch_debrief_data</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">list_months</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">summary_data_days</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">,</span> <span class="n">all_news</span><span class="p">,</span> <span class="n">Predition_Number_Of_Days</span><span class="p">,</span> <span class="n">sect_dict</span><span class="p">,</span> <span class="n">sector</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetch debrief data for creating a debrief report.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_data (dict): Ticker data for the company.</span>
+<span class="sd">        list_months (list): List of months.</span>
+<span class="sd">        today_date (datetime.datetime): Current date.</span>
+<span class="sd">        index (int): Stock ID.</span>
+<span class="sd">        summary_data_days (str): Summary data days.</span>
+<span class="sd">        all_tweets (dict): All tweets data.</span>
+<span class="sd">        all_news (dict): All news data.</span>
+<span class="sd">        Predition_Number_Of_Days (int): Number of prediction days.</span>
+<span class="sd">        sect_dict (dict): Sector dictionary.</span>
+<span class="sd">        sector (str): Company sector.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Dictionary containing debrief data components.</span>
+<span class="sd">        &quot;header_information&quot;: header_information,</span>
+<span class="sd">        &quot;overview_tab&quot;: overview,</span>
+<span class="sd">        &quot;tweets&quot;: tweets,</span>
+<span class="sd">        &quot;news&quot;: news,</span>
+<span class="sd">        &quot;prediction&quot;: prediction,</span>
+<span class="sd">        &quot;technical_analysis&quot;: technical_analysis,</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">header_information</span> <span class="o">=</span> <span class="n">create_header</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">list_months</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
     <span class="n">overview</span> <span class="o">=</span> <span class="n">create_overview</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">,</span> <span class="n">list_months</span><span class="p">,</span> <span class="n">today_date</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">summary_data_days</span><span class="p">,</span> <span class="n">all_news</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">)</span>
     <span class="n">tweets</span> <span class="o">=</span> <span class="n">create_tweets</span><span class="p">(</span><span class="n">ticker_data</span><span class="p">[</span><span class="s1">&#39;Ticker_Name&#39;</span><span class="p">],</span> <span class="n">all_tweets</span><span class="p">)</span>
