@@ -237,7 +237,12 @@ all_news(dict): all news groupby ticker_id</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_debrief.get_dynamodb_data.create_default">
 <span class="sig-prename descclassname"><span class="pre">docker_debrief.get_dynamodb_data.</span></span><span class="sig-name descname"><span class="pre">create_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/get_dynamodb_data.html#create_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.get_dynamodb_data.create_default" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Create a default dictionary with initial values for sentiment score and total.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dict: Default dictionary with “sentiment_score” set to 0.0 and “total” set to 0.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_debrief.get_dynamodb_data.read_data_dynamodb">
@@ -255,23 +260,50 @@ table_name (string): Name of the table to read from</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_debrief.get_dynamodb_data.read_news_data">
 <span class="sig-prename descclassname"><span class="pre">docker_debrief.get_dynamodb_data.</span></span><span class="sig-name descname"><span class="pre">read_news_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamodb_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_months</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/get_dynamodb_data.html#read_news_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.get_dynamodb_data.read_news_data" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fetch news data from the DynamoDB table based on given parameters.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dynamodb_client (boto3.client): DynamoDB client.
+since (datetime.datetime): Start date to fetch news data from.
+list_months (list): List of months to fetch news data for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary containing news data grouped by “news_for” field.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_debrief.get_dynamodb_data.read_tweets_data">
 <span class="sig-prename descclassname"><span class="pre">docker_debrief.get_dynamodb_data.</span></span><span class="sig-name descname"><span class="pre">read_tweets_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamodb_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_months</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/get_dynamodb_data.html#read_tweets_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.get_dynamodb_data.read_tweets_data" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fetch tweets data from the DynamoDB table based on given parameters.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dynamodb_client (boto3.client): DynamoDB client.
+since (datetime.datetime): Start date to fetch tweets data from.
+list_months (list): List of months to fetch tweets data for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary containing tweets data grouped by “tweet_for” field.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_debrief.get_dynamodb_data.sum_get_total_news">
 <span class="sig-prename descclassname"><span class="pre">docker_debrief.get_dynamodb_data.</span></span><span class="sig-name descname"><span class="pre">sum_get_total_news</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_news</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/get_dynamodb_data.html#sum_get_total_news"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.get_dynamodb_data.sum_get_total_news" title="Permalink to this definition"></a></dt>
-<dd><p>Get news for a given ticker from since to until</p>
+<dd><p>Get news for a given ticker from since to until.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>ticker_name (string): Ticker name
-since(datetime): Start date
-until(datetime): End date</p>
+<dt>Args:</dt><dd><p>ticker_name (str): Ticker name.
+since (datetime): Start date.
+until (datetime): End date.
+all_news (dict): Dictionary containing news for various tickers.</p>
 </dd>
-<dt>Returns:</dt><dd><p>dict: Dictionary of news for given ticker name in the format of {date: [news1, news2, …]}</p>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tuple: A tuple containing the following elements:</dt><dd><ul class="simple">
+<li><p>news_count (list): List of dictionaries with date and news count.</p></li>
+<li><p>news_sent (dict): Dictionary of news sentiment information.</p></li>
+<li><p>today_news_count (int): Number of news for the specified end date.</p></li>
+<li><p>today_news_sent (float): Sentiment score of news for the specified end date.</p></li>
+</ul>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -279,13 +311,22 @@ until(datetime): End date</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_debrief.get_dynamodb_data.sum_get_total_tweets">
 <span class="sig-prename descclassname"><span class="pre">docker_debrief.get_dynamodb_data.</span></span><span class="sig-name descname"><span class="pre">sum_get_total_tweets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tweets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/get_dynamodb_data.html#sum_get_total_tweets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.get_dynamodb_data.sum_get_total_tweets" title="Permalink to this definition"></a></dt>
-<dd><p>Get tweets for a given ticker from since to until</p>
+<dd><p>Get tweets for a given ticker from a specified time range.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>ticker_name (string): Ticker name
-since(datetime): Start date
-until(datetime): End date</p>
+<dt>Args:</dt><dd><p>ticker_name (str): Ticker name.
+since (datetime): Start date.
+until (datetime): End date.
+all_tweets (dict): Dictionary containing tweets for various tickers.</p>
 </dd>
-<dt>Returns:</dt><dd><p>dict: Dictionary of tweets for given ticker name in the format of {date: [tweet1, tweet2, …]}</p>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tuple: A tuple containing the following elements:</dt><dd><ul class="simple">
+<li><p>tweet_count (list): List of dictionaries with date and tweet count.</p></li>
+<li><p>tweets_sent (dict): Dictionary of tweets sentiment information.</p></li>
+<li><p>today_tweet (int): Number of tweets for the specified end date.</p></li>
+<li><p>today_tweet_sent (float): Sentiment score of tweets for the specified end date.</p></li>
+</ul>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
