@@ -70,6 +70,12 @@
              
   <h1>Source code for docker_debrief.helper</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="create_invalidation"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.helper.create_invalidation">[docs]</a><span></span><span class="k">def</span> <span class="nf">create_invalidation</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create an invalidation in AWS CloudFront.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Invalidation ID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">create_invalidation</span><span class="p">(</span><span class="n">DistributionId</span><span class="o">=</span><span class="n">DISTRIBUTION_ID</span><span class="p">,</span> <span class="n">InvalidationBatch</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Paths&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Quantity&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Items&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/Json/*&#39;</span><span class="p">]},</span> <span class="s1">&#39;CallerReference&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)})</span>
     <span class="n">invalidation_id</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;Invalidation&#39;</span><span class="p">][</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;helper.py create_invalidation&#39;</span><span class="p">)</span>
@@ -78,6 +84,15 @@
 
 
 <div class="viewcode-block" id="myconverter"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.helper.myconverter">[docs]</a><span class="k">def</span> <span class="nf">myconverter</span><span class="p">(</span><span class="n">o</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Custom JSON encoder function to convert datetime objects to string representations.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        o (datetime): Datetime object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: String representation of the datetime object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;helper.py myconverter&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
