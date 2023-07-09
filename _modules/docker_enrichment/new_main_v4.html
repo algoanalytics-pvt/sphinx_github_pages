@@ -70,6 +70,12 @@
              
   <h1>Source code for docker_enrichment.new_main_v4</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_connection">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create and return a connection to the DynamoDB resource.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boto3.resource: Connection to the DynamoDB resource.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">algoDDB</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">&#39;http://dynamodb.ap-south-1.amazonaws.com&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="n">AWS_REGION</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">algoDDB</span></div>
 
