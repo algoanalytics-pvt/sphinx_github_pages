@@ -69,6 +69,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_tweets.tweets_ingestion_aws">docker_tweets.tweets_ingestion_aws module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words"><code class="docutils literal notranslate"><span class="pre">contains_irrelavant_words()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.contains_minimum_tokens"><code class="docutils literal notranslate"><span class="pre">contains_minimum_tokens()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword"><code class="docutils literal notranslate"><span class="pre">crawl_tweets_by_keyword()</span></code></a></li>
@@ -234,83 +235,62 @@ keywords (str): string of keywords to check their presence in the scraped news a
 <section id="module-docker_tweets.tweets_ingestion_aws">
 <span id="docker-tweets-tweets-ingestion-aws-module"></span><h2>docker_tweets.tweets_ingestion_aws module<a class="headerlink" href="#module-docker_tweets.tweets_ingestion_aws" title="Permalink to this heading"></a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.a_intro">
+<span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.a_intro" title="Permalink to this definition"></a></dt>
+<dd><p>This file is used to search tweets using snscrape api, scrape the tweets and add the tweets into the dynamodb tweets table. In this file, 
+basic data preprocessing is also done by filtering the scraped tweets, checking if the tweets contain minimum tokens and do not contain irrelavant words
+if the conditions are passed then the tweet is added to the tweet table.</p>
+<dl class="simple">
+<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt>LastUpdatedDate: </dt><dd><p>07th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode: </dt><dd><p>Add docstrings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.contains_irrelavant_words">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">contains_irrelavant_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blacklist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#contains_irrelavant_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words" title="Permalink to this definition"></a></dt>
 <dd><p>Function to check if tweet contains words from blacklist.</p>
-<section id="parameters">
-<h3>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>tweet_text: str</dt><dd><p>scraped tweet text</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>tweet_text (str) : scraped tweet text
+blacklist (str) : string present in the Exclusion_Tweet_String attribute of the config table</p>
 </dd>
-<dt>blacklist: str</dt><dd><p>string present in the Exclusion_Tweet_String attribute of the config table</p>
+<dt>Returns:</dt><dd><p>Bool: True if the sentence contains word/words from the blacklist, False otherwise.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
-<section id="returns">
-<h3>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><p>Bool: True if the sentence contains word/words from the blacklist, False otherwise.</p>
-</div></blockquote>
-</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.contains_minimum_tokens">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">contains_minimum_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_full_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_num_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_num_chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#contains_minimum_tokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.contains_minimum_tokens" title="Permalink to this definition"></a></dt>
 <dd><p>Function to check if tweet contains minimum(min_num_tokens) number of tokens or not.</p>
-<section id="id1">
-<h3>Parameters:<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>tweet_full_text: str</dt><dd><p>scraped tweet text</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>tweet_full_text (str) : scraped tweet text
+min_num_tokens (int) : Minimum number of tokens a tweet should have. Defined in the config table.
+min_num_chars (int) : Minimum number of characters that a token should have. Defined in the config table.</p>
 </dd>
-<dt>min_num_tokens: int</dt><dd><p>Minimum number of tokens a tweet should have. Defined in the config table.</p>
-</dd>
-<dt>min_num_chars: int</dt><dd><p>Minimum number of characters that a token should have. Defined in the config table.</p>
+<dt>Returns:</dt><dd><p>Bool: True if the tweet have minimum number of tokens, otherwise False.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
-<section id="id2">
-<h3>Returns:<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><p>Bool: True if the tweet have minimum number of tokens, otherwise False.</p>
-</div></blockquote>
-</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">crawl_tweets_by_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Temp_Tweets_Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_tweet_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_tweet_exclusions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_followersCount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_minimum_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_minimum_chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#crawl_tweets_by_keyword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword" title="Permalink to this definition"></a></dt>
 <dd><p>Main Function for crawling tweets using snscrape library</p>
-<section id="id3">
-<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>tweets_table<span class="classifier">AWS DynamoDB Table</span></dt><dd><p>“Tweets” Table from DynamoDB</p>
-</dd>
-<dt>ticker_tweet_keywords<span class="classifier">Str </span></dt><dd><p>The query string which has to be passed to Sncscrape which will 
-return tweets about the specific company based on the keywords.</p>
-</dd>
-<dt>ticker_tweet_exclusions<span class="classifier">Str </span></dt><dd><p>The query string which has to be passed to Sncscrape which will not 
-return tweets about the specific company based on the exclusion string.</p>
-</dd>
-<dt>ticker_name<span class="classifier">Str </span></dt><dd><p>The string which will be used to store tweets along with the Ticker name in DynamoDB Table.</p>
-</dd>
-<dt>tweet_followersCount<span class="classifier">int</span></dt><dd><p>The number used to store tweets only if the follower count of editor is 
-greater than the defined number.</p>
-</dd>
-<dt>tweet_minimum_tokens<span class="classifier">int</span></dt><dd><p>The number used to store tweets only if the number of tokens of the tweet 
-is greater than the defined number.</p>
-</dd>
-<dt>tweet_minimum_chars<span class="classifier">int</span></dt><dd><p>The number used to store tweets only if the number of characters of the tweet 
-is greater than the defined number.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>temp_tweets_table (AWS DynamoDB Table) : “Tweets” Table from DynamoDB
+ticker_tweet_keywords (Str) : The query string which has to be passed to Sncscrape which will return tweets about the specific company based on the keywords.
+ticker_tweet_exclusions (Str) : The query string which has to be passed to Sncscrape which will not return tweets about the specific company based on the exclusion string.
+ticker_name (Str) : The string which will be used to store tweets along with the Ticker name in DynamoDB Table.
+tweet_followersCount (int) : The number used to store tweets only if the follower count of editor is greater than the defined number.
+tweet_minimum_tokens (int) : The number used to store tweets only if the number of tokens of the tweet is greater than the defined number.
+tweet_minimum_chars (int) : The number used to store tweets only if the number of characters of the tweet is greater than the defined number.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
 </dd></dl>
 
 <dl class="py function">
@@ -318,21 +298,12 @@ is greater than the defined number.</p>
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">filter_tweet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#filter_tweet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.filter_tweet" title="Permalink to this definition"></a></dt>
 <dd><p>Function to check if a given sentence contains at least one word or bigram or phrase
 from the RELEVANT_WORDS list and does not contain any word from the FILTER_OUT_WORDS list.</p>
-<section id="id4">
-<h3>Parameters:<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>tweet_text: str</dt><dd><p>scraped tweet text</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>tweet_text (str) : scraped tweet text</p>
+</dd>
+<dt>Returns:</dt><dd><p>Bool: True if the sentence is relevant, False otherwise.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
-<section id="id5">
-<h3>Returns:<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><p>Bool: True if the sentence is relevant, False otherwise.</p>
-</div></blockquote>
-</section>
 </dd></dl>
 
 </section>
