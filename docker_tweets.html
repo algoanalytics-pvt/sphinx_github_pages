@@ -61,6 +61,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_tweets.news_ingestion_aws">docker_tweets.news_ingestion_aws module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.Find_url"><code class="docutils literal notranslate"><span class="pre">Find_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.crawl_news_by_keyword"><code class="docutils literal notranslate"><span class="pre">crawl_news_by_keyword()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.get_content"><code class="docutils literal notranslate"><span class="pre">get_content()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.news_lang_check"><code class="docutils literal notranslate"><span class="pre">news_lang_check()</span></code></a></li>
@@ -134,13 +135,29 @@ the application. It is responsible for creating all the resources required for r
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.Find_url">
 <span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">Find_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#Find_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.Find_url" title="Permalink to this definition"></a></dt>
-<dd><p>Finds if a url is present in news article. This function is used for cleaning news articles 
+<dd><p>Finds if a url is present in a news article. This function is used for cleaning news articles 
 from Business Standard source, as Business standard returns unnecessary content while scraping 
 before the main article.</p>
 <dl class="simple">
 <dt>Args: </dt><dd><p>string (str) : The scraped article from “business standard” news source.</p>
 </dd>
 <dt>Returns: </dt><dd><p>element (str): First URL from the list of urls extracted from the scraped news article.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.a_intro">
+<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.a_intro" title="Permalink to this definition"></a></dt>
+<dd><p>This file is used to search news articles using pygooglenews api, scrape the news articles and add the news into the dynamodb News table. In this file, 
+basic data preprocessing is also done by checking the news article language and if the news contains specific user defined keywords, if the conditions are passed 
+then the news is added to the news table.</p>
+<dl class="simple">
+<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt>LastUpdatedDate: </dt><dd><p>07th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode: </dt><dd><p>Add docstrings</p>
 </dd>
 </dl>
 </dd></dl>
@@ -157,8 +174,11 @@ ticker_symbol (str) :  The string which will be used to store news along with th
 longDesc_keywords (str) : Keywords that will be used to search them in the scraped news article
 text_search (str) : Value that is used to decide if to find news using text if the results returned by finding news using title is 0</p>
 </dd>
+<dt>LastUpdated: </dt><dd><p>05th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode:</dt><dd><p>Added if code blocks that runs when the article_text is not equal to None when using beautifulsoup and requests.</p>
+</dd>
 </dl>
-<p>LastUpdated: 04th-July-2023</p>
 </dd></dl>
 
 <dl class="py function">
@@ -182,9 +202,13 @@ text_search (str) : Value that is used to decide if to find news using text if t
 </dd>
 <dt>Returns:</dt><dd><p>bool: True if the language of the article is English, else False.</p>
 </dd>
+<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt>LastUpdated: </dt><dd><p>07th June 2023</p>
+</dd>
+<dt>ChangesMadeInCode:</dt><dd><p>Created the function</p>
+</dd>
 </dl>
-<p>CreatedBy: Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;
-LastUpdated: 07th-June-2023</p>
 </dd></dl>
 
 <dl class="py function">
@@ -197,9 +221,13 @@ keywords (str): string of keywords to check their presence in the scraped news a
 </dd>
 <dt>Returns:</dt><dd><p>bool: True if any one of the keywords are present in the scraped news article.</p>
 </dd>
+<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt>LastUpdated: </dt><dd><p>04th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode:</dt><dd><p>Created the function</p>
+</dd>
 </dl>
-<p>CreatedBy: Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;
-LastUpdated: 04th-July-2023</p>
 </dd></dl>
 
 </section>
