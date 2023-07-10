@@ -69,7 +69,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_stock_ingestion.stock_ingestion</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="get_secret"><a class="viewcode-back" href="../../docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.get_secret">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_secret</span><span class="p">():</span>
+<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Code for downloading stock data from yfinance OR RapidAPI and writing the data to AWS RDS.</span>
+<span class="sd">    </span>
+<span class="sd">    LastUpdatedDate: </span>
+<span class="sd">            06th July 2023</span>
+<span class="sd">    </span>
+<span class="sd">    ChangesMadeInCode:</span>
+<span class="sd">            Added Docstrings</span>
+<span class="sd">           </span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="get_secret"><a class="viewcode-back" href="../../docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.get_secret">[docs]</a><span class="k">def</span> <span class="nf">get_secret</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Create Secret Manager Client, perform various operations &amp; API calls specific to Secret Manager.</span>
 
 <span class="sd">    Parameters:</span>

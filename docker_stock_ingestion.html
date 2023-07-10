@@ -52,6 +52,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">docker_stock_ingestion package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_stock_ingestion.stock_ingestion">docker_stock_ingestion.stock_ingestion module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.crawl_stock"><code class="docutils literal notranslate"><span class="pre">crawl_stock()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.get_secret"><code class="docutils literal notranslate"><span class="pre">get_secret()</span></code></a></li>
@@ -101,6 +102,18 @@
 </section>
 <section id="module-docker_stock_ingestion.stock_ingestion">
 <span id="docker-stock-ingestion-stock-ingestion-module"></span><h2>docker_stock_ingestion.stock_ingestion module<a class="headerlink" href="#module-docker_stock_ingestion.stock_ingestion" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_ingestion.stock_ingestion.a_intro">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_ingestion.stock_ingestion.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_ingestion/stock_ingestion.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_ingestion.stock_ingestion.a_intro" title="Permalink to this definition"></a></dt>
+<dd><p>Code for downloading stock data from yfinance OR RapidAPI and writing the data to AWS RDS.</p>
+<dl class="simple">
+<dt>LastUpdatedDate: </dt><dd><p>06th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode:</dt><dd><p>Added Docstrings</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_stock_ingestion.stock_ingestion.crawl_stock">
 <span class="sig-prename descclassname"><span class="pre">docker_stock_ingestion.stock_ingestion.</span></span><span class="sig-name descname"><span class="pre">crawl_stock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_ticker_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_ingestion/stock_ingestion.html#crawl_stock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_ingestion.stock_ingestion.crawl_stock" title="Permalink to this definition"></a></dt>
