@@ -70,6 +70,17 @@
              
   <h1>Source code for docker_enrichment.main</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="get_sentiment_class"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.get_sentiment_class">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_sentiment_class</span><span class="p">(</span><span class="n">news_sent_4</span><span class="p">,</span> <span class="n">news_sent_5</span><span class="p">,</span> <span class="n">news_sent_6</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the sentiment class based on the given sentiment scores.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        neg (float): Negative sentiment score.</span>
+<span class="sd">        pos (float): Positive sentiment score.</span>
+<span class="sd">        neut (float): Neutral sentiment score.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Sentiment class (&#39;positive&#39;, &#39;negative&#39;, or &#39;neutral&#39;).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">news_sent_4</span> <span class="o">&gt;</span> <span class="n">news_sent_5</span> <span class="ow">and</span> <span class="n">news_sent_4</span> <span class="o">&gt;</span> <span class="n">news_sent_6</span><span class="p">:</span>
         <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;negative&#39;</span>
     <span class="k">elif</span> <span class="n">news_sent_5</span> <span class="o">&gt;</span> <span class="n">news_sent_4</span> <span class="ow">and</span> <span class="n">news_sent_5</span> <span class="o">&gt;</span> <span class="n">news_sent_6</span><span class="p">:</span>
@@ -85,12 +96,13 @@
 <span class="sd">    </span>
 <span class="sd">    The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. </span>
 <span class="sd">    We will perform softmax on outputs and return numpy array of pt_predictions.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">      -------------</span>
-<span class="sd">            1. doc : a single string</span>
-<span class="sd">      Returns</span>
-<span class="sd">      ----------</span>
-<span class="sd">        pt_predictions.detach().cpu().numpy(): numpy array of pt_predictions </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        doc (str): The input document or text to analyze.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        numpy.ndarray: Numpy array of sentiment predictions.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pt_batch</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">pt_batch</span><span class="p">)</span>
@@ -101,15 +113,14 @@
 
 <div class="viewcode-block" id="get_sentiment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.get_sentiment">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Function which returns a dictionary of sentiment analysis and all entities present in sentence</span>
-<span class="sd">  </span>
-<span class="sd">  Parameters</span>
-<span class="sd">  ----------</span>
-<span class="sd">    1. sentence: str</span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">    1. sentiment_analysis : dict</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  Perform sentiment analysis on the input sentence.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">        sentence (str): Input sentence to analyze.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">        dict: Sentiment analysis results including text, sentiment scores, sentiment class, and identified entities.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
     <span class="n">senti_sent</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
     <span class="n">scores2</span> <span class="o">=</span> <span class="kc">None</span>
@@ -149,7 +160,14 @@
 
 
 <div class="viewcode-block" id="compute_summary"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.compute_summary">[docs]</a><span class="k">def</span> <span class="nf">compute_summary</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the summary of the provided text</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute a summary of the input text using a pre-trained summarization model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): The input text to be summarized.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The generated summary of the input text.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -167,15 +185,13 @@
 
 <div class="viewcode-block" id="find_events"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.find_events">[docs]</a><span class="k">def</span> <span class="nf">find_events</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    find sentences containing &#39;events&#39; from provided text</span>
-<span class="sd">    Parameters</span>
-<span class="sd">      ----------</span>
-<span class="sd">      text: str</span>
-<span class="sd">          Text from which we need to find desired &#39;events&#39;</span>
-<span class="sd">    Output</span>
-<span class="sd">      ----------</span>
-<span class="sd">      events: list of strings</span>
-<span class="sd">          sentences containing &#39;events&#39; as a list</span>
+<span class="sd">    Find sentences containing &#39;events&#39; from the provided text.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): Text from which we need to find desired &#39;events&#39;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        events (list of strings): Sentences containing &#39;events&#39; as a list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">events</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">text_sent</span> <span class="o">=</span> <span class="n">event_tokenizer</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
@@ -202,21 +218,18 @@
 
 
 <div class="viewcode-block" id="find_mult_class"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.find_mult_class">[docs]</a><span class="k">def</span> <span class="nf">find_mult_class</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Take a input text sentences of &#39;events&#39; and classifiy it into different pre-defined categories.</span>
-<span class="sd">    The categories considered are: &#39;Debt&#39;,&#39;Dividend&#39; ,&#39;Financial_Results&#39; ,&#39;Investment_and_Funding&#39; ,&#39;Litigation&#39;,</span>
-<span class="sd">            &#39;Merger_and_Acquisition&#39; ,&#39;Partnership_and_JointVenture&#39;,&#39;Rating_and_Recommendation&#39; ,</span>
-<span class="sd">            &#39;Securities_Securities_Turnover&#39; and &#39;ShareRepurchase&#39;</span>
-<span class="sd">    Summary</span>
-<span class="sd">    --------------</span>
-<span class="sd">    Take a input text sentence and returns its most related category from the above. It returns &#39;Other&#39;,</span>
-<span class="sd">    if no related categories are found.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ---------------------</span>
-<span class="sd">    text: The input sentences as a string. (eg: a paragraph of relevent event sentences)</span>
-<span class="sd">    Returns</span>
-<span class="sd">    --------------------</span>
-<span class="sd">    Dictionary : Returns a dictionary of sentences (events), corresponding labels and its probability.</span>
-<span class="sd">  </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Take an input text sentence of &#39;events&#39; and classify it into different pre-defined categories.</span>
+
+<span class="sd">    The categories considered are: &#39;Debt&#39;, &#39;Dividend&#39;, &#39;Employment&#39;, &#39;Financial Results&#39;, &#39;Investment &amp; Funding&#39;,</span>
+<span class="sd">    &#39;Litigation&#39;, &#39;Macroeconomics&#39;, &#39;Merger &amp; Acquisition&#39;, &#39;Partnership &amp; JointVenture&#39;, &#39;Products &amp; Services&#39;,</span>
+<span class="sd">    &#39;Rating &amp; Recommendation&#39;, &#39;Securities Turnover&#39;, and &#39;Share Repurchase&#39;.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    text: The input sentence as a string (e.g., a paragraph of relevant event sentences).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    Dictionary: Returns a dictionary of sentences (events), corresponding labels, and their probabilities.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">top_2_events</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">all_events</span> <span class="o">=</span> <span class="p">[]</span>
@@ -242,6 +255,17 @@
 
 
 <div class="viewcode-block" id="perform_enrichment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.perform_enrichment">[docs]</a><span class="k">def</span> <span class="nf">perform_enrichment</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform enrichment on the given article.</span>
+<span class="sd">    Summarization, and Event Detection on the article.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        article (str): The text of the article to perform enrichment on.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary containing the results of the enrichment process, including:</span>
+<span class="sd">        &quot;sentiment_analysis&quot;, &quot;ner_analysis&quot;, &quot;summary&quot;, &quot;events&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">batch</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">tokenize</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
     <span class="n">sentiment_analysis_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">summarization_text</span> <span class="o">=</span> <span class="p">[]</span>
