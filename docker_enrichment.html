@@ -168,27 +168,64 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.Update_table">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">Update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#Update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.Update_table" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>About function Update_table
+Function to perform enrichment for given items</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table  - One of the initialized tables from which data needs to be fetched 
+item  - item (record) which need to be updated
+Sentiment- Sentiment list to be updated to item
+Ner- Ner list to be updated to item</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.enrichment">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_of_news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.enrichment" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Perform enrichment on a batch of news using a specified endpoint URL.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>batch_of_news (list): List of news items to perform enrichment on.
+endpoint_url (str): URL of the endpoint for performing enrichment.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Enriched data received in the response as a dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.fetch_data">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">fetch_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#fetch_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.fetch_data" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fetch data items from a specified table based on filter attributes.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table (TableResource): One of the initialized tables from which data needs to be fetched 
+filter_attr (str): To fetch only the records meeting a condition based on ‘filter_attr’ column ..example:select * from table where filter_attr = Null</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: List of data items fetched from the table.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.get_connection">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.get_connection" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Create and return a connection to the DynamoDB resource.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>boto3.resource: Connection to the DynamoDB resource.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.perform_enrichment">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">perform_enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#perform_enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.perform_enrichment" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>About function perform_enrichment
+Function to perform enrichment for given items</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table  - One of the initialized tables from which data needs to be fetched 
+items  - Items of Dynamo DB received from fetch_data fucntion</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-docker_enrichment.main">

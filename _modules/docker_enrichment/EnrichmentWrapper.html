@@ -70,18 +70,44 @@
              
   <h1>Source code for docker_enrichment.EnrichmentWrapper</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.EnrichmentWrapper.get_connection">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create and return a connection to the DynamoDB resource.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boto3.resource: Connection to the DynamoDB resource.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">algoDDB</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;ap-south-1&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">algoDDB</span></div>
 
 
 
 <div class="viewcode-block" id="enrichment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.EnrichmentWrapper.enrichment">[docs]</a><span class="k">def</span> <span class="nf">enrichment</span><span class="p">(</span><span class="n">batch_of_news</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform enrichment on a batch of news using a specified endpoint URL.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        batch_of_news (list): List of news items to perform enrichment on.</span>
+<span class="sd">        endpoint_url (str): URL of the endpoint for performing enrichment.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Enriched data received in the response as a dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">batch_of_news</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">response</span></div>
 
 
 
 <div class="viewcode-block" id="fetch_data"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.EnrichmentWrapper.fetch_data">[docs]</a><span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filter_attr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetch data items from a specified table based on filter attributes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        table (TableResource): One of the initialized tables from which data needs to be fetched </span>
+<span class="sd">        filter_attr (str): To fetch only the records meeting a condition based on &#39;filter_attr&#39; column ..example:select * from table where filter_attr = Null</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of data items fetched from the table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">this_month</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
     <span class="n">today</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
     <span class="n">first</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -115,6 +141,14 @@
 
 
 <div class="viewcode-block" id="perform_enrichment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.EnrichmentWrapper.perform_enrichment">[docs]</a><span class="k">def</span> <span class="nf">perform_enrichment</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    About function perform_enrichment</span>
+<span class="sd">    Function to perform enrichment for given items </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        table  - One of the initialized tables from which data needs to be fetched </span>
+<span class="sd">        items  - Items of Dynamo DB received from fetch_data fucntion</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">table_name</span> <span class="o">==</span> <span class="s1">&#39;Tweets_Table&#39;</span><span class="p">:</span>
@@ -162,6 +196,15 @@
 
 
 <div class="viewcode-block" id="Update_table"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.EnrichmentWrapper.Update_table">[docs]</a><span class="k">def</span> <span class="nf">Update_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">Sentiment</span><span class="p">,</span> <span class="n">Ner</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">events</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;  About function Update_table</span>
+<span class="sd">    Function to perform enrichment for given items</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        table  - One of the initialized tables from which data needs to be fetched </span>
+<span class="sd">        item  - item (record) which need to be updated</span>
+<span class="sd">        Sentiment- Sentiment list to be updated to item</span>
+<span class="sd">        Ner- Ner list to be updated to item</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">event_flag</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">events</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">event_flag</span> <span class="o">=</span> <span class="kc">False</span>
