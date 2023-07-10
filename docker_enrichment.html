@@ -329,47 +329,47 @@ Summarization, and Event Detection on the article.</p>
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">analyze_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#analyze_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.analyze_sentiment" title="Permalink to this definition"></a></dt>
 <dd><p>Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</p>
 <p>The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. 
-We will perform softmax on outputs and return numpy array of pt_predictions.
-Parameters</p>
-<blockquote>
-<div><blockquote>
-<div><ol class="arabic simple">
-<li><p>doc : a single string</p></li>
-</ol>
-</div></blockquote>
-<blockquote>
-<div><p>pt_predictions.detach().cpu().numpy(): numpy array of pt_predictions</p>
-</div></blockquote>
-</div></blockquote>
+We will perform softmax on outputs and return numpy array of pt_predictions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>doc (str): The input document or text to analyze.</p>
+</dd>
+<dt>Returns:</dt><dd><p>numpy.ndarray: Numpy array of sentiment predictions.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.compute_summary">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">compute_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#compute_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.compute_summary" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Compute a summary of the input text using a pre-trained summarization model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>text (str): The input text to be summarized.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The generated summary of the input text.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.compute_summary_updated">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">compute_summary_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#compute_summary_updated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.compute_summary_updated" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the summary of the provided text</p>
+<dd><p>Compute the summary of the provided text using T5 model</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>text (str): The input text to summarize.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The generated summary of the input text.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.find_events">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">find_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#find_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.find_events" title="Permalink to this definition"></a></dt>
-<dd><p>find sentences containing ‘events’ from provided text
-Parameters</p>
-<blockquote>
-<div><dl class="simple">
-<dt>text: str</dt><dd><p>Text from which we need to find desired ‘events’</p>
-</dd>
-</dl>
-</div></blockquote>
+<dd><p>Find sentences containing ‘events’ from the provided text.</p>
 <dl class="simple">
-<dt>Output</dt><dd><dl class="simple">
-<dt>events: list of strings</dt><dd><p>sentences containing ‘events’ as a list</p>
+<dt>Args:</dt><dd><p>text (str): Text from which we need to find desired ‘events’.</p>
 </dd>
-</dl>
+<dt>Returns:</dt><dd><p>events (list of strings): Sentences containing ‘events’ as a list.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -377,68 +377,80 @@ Parameters</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.find_mult_class">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">find_mult_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#find_mult_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.find_mult_class" title="Permalink to this definition"></a></dt>
-<dd><p>Take a input text sentences of ‘events’ and classifiy it into different pre-defined categories.
-The categories considered are: ‘Debt’, ‘Dividend’, ‘Employment’, ‘Financial Results’ , ‘Investment &amp; Funding’ ,</p>
-<blockquote>
-<div><p>‘Litigation’, ‘Macroeconomics’, ‘Merger &amp; Acquisition’ , ‘Partnership &amp; JointVenture’, ‘Products &amp; Services’, 
-‘Rating &amp; Recommendation’, ‘Securities Turnover’ and ‘Share Repurchase’</p>
-</div></blockquote>
-<section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h3>
-<p>Take a input text sentence and returns its most related category from the above. It returns ‘Other’,
-if no related categories are found.</p>
-</section>
-<section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
-<p>text: The input sentences as a string. (eg: a paragraph of relevent event sentences)</p>
-</section>
-<section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
-<p>Dictionary : Returns a dictionary of sentences (events), corresponding labels and its probability.</p>
-</section>
+<dd><p>Take an input text sentence of ‘events’ and classify it into different pre-defined categories.</p>
+<p>The categories considered are: ‘Debt’, ‘Dividend’, ‘Employment’, ‘Financial Results’, ‘Investment &amp; Funding’,
+‘Litigation’, ‘Macroeconomics’, ‘Merger &amp; Acquisition’, ‘Partnership &amp; JointVenture’, ‘Products &amp; Services’,
+‘Rating &amp; Recommendation’, ‘Securities Turnover’, and ‘Share Repurchase’.</p>
+<p>Args:
+text (str): The input sentence as a string (e.g., a paragraph of relevant event sentences).</p>
+<p>Returns:
+lists: top_2_events and all_events</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.get_connection">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.get_connection" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Create and return a connection to the DynamoDB resource.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>boto3.resource: Connection to the DynamoDB resource.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.get_sentiment">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">get_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#get_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.get_sentiment" title="Permalink to this definition"></a></dt>
-<dd><p>Function which returns a dictionary of sentiment analysis and all entities present in sentence</p>
-<section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>sentence: str</p></li>
-</ol>
-</div></blockquote>
-</section>
-<section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>sentiment_analysis : dict</p></li>
-</ol>
-</div></blockquote>
-</section>
+<dd><p>Perform sentiment analysis on the given sentence.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>sentence (str): The input sentence to analyze.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the sentiment analysis results.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.get_sentiment_class">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">get_sentiment_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_sent_4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sent_5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sent_6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#get_sentiment_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.get_sentiment_class" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Determine the sentiment class based on the given sentiment scores.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>neg (float): Negative sentiment score.
+pos (float): Positive sentiment score.
+neut (float): Neutral sentiment score.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Sentiment class (‘positive’, ‘negative’, or ‘neutral’).</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.perform_enrichment">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">perform_enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#perform_enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.perform_enrichment" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Perform enrichment on the given article.</p>
+<p>The function performs  Targeted Sentiment Analysis (TSA),
+Summarization, and Event Detection on the article.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>article (str): The text of the article to perform enrichment on.
+tsa_keyword (str): The targeted keyword for sentiment analysis.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the results of the enrichment process, including
+“sentiment_analysis”, “ner_analysis”, “summary”, “events”.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.upload_data">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">upload_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enriched_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#upload_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.upload_data" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Upload and process enriched data for a specific item.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item (str): The type of item (e.g., “News”).
+enriched_data (dict): Enriched data associated with the item.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int: The count of records updated in the table.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-docker_enrichment.new_main_v4">
