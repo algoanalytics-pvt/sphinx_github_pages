@@ -70,10 +70,15 @@
              
   <h1>Source code for docker_enrichment.access_files.vault</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="retrieveSecrets"><a class="viewcode-back" href="../../../docker_enrichment.access_files.html#docker_enrichment.access_files.vault.retrieveSecrets">[docs]</a><span></span><span class="k">def</span> <span class="nf">retrieveSecrets</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve secrets from Azure Key Vault.</span>
+
+<span class="sd">    Retrieves secrets from Azure Key Vault using the provided configuration settings.</span>
+<span class="sd">    It prints the configuration, connects to the specified vault, retrieves secret properties,</span>
+<span class="sd">    and stores the secret values in a dictionary.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Dictiionary: It has all the key value pairs of key vault of azure</span>
+<span class="sd">        dict: A dictionary containing secret names as keys and secret values as values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">secretDictValue</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PRINTING CONFIG&#39;</span><span class="p">)</span>

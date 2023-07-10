@@ -120,9 +120,12 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.access_files.vault.retrieveSecrets">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.access_files.vault.</span></span><span class="sig-name descname"><span class="pre">retrieveSecrets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/access_files/vault.html#retrieveSecrets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.access_files.vault.retrieveSecrets" title="Permalink to this definition"></a></dt>
-<dd><p>_summary_</p>
+<dd><p>Retrieve secrets from Azure Key Vault.</p>
+<p>Retrieves secrets from Azure Key Vault using the provided configuration settings.
+It prints the configuration, connects to the specified vault, retrieves secret properties,
+and stores the secret values in a dictionary.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>Dictiionary: It has all the key value pairs of key vault of azure</p>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing secret names as keys and secret values as values.</p>
 </dd>
 </dl>
 </dd></dl>
