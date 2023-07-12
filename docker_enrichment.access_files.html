@@ -45,12 +45,14 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">fabric_backend_AWS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="docker_enrichment.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">docker_enrichment.access_files package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.EnrichmentWrapper">docker_enrichment.EnrichmentWrapper module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.main">docker_enrichment.main module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.main_new_v3_copy_2">docker_enrichment.main_new_v3_copy_2 module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.new_main_v4">docker_enrichment.new_main_v4 module</a></li>
@@ -58,6 +60,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics.html">docker_topics package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
 </ul>
 </li>
@@ -110,6 +118,35 @@
 <dt class="sig sig-object py" id="docker_enrichment.access_files.cosmos.run">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.access_files.cosmos.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/access_files/cosmos.html#run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.access_files.cosmos.run" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+</section>
+<section id="module-docker_enrichment.access_files.db_server">
+<span id="docker-enrichment-access-files-db-server-module"></span><h2>docker_enrichment.access_files.db_server module<a class="headerlink" href="#module-docker_enrichment.access_files.db_server" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.access_files.db_server.get_connection">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.access_files.db_server.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/access_files/db_server.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.access_files.db_server.get_connection" title="Permalink to this definition"></a></dt>
+<dd><p>Establish a connection to the database. Obtain connection string information from the portal</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>pymysql.connections.Connection: Connection object representing the database connection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-docker_enrichment.access_files.vault">
+<span id="docker-enrichment-access-files-vault-module"></span><h2>docker_enrichment.access_files.vault module<a class="headerlink" href="#module-docker_enrichment.access_files.vault" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.access_files.vault.retrieveSecrets">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.access_files.vault.</span></span><span class="sig-name descname"><span class="pre">retrieveSecrets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/access_files/vault.html#retrieveSecrets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.access_files.vault.retrieveSecrets" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve secrets from Azure Key Vault.</p>
+<p>Retrieves secrets from Azure Key Vault using the provided configuration settings.
+It prints the configuration, connects to the specified vault, retrieves secret properties,
+and stores the secret values in a dictionary.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dict: A dictionary containing secret names as keys and secret values as values.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-docker_enrichment.access_files">

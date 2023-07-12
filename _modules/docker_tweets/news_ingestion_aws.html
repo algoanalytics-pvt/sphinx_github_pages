@@ -69,7 +69,119 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_tweets.news_ingestion_aws</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="add_news_article"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.add_news_article">[docs]</a><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">keywords</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is used to search news articles using pygooglenews api, scrape the news articles and add the news into the dynamodb News table. In this file, </span>
+<span class="sd">    basic data preprocessing is also done by checking the news article language and if the news contains specific user defined keywords, if the conditions are passed </span>
+<span class="sd">    then the news is added to the news table.</span>
+
+<span class="sd">    CreatedBy: </span>
+<span class="sd">            Mansi Maurya &lt;mmaurya@algoanalytics.com&gt;</span>
+
+<span class="sd">    LastUpdatedDate: </span>
+<span class="sd">            07th July 2023</span>
+<span class="sd">    </span>
+<span class="sd">    ChangesMadeInCode: </span>
+<span class="sd">            Add docstrings</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Find_url"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.Find_url">[docs]</a><span class="k">def</span> <span class="nf">Find_url</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Finds if a url is present in a news article. This function is used for cleaning news articles </span>
+<span class="sd">    from Business Standard source, as Business standard returns unnecessary content while scraping </span>
+<span class="sd">    before the main article.</span>
+
+<span class="sd">    Args: </span>
+<span class="sd">        string (str) : The scraped article from &quot;business standard&quot; news source.</span>
+
+<span class="sd">    Returns: </span>
+<span class="sd">        element (str): First URL from the list of urls extracted from the scraped news article.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">regex</span> <span class="o">=</span> <span class="s1">&#39;(?i)</span><span class="se">\\</span><span class="s1">b((?:https?://|www</span><span class="se">\\</span><span class="s1">d{0,3}[.]|[a-z0-9.</span><span class="se">\\</span><span class="s1">-]+[.][a-z]{2,4}/)(?:[^</span><span class="se">\\</span><span class="s1">s()&lt;&gt;]+|</span><span class="se">\\</span><span class="s1">(([^</span><span class="se">\\</span><span class="s1">s()&lt;&gt;]+|(</span><span class="se">\\</span><span class="s1">([^</span><span class="se">\\</span><span class="s1">s()&lt;&gt;]+</span><span class="se">\\</span><span class="s1">)))*</span><span class="se">\\</span><span class="s1">))+(?:</span><span class="se">\\</span><span class="s1">(([^</span><span class="se">\\</span><span class="s1">s()&lt;&gt;]+|(</span><span class="se">\\</span><span class="s1">([^</span><span class="se">\\</span><span class="s1">s()&lt;&gt;]+</span><span class="se">\\</span><span class="s1">)))*</span><span class="se">\\</span><span class="s1">)|[^</span><span class="se">\\</span><span class="s1">s`!()</span><span class="se">\\</span><span class="s1">[</span><span class="se">\\</span><span class="s1">]</span><span class="si">{}</span><span class="s1">;:</span><span class="se">\&#39;\\</span><span class="s1">&quot;.,&lt;&gt;?«»“”‘’]))&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">url</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="get_content"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.get_content">[docs]</a><span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="n">link</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Uses &quot;Article&quot; function from &quot;newspaper3k&quot; library to scrape the news article.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        link (str) : The link or url of the article to be scraped.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        text (str) : content of the link or url provided.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">article</span> <span class="o">=</span> <span class="n">Article</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+        <span class="n">article</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+        <span class="n">article</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">article</span><span class="o">.</span><span class="n">text</span></div>
+
+
+
+<div class="viewcode-block" id="news_lang_check"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.news_lang_check">[docs]</a><span class="k">def</span> <span class="nf">news_lang_check</span><span class="p">(</span><span class="n">description</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Checks if the news article scraped is of english language.</span>
+
+<span class="sd">    Args: </span>
+<span class="sd">        description (str) : scraped content of the news article</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the language of the article is English, else False.</span>
+
+<span class="sd">    CreatedBy: </span>
+<span class="sd">            Mansi Maurya &lt;mmaurya@algoanalytics.com&gt;</span>
+<span class="sd">            </span>
+<span class="sd">    LastUpdated: </span>
+<span class="sd">            07th June 2023</span>
+
+<span class="sd">    ChangesMadeInCode:</span>
+<span class="sd">            Created the function</span>
+<span class="sd">            </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">printable_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">description</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">isprintable</span><span class="p">()))</span>
+    <span class="p">(</span><span class="n">isReliable</span><span class="p">,</span> <span class="n">textBytesFound</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span> <span class="o">=</span> <span class="n">cld2</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">printable_str</span><span class="p">,</span> <span class="n">returnVectors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">languages</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TELUGU&#39;</span><span class="p">,</span> <span class="s1">&#39;HINDI&#39;</span><span class="p">,</span> <span class="s1">&#39;KOREAN&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">((</span><span class="n">element</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="n">languages</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">vector</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="news_longDesc_check"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.news_longDesc_check">[docs]</a><span class="k">def</span> <span class="nf">news_longDesc_check</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">key_words</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Checks if certain keywords are present in the scraped news article.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        description (str) : scraped content of the news article.</span>
+<span class="sd">        keywords (str): string of keywords to check their presence in the scraped news article.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if any one of the keywords are present in the scraped news article.</span>
+
+<span class="sd">    CreatedBy: </span>
+<span class="sd">            Mansi Maurya &lt;mmaurya@algoanalytics.com&gt;</span>
+<span class="sd">            </span>
+<span class="sd">    LastUpdated: </span>
+<span class="sd">            04th July 2023</span>
+
+<span class="sd">    ChangesMadeInCode:</span>
+<span class="sd">            Created the function</span>
+<span class="sd">            </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">keyword_list</span> <span class="o">=</span> <span class="n">key_words</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keyword_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">description</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="add_news_article"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.add_news_article">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">keywords</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Checks if the scraped news articles pass certain conditions like language check and keyword check </span>
 <span class="sd">    and on the basis of those results adds news articles to news table.</span>
 
@@ -143,6 +255,127 @@
             <span class="k">return</span> <span class="n">count</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception in add_news_article function: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="crawl_news_by_keyword"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.crawl_news_by_keyword">[docs]</a><span class="k">def</span> <span class="nf">crawl_news_by_keyword</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">ticker_news_keywords</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">text_search</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Main Function for crawling news using pygooglenews library</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        news_table (AWS DynamoDB Table) : &quot;News&quot; Table from DynamoDB</span>
+<span class="sd">        frequency (str) : The time duration from which the user wants to get the news</span>
+<span class="sd">        ticker_news_keywords (str) : The query string which has to be passed to google news which will return news about the specific company.</span>
+<span class="sd">        ticker_symbol (str) :  The string which will be used to store news along with the Ticker name in DynamoDB Table.</span>
+<span class="sd">        longDesc_keywords (str) : Keywords that will be used to search them in the scraped news article</span>
+<span class="sd">        text_search (str) : Value that is used to decide if to find news using text if the results returned by finding news using title is 0</span>
+
+<span class="sd">    LastUpdated: </span>
+<span class="sd">            05th July 2023</span>
+
+<span class="sd">    ChangesMadeInCode:</span>
+<span class="sd">            Added if code blocks that runs when the article_text is not equal to None when using beautifulsoup and requests.</span>
+<span class="sd">            </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gn</span> <span class="o">=</span> <span class="n">GoogleNews</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">gn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;allintitle:</span><span class="si">{</span><span class="n">ticker_news_keywords</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="n">frequency</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">text_search</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ticker_symbol</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Seaching in the text&#39;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">gn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ticker_news_keywords</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="n">frequency</span><span class="p">)</span>
+    <span class="n">newsitem</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">newsitem</span><span class="p">:</span>
+        <span class="n">news_id</span> <span class="o">=</span> <span class="n">ticker_symbol</span> <span class="o">+</span> <span class="s1">&#39; +UNIQUE_T_AND_N_ID_SEPARATOR+ &#39;</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">long_description</span> <span class="o">=</span> <span class="n">get_content</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">long_description</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="n">long_description</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Indiainfoline&#39;</span><span class="p">:</span>
+                    <span class="n">news</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">)</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">news</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;widget-content cms-content ng-star-inserted&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">text</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CNBCTV18&#39;</span><span class="p">:</span>
+                    <span class="n">news_class_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;.*(art-page-wrapper|articleWrap).*&#39;</span><span class="p">)</span>
+                    <span class="n">news</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">)</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">news</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">news_class_pattern</span><span class="p">})</span>
+                    <span class="k">if</span> <span class="n">article_text</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="n">article_text</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">):</span>
+                            <span class="n">section</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Press Trust of India&#39;</span><span class="p">:</span>
+                    <span class="n">news</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">)</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">news</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;big-image-description&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;The Tribune India&#39;</span><span class="p">:</span>
+                    <span class="n">req</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0&#39;</span><span class="p">})</span>
+                    <span class="n">webpage</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">webpage</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;story-desc&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Business Standard&#39;</span><span class="p">:</span>
+                    <span class="n">news</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">)</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">news</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;storycontent&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">article_text</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">article_text</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.storycontent &gt; div:nth-child(1) &gt; div.mb-20&#39;</span><span class="p">):</span>
+                            <span class="n">tag</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Outlook India&#39;</span><span class="p">:</span>
+                    <span class="n">req</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0&#39;</span><span class="p">})</span>
+                    <span class="n">webpage</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">webpage</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;articleBody&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">article_text</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">article_text</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;#articleBody &gt; div.__related_stories_thumbs&#39;</span><span class="p">):</span>
+                            <span class="n">tag</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Investing.com India&#39;</span><span class="p">:</span>
+                    <span class="n">req</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0&#39;</span><span class="p">})</span>
+                    <span class="n">webpage</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">webpage</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;article-item-content&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Economic Times&#39;</span><span class="p">:</span>
+                    <span class="n">req</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0&#39;</span><span class="p">})</span>
+                    <span class="n">webpage</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">webpage</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+                    <span class="n">article_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;artData clr&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">article_text</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">article_text</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.mb20.flt&#39;</span><span class="p">):</span>
+                            <span class="n">tag</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">article_text</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">long_description</span> <span class="o">=</span> <span class="n">article_text</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception in crawl_news_by_keyword function: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of news for </span><span class="si">{</span><span class="n">ticker_symbol</span><span class="si">}</span><span class="s1"> entered in the table : &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></div>
 
 
 

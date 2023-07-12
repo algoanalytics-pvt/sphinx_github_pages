@@ -12,6 +12,22 @@ docker\_enrichment.access\_files.cosmos module
    :undoc-members:
    :show-inheritance:
 
+docker\_enrichment.access\_files.db\_server module
+--------------------------------------------------
+
+.. automodule:: docker_enrichment.access_files.db_server
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.access\_files.vault module
+---------------------------------------------
+
+.. automodule:: docker_enrichment.access_files.vault
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

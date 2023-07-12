@@ -12,6 +12,14 @@ Subpackages
 Submodules
 ----------
 
+docker\_enrichment.EnrichmentWrapper module
+-------------------------------------------
+
+.. automodule:: docker_enrichment.EnrichmentWrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 docker\_enrichment.main module
 ------------------------------
 
