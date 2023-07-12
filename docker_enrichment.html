@@ -621,10 +621,11 @@ company_name (str): The target company name in lowercase.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.new_main_v4.fetch_config_data">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">fetch_config_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#fetch_config_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.fetch_config_data" title="Permalink to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Args:</dt><dd><p>table (boto3.resource): The DynamoDB table object.</p>
+<dd><p>Fetch configuration data from a database table.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table: The database table object to fetch data from.</p>
 </dd>
-<dt>Returns:</dt><dd><p>list: A list of all the items in the table.</p>
+<dt>Returns:</dt><dd><p>list: A list of configuration items fetched from the table.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -632,7 +633,15 @@ company_name (str): The target company name in lowercase.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.new_main_v4.fetch_data_from_table">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">fetch_data_from_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#fetch_data_from_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.fetch_data_from_table" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fetch data from specified table based on the provided filter attribute.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table: The table object representing the database table to fetch data from.
+filter_attr: The attribute to filter the data based on.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of data items fetched from the table.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.new_main_v4.find_events">
@@ -700,26 +709,14 @@ TSA_keyword.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.new_main_v4.get_ticker_names_and_id">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
-<dd><p>Function to get ticker_id and the ticker name
-Parameters:
-———-</p>
-<blockquote>
-<div><dl class="simple">
-<dt>sectors: str</dt><dd><p>Name of Sector - IT or BANK</p>
+<dd><p>Get ticker names based on sectors from a given table.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>sectors (list): List of sectors to filter ticker names. If ‘ALL’ is included, ticker names for all sectors are returned.
+table: The table object to scan for ticker names.</p>
 </dd>
-<dt>table: str </dt><dd><p>Name of config table - algoDDB.Table(‘ConfigTable’)</p>
+<dt>Returns:</dt><dd><p>list: List of ticker names based on the specified sectors.</p>
 </dd>
 </dl>
-</div></blockquote>
-<section id="id3">
-<h3>Returns:<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>ticker_name: str</dt><dd><p>name of the company</p>
-</dd>
-</dl>
-</div></blockquote>
-</section>
 </dd></dl>
 
 <dl class="py function">
@@ -748,7 +745,21 @@ tsa_keyword (str): The targeted keyword for sentiment analysis.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.new_main_v4.update_table">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_org_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.update_table" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Update a table with the provided data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table: The table object to update.
+record_id: The ID of the record to update.
+record_month: The month of the record to update.
+ner_org_freq: The NER organization frequency data.
+Sentiment: The sentiment computed of the news/article
+summary: Summary of news article.
+top_events: The top events data.
+all_events: The all events data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int: The number of records updated.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.new_main_v4.upload_data">
