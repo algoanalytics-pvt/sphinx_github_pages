@@ -56,6 +56,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docker-search-app-module">docker_search.app module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_search.create_models">docker_search.create_models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.create_models.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_search.create_models.create_resources"><code class="docutils literal notranslate"><span class="pre">create_resources()</span></code></a></li>
 </ul>
 </li>
@@ -184,6 +185,30 @@
 </section>
 <section id="module-docker_search.create_models">
 <span id="docker-search-create-models-module"></span><h2>docker_search.create_models module<a class="headerlink" href="#module-docker_search.create_models" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.create_models.a_intro">
+<span class="sig-prename descclassname"><span class="pre">docker_search.create_models.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/create_models.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.create_models.a_intro" title="Permalink to this definition"></a></dt>
+<dd><p>This file is use to create all the models required for running Semantic Search.
+This is meant to be executed only one time around when starting with a fresh retriever model, or in case some mistake results in previous data to be lost.
+This does not fetch the data, it only creates the resources. So, the fetch data program must be run
+independently from this.</p>
+<p>This program assumes that the environment variables are already set up.
+The following environment variables are required:
+DOCUMENT_STORE_DIR: The directory where the document stores will be created.
+RETRIEVER_DIR: The directory where the retriever models will be created.
+MAPPING_DIR: The directory where the mapping files will be created.</p>
+<p>The following environment variables are optional:
+MODEL_DIR: The directory where the transformers models will be created.</p>
+<dl class="simple">
+<dt>CreatedBy: </dt><dd><p>Farhan &lt;<a class="reference external" href="mailto:fahmad&#37;&#52;&#48;algoanalytics&#46;com">fahmad<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt>LastUpdatedDate: </dt><dd><p>05th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode: </dt><dd><p>Add docstrings</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_search.create_models.create_resources">
 <span class="sig-prename descclassname"><span class="pre">docker_search.create_models.</span></span><span class="sig-name descname"><span class="pre">create_resources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/create_models.html#create_resources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.create_models.create_resources" title="Permalink to this definition"></a></dt>
