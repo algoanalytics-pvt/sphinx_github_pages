@@ -52,7 +52,22 @@
 <li class="toctree-l4"><a class="reference internal" href="#docker_debrief.access_file.get_secret"><code class="docutils literal notranslate"><span class="pre">get_secret()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-debrief-create-json-module">docker_debrief.create_json module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_debrief.create_json">docker_debrief.create_json module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.create_company_docs"><code class="docutils literal notranslate"><span class="pre">create_company_docs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.create_header"><code class="docutils literal notranslate"><span class="pre">create_header()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.create_news"><code class="docutils literal notranslate"><span class="pre">create_news()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.create_overview"><code class="docutils literal notranslate"><span class="pre">create_overview()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.create_technical_analysis"><code class="docutils literal notranslate"><span class="pre">create_technical_analysis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.create_tweets"><code class="docutils literal notranslate"><span class="pre">create_tweets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.dict_None_output"><code class="docutils literal notranslate"><span class="pre">dict_None_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.dict_output"><code class="docutils literal notranslate"><span class="pre">dict_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.fetch_data_summary"><code class="docutils literal notranslate"><span class="pre">fetch_data_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.fetch_debrief_data"><code class="docutils literal notranslate"><span class="pre">fetch_debrief_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.read_data_from_s3"><code class="docutils literal notranslate"><span class="pre">read_data_from_s3()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.updated_dict"><code class="docutils literal notranslate"><span class="pre">updated_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.create_json.working_check"><code class="docutils literal notranslate"><span class="pre">working_check()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_debrief.get_dynamodb_data">docker_debrief.get_dynamodb_data module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#docker_debrief.get_dynamodb_data.create_default"><code class="docutils literal notranslate"><span class="pre">create_default()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_debrief.get_dynamodb_data.read_data_dynamodb"><code class="docutils literal notranslate"><span class="pre">read_data_dynamodb()</span></code></a></li>
@@ -62,9 +77,20 @@
 <li class="toctree-l4"><a class="reference internal" href="#docker_debrief.get_dynamodb_data.sum_get_total_tweets"><code class="docutils literal notranslate"><span class="pre">sum_get_total_tweets()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-debrief-helper-module">docker_debrief.helper module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-debrief-main-module">docker_debrief.main module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-debrief-rds-db-module">docker_debrief.rds_db module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_debrief.helper">docker_debrief.helper module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.helper.create_invalidation"><code class="docutils literal notranslate"><span class="pre">create_invalidation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.helper.myconverter"><code class="docutils literal notranslate"><span class="pre">myconverter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.helper.write_json_file"><code class="docutils literal notranslate"><span class="pre">write_json_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_debrief.main">docker_debrief.main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.main.lambd_func"><code class="docutils literal notranslate"><span class="pre">lambd_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_debrief.rds_db">docker_debrief.rds_db module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.rds_db.rds_con"><code class="docutils literal notranslate"><span class="pre">rds_con()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_debrief">Module contents</a></li>
 </ul>
 </li>
@@ -130,8 +156,204 @@
 </dd></dl>
 
 </section>
-<section id="docker-debrief-create-json-module">
-<h2>docker_debrief.create_json module<a class="headerlink" href="#docker-debrief-create-json-module" title="Permalink to this heading"></a></h2>
+<section id="module-docker_debrief.create_json">
+<span id="docker-debrief-create-json-module"></span><h2>docker_debrief.create_json module<a class="headerlink" href="#module-docker_debrief.create_json" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.create_company_docs">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">create_company_docs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#create_company_docs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.create_company_docs" title="Permalink to this definition"></a></dt>
+<dd><p>Create company docs with given ticker data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_data (str): Ticker data for the company.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary containing earnings and quarterly reports.
+“Earnings”:earnings_result,
+“QuarterlyReports”: quaterly_annual_reports</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.create_header">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">create_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_months</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">today_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#create_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.create_header" title="Permalink to this definition"></a></dt>
+<dd><p>Create header data based on the provided information.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_data (dict): Ticker data.
+list_months (list): List of months.
+today_date (str): Today’s date.
+index (int): Stock ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Header data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.create_news">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">create_news</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_news</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#create_news"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.create_news" title="Permalink to this definition"></a></dt>
+<dd><p>Create a list of news with sentiment analysis and event information for a given ticker.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_data (str): Ticker data.
+all_news (dict): Dictionary of news data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Word cloud frequency and list of news.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.create_overview">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">create_overview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_months</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">today_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_data_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tweets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#create_overview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.create_overview" title="Permalink to this definition"></a></dt>
+<dd><p>Create an overview containing volume, news, and tweet data for a ticker.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_data (dict): Ticker data.
+list_months (list): List of months.
+today_date (str): Today’s date.
+index: Index value.
+summary_data_days: Summary data days.
+all_news (dict): Dictionary of news data.
+all_tweets (dict): Dictionary of tweet data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Overview data including graph and events.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.create_technical_analysis">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">create_technical_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_data_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">today_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tweets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sect_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#create_technical_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.create_technical_analysis" title="Permalink to this definition"></a></dt>
+<dd><p>Create technical analysis based on the provided data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_data (dict): Information about the ticker.
+summary_data_days (str): Summary data days.
+today_date (str): Current date.
+all_news (dict): All news data.
+all_tweets (dict): All tweets data.
+sect_dict (dict): Dictionary mapping sectors to ticker names.
+sector (str): Sector name.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Technical analysis data.
+“Stock_Candle_Stick_Data”: candle_stick_data,
+“Stock_Candle_Stick_Data_y_format”: “[open, high, low, close]”,
+“close_vs_volume”: close_vs_volume,
+“news_count_vs_total_news”: res_total_vs_ticker_news,
+“news_sentiment_vs_volume”: res_sentiment_vs_volume,
+“tweet_count_vs_total_tweet”: res_total_vs_ticker_tweet,
+“tweet_sentiment_vs_volume”: res_tweet_sentiment_vs_volume,</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.create_tweets">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">create_tweets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tweets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#create_tweets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.create_tweets" title="Permalink to this definition"></a></dt>
+<dd><p>Create a list of tweets with sentiment analysis and event information for a given ticker.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_data (str): Ticker data.
+all_tweets (dict): Dictionary of tweet data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Word cloud frequency and list of tweets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.dict_None_output">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">dict_None_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#dict_None_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.dict_None_output" title="Permalink to this definition"></a></dt>
+<dd><p>Return a None value.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>None: None value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.dict_output">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">dict_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#dict_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.dict_output" title="Permalink to this definition"></a></dt>
+<dd><p>Create and return a defaultdict with default value as None.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>defaultdict: Default dictionary with None as the default value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.fetch_data_summary">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">fetch_data_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">today_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_data_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_json</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tweets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_news</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#fetch_data_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.fetch_data_summary" title="Permalink to this definition"></a></dt>
+<dd><p>Create Summary dict for a given ticker from since to until</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_name (string): Ticker name
+today_date(datetime): Current date in IST
+summary_data_days(datetime): date to which have to generate summary
+summary_json(dict): Summary with updated date
+ticker_id(string): ticker Symbol
+all_tweets(dict): all tweets groupby ticker_id
+all_news(dict): all news groupby ticker_id</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary of today news with colors as per percentile.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.fetch_debrief_data">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">fetch_debrief_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_months</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">today_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_data_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tweets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Predition_Number_Of_Days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sect_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#fetch_debrief_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.fetch_debrief_data" title="Permalink to this definition"></a></dt>
+<dd><p>Fetch debrief data for creating a debrief report.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ticker_data (dict): Ticker data for the company.
+list_months (list): List of months.
+today_date (datetime.datetime): Current date.
+index (int): Stock ID.
+summary_data_days (str): Summary data days.
+all_tweets (dict): All tweets data.
+all_news (dict): All news data.
+Predition_Number_Of_Days (int): Number of prediction days.
+sect_dict (dict): Sector dictionary.
+sector (str): Company sector.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary containing debrief data components.
+“header_information”: header_information,
+“overview_tab”: overview,
+“tweets”: tweets,
+“news”: news,
+“prediction”: prediction,
+“technical_analysis”: technical_analysis,</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.read_data_from_s3">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">read_data_from_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bucket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#read_data_from_s3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.read_data_from_s3" title="Permalink to this definition"></a></dt>
+<dd><p>Read data from an S3 bucket and return the JSON content.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>bucket (str): S3 bucket name.
+filename (str): Name of the file to read from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: JSON content read from the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.updated_dict">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">updated_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#updated_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.updated_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Create and return a defaultdict with default value as float.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>defaultdict: Default dictionary with float as the default value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.create_json.working_check">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.create_json.</span></span><span class="sig-name descname"><span class="pre">working_check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/create_json.html#working_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.create_json.working_check" title="Permalink to this definition"></a></dt>
+<dd><p>Check and return a list of working days in the BSE calendar.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: List of working days as strings in the format ‘YYYY-MM-DD’.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-docker_debrief.get_dynamodb_data">
 <span id="docker-debrief-get-dynamodb-data-module"></span><h2>docker_debrief.get_dynamodb_data module<a class="headerlink" href="#module-docker_debrief.get_dynamodb_data" title="Permalink to this heading"></a></h2>
@@ -233,14 +455,69 @@ all_tweets (dict): Dictionary containing tweets for various tickers.</p>
 </dd></dl>
 
 </section>
-<section id="docker-debrief-helper-module">
-<h2>docker_debrief.helper module<a class="headerlink" href="#docker-debrief-helper-module" title="Permalink to this heading"></a></h2>
+<section id="module-docker_debrief.helper">
+<span id="docker-debrief-helper-module"></span><h2>docker_debrief.helper module<a class="headerlink" href="#module-docker_debrief.helper" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.helper.create_invalidation">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.helper.</span></span><span class="sig-name descname"><span class="pre">create_invalidation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/helper.html#create_invalidation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.helper.create_invalidation" title="Permalink to this definition"></a></dt>
+<dd><p>Create an invalidation in AWS CloudFront.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>str: Invalidation ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.helper.myconverter">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.helper.</span></span><span class="sig-name descname"><span class="pre">myconverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/helper.html#myconverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.helper.myconverter" title="Permalink to this definition"></a></dt>
+<dd><p>Custom JSON encoder function to convert datetime objects to string representations.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>o (datetime): Datetime object.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: String representation of the datetime object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.helper.write_json_file">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.helper.</span></span><span class="sig-name descname"><span class="pre">write_json_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/helper.html#write_json_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.helper.write_json_file" title="Permalink to this definition"></a></dt>
+<dd><p>Write json object to json file</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_name (sting): filename (currenty ticker symbols)
+data (dict): dict as json object to write to file</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="docker-debrief-main-module">
-<h2>docker_debrief.main module<a class="headerlink" href="#docker-debrief-main-module" title="Permalink to this heading"></a></h2>
+<section id="module-docker_debrief.main">
+<span id="docker-debrief-main-module"></span><h2>docker_debrief.main module<a class="headerlink" href="#module-docker_debrief.main" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.main.lambd_func">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.main.</span></span><span class="sig-name descname"><span class="pre">lambd_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/main.html#lambd_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.main.lambd_func" title="Permalink to this definition"></a></dt>
+<dd><p>Lambda function that returns the value of the “Sector” key from a dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x (dict): Input dictionary.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Any: Value of the “Sector” key from the input dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="docker-debrief-rds-db-module">
-<h2>docker_debrief.rds_db module<a class="headerlink" href="#docker-debrief-rds-db-module" title="Permalink to this heading"></a></h2>
+<section id="module-docker_debrief.rds_db">
+<span id="docker-debrief-rds-db-module"></span><h2>docker_debrief.rds_db module<a class="headerlink" href="#module-docker_debrief.rds_db" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.rds_db.rds_con">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.rds_db.</span></span><span class="sig-name descname"><span class="pre">rds_con</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/rds_db.html#rds_con"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.rds_db.rds_con" title="Permalink to this definition"></a></dt>
+<dd><p>Establishes a connection to an RDS database and returns a cursor object.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>mysql.connector.cursor.MySQLCursor: Cursor object for executing SQL queries.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-docker_debrief">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_debrief" title="Permalink to this heading"></a></h2>

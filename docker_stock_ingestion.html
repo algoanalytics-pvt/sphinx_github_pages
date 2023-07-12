@@ -51,7 +51,13 @@
 <li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">docker_stock_ingestion package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-stock-ingestion-stock-ingestion-module">docker_stock_ingestion.stock_ingestion module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_stock_ingestion.stock_ingestion">docker_stock_ingestion.stock_ingestion module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.crawl_stock"><code class="docutils literal notranslate"><span class="pre">crawl_stock()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_stock_ingestion.stock_ingestion.get_secret"><code class="docutils literal notranslate"><span class="pre">get_secret()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_stock_ingestion">Module contents</a></li>
 </ul>
 </li>
@@ -94,8 +100,62 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="docker-stock-ingestion-stock-ingestion-module">
-<h2>docker_stock_ingestion.stock_ingestion module<a class="headerlink" href="#docker-stock-ingestion-stock-ingestion-module" title="Permalink to this heading"></a></h2>
+<section id="module-docker_stock_ingestion.stock_ingestion">
+<span id="docker-stock-ingestion-stock-ingestion-module"></span><h2>docker_stock_ingestion.stock_ingestion module<a class="headerlink" href="#module-docker_stock_ingestion.stock_ingestion" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_ingestion.stock_ingestion.a_intro">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_ingestion.stock_ingestion.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_ingestion/stock_ingestion.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_ingestion.stock_ingestion.a_intro" title="Permalink to this definition"></a></dt>
+<dd><p>Code for downloading stock data from yfinance OR RapidAPI and writing the data to AWS RDS.</p>
+<dl class="simple">
+<dt>LastUpdatedDate: </dt><dd><p>06th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode:</dt><dd><p>Added Docstrings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_ingestion.stock_ingestion.crawl_stock">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_ingestion.stock_ingestion.</span></span><span class="sig-name descname"><span class="pre">crawl_stock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_ticker_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_ingestion/stock_ingestion.html#crawl_stock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_ingestion.stock_ingestion.crawl_stock" title="Permalink to this definition"></a></dt>
+<dd><p>Main Function for crawling stocks using yfinance library</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>list_ticker_ids: list containing all ticker_ids</dt><dd><p>The query string which has to be passed to yfinance which will return stocks’ data about all the companies in the column</p>
+</dd>
+<dt>frequency<span class="classifier">int  (example = 1 )</span></dt><dd><p>Fetches data by interval
+example if frequency is 1 hour then last one hour data (from current time) will be fetched</p>
+</dd>
+</dl>
+<p>database : AWS RDS database in which table are present
+table : name of table located inside database in which data is to be stored</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_ingestion.stock_ingestion.get_connection">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_ingestion.stock_ingestion.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_ingestion/stock_ingestion.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_ingestion.stock_ingestion.get_connection" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used to establish a connection to the MySQL database.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>No Parameters</p>
+</dd>
+<dt>Output:</dt><dd><p>Returns the connection to MySQL database for required connection parameters - ‘host’,’user’,’password’ and ‘buffered=True’ to enable         buffered queries.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_ingestion.stock_ingestion.get_secret">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_ingestion.stock_ingestion.</span></span><span class="sig-name descname"><span class="pre">get_secret</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_ingestion/stock_ingestion.html#get_secret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_ingestion.stock_ingestion.get_secret" title="Permalink to this definition"></a></dt>
+<dd><p>Create Secret Manager Client, perform various operations &amp; API calls specific to Secret Manager.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>No Parameters</p>
+</dd>
+<dt>Output:</dt><dd><p>get_secret_value_response: Returns the secret value of a secret name.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-docker_stock_ingestion">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_stock_ingestion" title="Permalink to this heading"></a></h2>
