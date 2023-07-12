@@ -70,22 +70,15 @@
              
   <h1>Source code for docker_enrichment.main</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="get_ticker_names_and_id"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.get_ticker_names_and_id">[docs]</a><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">get_ticker_names_and_id</span><span class="p">(</span><span class="n">sector</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to get ticker_id and the ticker name</span>
-<span class="sd">    </span>
-<span class="sd">    Parameters:</span>
-<span class="sd">    ----------</span>
-<span class="sd">        sector: str</span>
-<span class="sd">            Name of Sector - IT or BANK</span>
-<span class="sd">        table: str </span>
-<span class="sd">            Name of config table - algoDDB.Table(&#39;ConfigTable&#39;)</span>
-<span class="sd">    </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get ticker names based on sectors from a given table.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sectors (list): List of sectors to filter ticker names. If &#39;ALL&#39; is included, ticker names for all sectors are returned.</span>
+<span class="sd">        table: The table object to scan for ticker names.</span>
+
 <span class="sd">    Returns:</span>
-<span class="sd">    -------</span>
-<span class="sd">        ticker_id: str</span>
-<span class="sd">            ticker symbol of the company </span>
-<span class="sd">        ticker_name: str</span>
-<span class="sd">            name of the company</span>
-<span class="sd">    </span>
+<span class="sd">        list: List of ticker names based on the specified sectors.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ticker_name</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">item_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">async</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">read_all_items</span><span class="p">()]</span>
@@ -364,6 +357,22 @@
 
 
 <div class="viewcode-block" id="Update_table"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.Update_table">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">Update_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">record_id</span><span class="p">,</span> <span class="n">record_month</span><span class="p">,</span> <span class="n">Sentiment</span><span class="p">,</span> <span class="n">Ner</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">top_events</span><span class="p">,</span> <span class="n">all_events</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update the specified table with the provided data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        table: The table object representing the DynamoDB table.</span>
+<span class="sd">        record_id: The ID of the record to update.</span>
+<span class="sd">        record_month: The month associated with the record.</span>
+<span class="sd">        Sentiment: The sentiment analysis results.</span>
+<span class="sd">        Ner: The entity detected.</span>
+<span class="sd">        summary: The summary of the record (for News_Table only).</span>
+<span class="sd">        top_events: The top events associated with the record.</span>
+<span class="sd">        all_events: The list of all events associated with the record.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: The count of records updated</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Updating table</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">event_flag</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_events</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

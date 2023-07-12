@@ -249,7 +249,21 @@ items  - Items of Dynamo DB received from fetch_data fucntion</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main.Update_table">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">Update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#Update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.Update_table" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Update the specified table with the provided data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table: The table object representing the DynamoDB table.
+record_id: The ID of the record to update.
+record_month: The month associated with the record.
+Sentiment: The sentiment analysis results.
+Ner: The entity detected.
+summary: The summary of the record (for News_Table only).
+top_events: The top events associated with the record.
+all_events: The list of all events associated with the record.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int: The count of records updated</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main.analyze_sentiment">
@@ -336,29 +350,14 @@ neut (float): Neutral sentiment score.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main.get_ticker_names_and_id">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
-<dd><p>Function to get ticker_id and the ticker name</p>
-<section id="parameters">
-<h3>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>sector: str</dt><dd><p>Name of Sector - IT or BANK</p>
+<dd><p>Get ticker names based on sectors from a given table.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>sectors (list): List of sectors to filter ticker names. If ‘ALL’ is included, ticker names for all sectors are returned.
+table: The table object to scan for ticker names.</p>
 </dd>
-<dt>table: str </dt><dd><p>Name of config table - algoDDB.Table(‘ConfigTable’)</p>
+<dt>Returns:</dt><dd><p>list: List of ticker names based on the specified sectors.</p>
 </dd>
 </dl>
-</div></blockquote>
-</section>
-<section id="returns">
-<h3>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>ticker_id: str</dt><dd><p>ticker symbol of the company</p>
-</dd>
-<dt>ticker_name: str</dt><dd><p>name of the company</p>
-</dd>
-</dl>
-</div></blockquote>
-</section>
 </dd></dl>
 
 <dl class="py function">
