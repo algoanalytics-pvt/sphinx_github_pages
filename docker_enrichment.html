@@ -90,6 +90,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.new_main_v4">docker_enrichment.new_main_v4 module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.compute_summary_updated"><code class="docutils literal notranslate"><span class="pre">compute_summary_updated()</span></code></a></li>
@@ -565,6 +566,33 @@ enriched_data (dict): Enriched data associated with the item.</p>
 </section>
 <section id="module-docker_enrichment.new_main_v4">
 <span id="docker-enrichment-new-main-v4-module"></span><h2>docker_enrichment.new_main_v4 module<a class="headerlink" href="#module-docker_enrichment.new_main_v4" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.a_intro">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.a_intro" title="Permalink to this definition"></a></dt>
+<dd><p>This code performs the following tasks on an article:
+Extracts articles from the table.
+Generate summary of the article.
+Use Targeted Sentiment Analysis to get only relevant lines of article where the companies name is mentioned along with it’s coreference lines.
+Predict sentiment for related entities [ORG]
+Detect events and classify them</p>
+<dl class="simple">
+<dt>CreatedBy: </dt><dd><ol class="arabic simple">
+<li><p>Shreyas R Chim &lt;<a class="reference external" href="mailto:schim&#37;&#52;&#48;alagoanalytics&#46;com">schim<span>&#64;</span>alagoanalytics<span>&#46;</span>com</a>&gt;</p></li>
+<li><p>Kalash Gandhi &lt;<a class="reference external" href="mailto:kgandhi&#37;&#52;&#48;algoanalytics&#46;com">kgandhi<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p></li>
+</ol>
+</dd>
+<dt>Updated by:</dt><dd><ol class="arabic simple">
+<li><p>Nishant Tiwari</p></li>
+<li><p>Shubham Jagtap</p></li>
+</ol>
+</dd>
+<dt>LastUpdatedDate: </dt><dd><p>7th July 2023</p>
+</dd>
+<dt>ChangesMadeInCode: </dt><dd><p>Added docstrings</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.new_main_v4.analyze_sentiment">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">analyze_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#analyze_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.analyze_sentiment" title="Permalink to this definition"></a></dt>

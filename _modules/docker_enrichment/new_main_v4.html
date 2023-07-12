@@ -69,7 +69,32 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_enrichment.new_main_v4</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_connection">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
+<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This code performs the following tasks on an article:</span>
+<span class="sd">    Extracts articles from the table.</span>
+<span class="sd">    Generate summary of the article.</span>
+<span class="sd">    Use Targeted Sentiment Analysis to get only relevant lines of article where the companies name is mentioned along with it&#39;s coreference lines.</span>
+<span class="sd">    Predict sentiment for related entities [ORG]</span>
+<span class="sd">    Detect events and classify them</span>
+
+<span class="sd">    CreatedBy: </span>
+<span class="sd">            1. Shreyas R Chim &lt;schim@alagoanalytics.com&gt;</span>
+<span class="sd">            2. Kalash Gandhi &lt;kgandhi@algoanalytics.com&gt;</span>
+<span class="sd">    Updated by:</span>
+<span class="sd">            1. Nishant Tiwari</span>
+<span class="sd">            2. Shubham Jagtap</span>
+
+<span class="sd">    LastUpdatedDate: </span>
+<span class="sd">            7th July 2023</span>
+<span class="sd">    </span>
+<span class="sd">    ChangesMadeInCode: </span>
+<span class="sd">            Added docstrings</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_connection">[docs]</a><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create and return a connection to the DynamoDB resource.</span>
 
