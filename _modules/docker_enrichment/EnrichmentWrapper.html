@@ -69,7 +69,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_enrichment.EnrichmentWrapper</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.EnrichmentWrapper.get_connection">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
+<span></span><span class="s1">&#39; </span><span class="se">\n</span><span class="s1">Task of this module:</span><span class="se">\n</span><span class="s1">1. To get data from AWS dynamo DB which is not enriched</span><span class="se">\n</span><span class="s1">2. Perform enrichment of data which is not enriched</span><span class="se">\n</span><span class="s1">3. Update the source table with enriched data</span><span class="se">\n\n</span><span class="s1">Prerequisites</span><span class="se">\n</span><span class="s1">  !pip install boto3</span><span class="se">\n</span><span class="s1">  !pip install nltk</span><span class="se">\n\n</span><span class="s1">Author: Ekansh Gupta &lt;egupta@alagoanalytics.com&gt;</span><span class="se">\n</span><span class="s1">AlgoAnalytics</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+
+
+<span class="s1">&#39; About function get_connection</span><span class="se">\n</span><span class="s1">Function to connect to AWS resource (Dynamo DB)</span><span class="se">\n</span><span class="s1">Input : None</span><span class="se">\n</span><span class="s1">Output: return connection object</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+
+
+<div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.EnrichmentWrapper.get_connection">[docs]</a><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create and return a connection to the DynamoDB resource.</span>
 
@@ -78,6 +86,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">algoDDB</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;ap-south-1&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">algoDDB</span></div>
+
+
+
+<span class="s2">&quot;  About function enrichment</span><span class="se">\n</span><span class="s2">Function to send batch of data to enrichment API to perform enrichment</span><span class="se">\n</span><span class="s2">Input : batch_of_news - contains list of string (News or Tweets)</span><span class="se">\n</span><span class="s2">        endpoint_url  - contains the endpoint URL of API</span><span class="se">\n</span><span class="s2">Output: dictionary containing sentiment and Ner in format = {&#39;sentiment_analysis&#39;: &#39;[..]&#39; , &#39;ner_analysis&#39; : &#39;[..]}</span><span class="se">\n</span><span class="s2">&quot;</span>
 
 
 
@@ -94,6 +106,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">batch_of_news</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">response</span></div>
+
+
+
+<span class="s2">&quot;  About function fetch_data</span><span class="se">\n</span><span class="s2">Function to fetch data from AWS dynamoDB for given table</span><span class="se">\n</span><span class="s2">Input : table        - One of the initialized tables from which data needs to be fetched </span><span class="se">\n</span><span class="s2">        filter_attr  - To fetch only the records meeting a condition based on &#39;filter_attr&#39; column ..example:select * from table where filter_attr = Null</span><span class="se">\n</span><span class="s2">Output: list dictionary containing dictionary of fetched items</span><span class="se">\n</span><span class="s2">&quot;</span>
 
 
 
@@ -137,6 +153,10 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;************ Fetched all records for &#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span> <span class="s1">&#39;*****************************************&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;************ Total records fetched : &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span> <span class="s1">&#39;*********************************************&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">items</span></div>
+
+
+
+<span class="s1">&#39;  About function perform_enrichment</span><span class="se">\n</span><span class="s1">Function to perform enrichment for given items </span><span class="se">\n</span><span class="s1">Input : table  - One of the initialized tables from which data needs to be fetched </span><span class="se">\n</span><span class="s1">        items  - Items of Dynamo DB received from fetch_data fucntion</span><span class="se">\n</span><span class="s1">Output: None</span><span class="se">\n</span><span class="s1">&#39;</span>
 
 
 
@@ -192,6 +212,10 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*****************&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span> <span class="s1">&#39; table updated with enriched data******************************&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*****************Total records Updated: &#39;</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*****************records with no enriched data: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="n">cnt</span><span class="p">)</span></div>
+
+
+
+<span class="s1">&#39;  About function Update_table</span><span class="se">\n</span><span class="s1">Function to perform enrichment for given items </span><span class="se">\n</span><span class="s1">Input : table  - One of the initialized tables from which data needs to be fetched </span><span class="se">\n</span><span class="s1">        item  - item (record) which need to be updated</span><span class="se">\n</span><span class="s1">        Sentiment- Sentiment list to be updated to item</span><span class="se">\n</span><span class="s1">        Ner- Ner list to be updated to item</span><span class="se">\n</span><span class="s1">Output: None</span><span class="se">\n</span><span class="s1">&#39;</span>
 
 
 

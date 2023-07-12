@@ -20,6 +20,14 @@ docker\_enrichment.access\_files.db\_server module
    :undoc-members:
    :show-inheritance:
 
+docker\_enrichment.access\_files.test module
+--------------------------------------------
+
+.. automodule:: docker_enrichment.access_files.test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 docker\_enrichment.access\_files.vault module
 ---------------------------------------------
 
