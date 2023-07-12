@@ -94,6 +94,16 @@
 
 
 <div class="viewcode-block" id="fetch_data_from_table"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.main.fetch_data_from_table">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_data_from_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">ticker_names</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetch data items from a specified table based on ticker names.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        table: The table to fetch data from.</span>
+<span class="sd">        ticker_names (list): List of ticker names to query for.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of fetched data items.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">this_month</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
     <span class="n">today</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
     <span class="n">first</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
