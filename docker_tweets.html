@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="docker_trend_prediction package" href="docker_trend_prediction.html" /> 
+    <link rel="prev" title="docker_microservices package" href="docker_microservices.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,36 +44,16 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">fabric_backend_AWS</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_topics.html">docker_topics package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">docker_tweets package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-docker_tweets.main">docker_tweets.main module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.main.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_tweets.news_ingestion_aws">docker_tweets.news_ingestion_aws module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.Find_url"><code class="docutils literal notranslate"><span class="pre">Find_url()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.crawl_news_by_keyword"><code class="docutils literal notranslate"><span class="pre">crawl_news_by_keyword()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.get_content"><code class="docutils literal notranslate"><span class="pre">get_content()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.news_lang_check"><code class="docutils literal notranslate"><span class="pre">news_lang_check()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.news_longDesc_check"><code class="docutils literal notranslate"><span class="pre">news_longDesc_check()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.news_ingestion_aws.add_news_article"><code class="docutils literal notranslate"><span class="pre">add_news_article()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_tweets.tweets_ingestion_aws">docker_tweets.tweets_ingestion_aws module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words"><code class="docutils literal notranslate"><span class="pre">contains_irrelavant_words()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.contains_minimum_tokens"><code class="docutils literal notranslate"><span class="pre">contains_minimum_tokens()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword"><code class="docutils literal notranslate"><span class="pre">crawl_tweets_by_keyword()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.filter_tweet"><code class="docutils literal notranslate"><span class="pre">filter_tweet()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_tweets.tweets_ingestion_aws.update_tweet_table"><code class="docutils literal notranslate"><span class="pre">update_tweet_table()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_tweets">Module contents</a></li>
@@ -113,120 +93,27 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-docker_tweets.main">
-<span id="docker-tweets-main-module"></span><h2>docker_tweets.main module<a class="headerlink" href="#module-docker_tweets.main" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.main.a_intro">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.main.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/main.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.main.a_intro" title="Permalink to this definition"></a></dt>
-<dd><p>This file is the entry point to the application. It is the first file that is executed when starting
-the application. It is responsible for creating all the resources required for running news &amp; tweet ingestion task.</p>
-<dl class="simple">
-<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt>LastUpdatedDate: </dt><dd><p>07th July 2023</p>
-</dd>
-<dt>ChangesMadeInCode: </dt><dd><p>Add docstrings</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
 <section id="module-docker_tweets.news_ingestion_aws">
 <span id="docker-tweets-news-ingestion-aws-module"></span><h2>docker_tweets.news_ingestion_aws module<a class="headerlink" href="#module-docker_tweets.news_ingestion_aws" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.Find_url">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">Find_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#Find_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.Find_url" title="Permalink to this definition"></a></dt>
-<dd><p>Finds if a url is present in a news article. This function is used for cleaning news articles 
-from Business Standard source, as Business standard returns unnecessary content while scraping 
-before the main article.</p>
+<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.add_news_article">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">add_news_article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#add_news_article"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.add_news_article" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the scraped news articles pass certain conditions like language check and keyword check 
+and on the basis of those results adds news articles to news table.</p>
 <dl class="simple">
-<dt>Args: </dt><dd><p>string (str) : The scraped article from “business standard” news source.</p>
+<dt>Args: </dt><dd><p>news_table (AWS DynamoDB Table) : “News” Table from DynamoDB
+news_id (str) : Unique id which is assigned to every scraped article
+ticker_symbol (str) : ticker name of the company
+item (response of pygooglenews api) : The object returned of the pygooglenews api
+long_description (str): content of the article
+keywords (str) : keywords needed to check their presence in the content of the article
+count (int) : the number of articles inserted in the table</p>
 </dd>
-<dt>Returns: </dt><dd><p>element (str): First URL from the list of urls extracted from the scraped news article.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.a_intro">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.a_intro" title="Permalink to this definition"></a></dt>
-<dd><p>This file is used to search news articles using pygooglenews api, scrape the news articles and add the news into the dynamodb News table. In this file, 
-basic data preprocessing is also done by checking the news article language and if the news contains specific user defined keywords, if the conditions are passed 
-then the news is added to the news table.</p>
-<dl class="simple">
-<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt>LastUpdatedDate: </dt><dd><p>07th July 2023</p>
-</dd>
-<dt>ChangesMadeInCode: </dt><dd><p>Add docstrings</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.crawl_news_by_keyword">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">crawl_news_by_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_news_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longDesc_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_search</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#crawl_news_by_keyword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.crawl_news_by_keyword" title="Permalink to this definition"></a></dt>
-<dd><p>Main Function for crawling news using pygooglenews library</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>news_table (AWS DynamoDB Table) : “News” Table from DynamoDB
-frequency (str) : The time duration from which the user wants to get the news
-ticker_news_keywords (str) : The query string which has to be passed to google news which will return news about the specific company.
-ticker_symbol (str) :  The string which will be used to store news along with the Ticker name in DynamoDB Table.
-longDesc_keywords (str) : Keywords that will be used to search them in the scraped news article
-text_search (str) : Value that is used to decide if to find news using text if the results returned by finding news using title is 0</p>
-</dd>
-<dt>LastUpdated: </dt><dd><p>05th July 2023</p>
-</dd>
-<dt>ChangesMadeInCode:</dt><dd><p>Added if code blocks that runs when the article_text is not equal to None when using beautifulsoup and requests.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.get_content">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">get_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#get_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.get_content" title="Permalink to this definition"></a></dt>
-<dd><p>Uses “Article” function from “newspaper3k” library to scrape the news article.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>link (str) : The link or url of the article to be scraped.</p>
-</dd>
-<dt>Returns:</dt><dd><p>text (str) : content of the link or url provided.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.news_lang_check">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">news_lang_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#news_lang_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.news_lang_check" title="Permalink to this definition"></a></dt>
-<dd><p>Checks if the news article scraped is of english language.</p>
-<dl class="simple">
-<dt>Args: </dt><dd><p>description (str) : scraped content of the news article</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: True if the language of the article is English, else False.</p>
-</dd>
-<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt>LastUpdated: </dt><dd><p>07th June 2023</p>
-</dd>
-<dt>ChangesMadeInCode:</dt><dd><p>Created the function</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.news_ingestion_aws.news_longDesc_check">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.news_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">news_longDesc_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_words</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/news_ingestion_aws.html#news_longDesc_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.news_ingestion_aws.news_longDesc_check" title="Permalink to this definition"></a></dt>
-<dd><p>Checks if certain keywords are present in the scraped news article.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>description (str) : scraped content of the news article.
-keywords (str): string of keywords to check their presence in the scraped news article.</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: True if any one of the keywords are present in the scraped news article.</p>
-</dd>
-<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
+<dt>Returns: </dt><dd><p>count (int) : the updated number of articles inserted in the table</p>
 </dd>
 <dt>LastUpdated: </dt><dd><p>04th July 2023</p>
 </dd>
-<dt>ChangesMadeInCode:</dt><dd><p>Created the function</p>
+<dt>ChangesMadeInCode:</dt><dd><p>Added keyword_passed condition in if statement, elif conditions code block for ITC Ltd, State Bank of India, Mahindra &amp; Mahindra Limited.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -235,73 +122,14 @@ keywords (str): string of keywords to check their presence in the scraped news a
 <section id="module-docker_tweets.tweets_ingestion_aws">
 <span id="docker-tweets-tweets-ingestion-aws-module"></span><h2>docker_tweets.tweets_ingestion_aws module<a class="headerlink" href="#module-docker_tweets.tweets_ingestion_aws" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.a_intro">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.a_intro" title="Permalink to this definition"></a></dt>
-<dd><p>This file is used to search tweets using snscrape api, scrape the tweets and add the tweets into the dynamodb tweets table. In this file, 
-basic data preprocessing is also done by filtering the scraped tweets, checking if the tweets contain minimum tokens and do not contain irrelavant words
-if the conditions are passed then the tweet is added to the tweet table.</p>
+<dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.update_tweet_table">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">update_tweet_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Temp_Tweets_Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_now</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#update_tweet_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.update_tweet_table" title="Permalink to this definition"></a></dt>
+<dd><p>Function to upsert the crawled tweets in the tweets_table</p>
 <dl class="simple">
-<dt>CreatedBy: </dt><dd><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt>LastUpdatedDate: </dt><dd><p>07th July 2023</p>
-</dd>
-<dt>ChangesMadeInCode: </dt><dd><p>Add docstrings</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.contains_irrelavant_words">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">contains_irrelavant_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blacklist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#contains_irrelavant_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words" title="Permalink to this definition"></a></dt>
-<dd><p>Function to check if tweet contains words from blacklist.</p>
-<dl class="simple">
-<dt>Args: </dt><dd><p>tweet_text (str) : scraped tweet text
-blacklist (str) : string present in the Exclusion_Tweet_String attribute of the config table</p>
-</dd>
-<dt>Returns:</dt><dd><p>Bool: True if the sentence contains word/words from the blacklist, False otherwise.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.contains_minimum_tokens">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">contains_minimum_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_full_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_num_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_num_chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#contains_minimum_tokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.contains_minimum_tokens" title="Permalink to this definition"></a></dt>
-<dd><p>Function to check if tweet contains minimum(min_num_tokens) number of tokens or not.</p>
-<dl class="simple">
-<dt>Args: </dt><dd><p>tweet_full_text (str) : scraped tweet text
-min_num_tokens (int) : Minimum number of tokens a tweet should have. Defined in the config table.
-min_num_chars (int) : Minimum number of characters that a token should have. Defined in the config table.</p>
-</dd>
-<dt>Returns:</dt><dd><p>Bool: True if the tweet have minimum number of tokens, otherwise False.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">crawl_tweets_by_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Temp_Tweets_Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_tweet_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_tweet_exclusions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_followersCount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_minimum_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_minimum_chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#crawl_tweets_by_keyword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword" title="Permalink to this definition"></a></dt>
-<dd><p>Main Function for crawling tweets using snscrape library</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>temp_tweets_table (AWS DynamoDB Table) : “Tweets” Table from DynamoDB
-ticker_tweet_keywords (Str) : The query string which has to be passed to Sncscrape which will return tweets about the specific company based on the keywords.
-ticker_tweet_exclusions (Str) : The query string which has to be passed to Sncscrape which will not return tweets about the specific company based on the exclusion string.
-ticker_name (Str) : The string which will be used to store tweets along with the Ticker name in DynamoDB Table.
-tweet_followersCount (int) : The number used to store tweets only if the follower count of editor is greater than the defined number.
-tweet_minimum_tokens (int) : The number used to store tweets only if the number of tokens of the tweet is greater than the defined number.
-tweet_minimum_chars (int) : The number used to store tweets only if the number of characters of the tweet is greater than the defined number.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_tweets.tweets_ingestion_aws.filter_tweet">
-<span class="sig-prename descclassname"><span class="pre">docker_tweets.tweets_ingestion_aws.</span></span><span class="sig-name descname"><span class="pre">filter_tweet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweet_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_tweets/tweets_ingestion_aws.html#filter_tweet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_tweets.tweets_ingestion_aws.filter_tweet" title="Permalink to this definition"></a></dt>
-<dd><p>Function to check if a given sentence contains at least one word or bigram or phrase
-from the RELEVANT_WORDS list and does not contain any word from the FILTER_OUT_WORDS list.</p>
-<dl class="simple">
-<dt>Args: </dt><dd><p>tweet_text (str) : scraped tweet text</p>
-</dd>
-<dt>Returns:</dt><dd><p>Bool: True if the sentence is relevant, False otherwise.</p>
+<dt>Args: </dt><dd><p>tweets_table (AWS DynamoDB Table) : “Tweets” Table from DynamoDB
+tweet (object) : The tweets scraped (response of sntwitter.TwitterSearchScraper)
+ticker_name (Str) :  The string which will be used to store tweets along with the Ticker name in DynamoDB Table.
+datetime_now (date) : The current date and time at the time of scraping.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -316,7 +144,7 @@ from the RELEVANT_WORDS list and does not contain any word from the FILTER_OUT_W
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="docker_trend_prediction.html" class="btn btn-neutral float-left" title="docker_trend_prediction package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker_microservices.html" class="btn btn-neutral float-left" title="docker_microservices package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

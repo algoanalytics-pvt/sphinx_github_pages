@@ -4,18 +4,10 @@ docker\_enrichment.access\_files package
 Submodules
 ----------
 
-docker\_enrichment.access\_files.db\_server module
---------------------------------------------------
+docker\_enrichment.access\_files.cosmos module
+----------------------------------------------
 
-.. automodule:: docker_enrichment.access_files.db_server
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-docker\_enrichment.access\_files.vault module
----------------------------------------------
-
-.. automodule:: docker_enrichment.access_files.vault
+.. automodule:: docker_enrichment.access_files.cosmos
    :members:
    :undoc-members:
    :show-inheritance:

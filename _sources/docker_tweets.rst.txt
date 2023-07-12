@@ -4,14 +4,6 @@ docker\_tweets package
 Submodules
 ----------
 
-docker\_tweets.main module
---------------------------
-
-.. automodule:: docker_tweets.main
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 docker\_tweets.news\_ingestion\_aws module
 ------------------------------------------
 

@@ -69,128 +69,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_tweets.tweets_ingestion_aws</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.tweets_ingestion_aws.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is used to search tweets using snscrape api, scrape the tweets and add the tweets into the dynamodb tweets table. In this file, </span>
-<span class="sd">    basic data preprocessing is also done by filtering the scraped tweets, checking if the tweets contain minimum tokens and do not contain irrelavant words</span>
-<span class="sd">    if the conditions are passed then the tweet is added to the tweet table.</span>
-
-<span class="sd">    CreatedBy: </span>
-<span class="sd">            Mansi Maurya &lt;mmaurya@algoanalytics.com&gt;</span>
-
-<span class="sd">    LastUpdatedDate: </span>
-<span class="sd">            07th July 2023</span>
-<span class="sd">    </span>
-<span class="sd">    ChangesMadeInCode: </span>
-<span class="sd">            Add docstrings</span>
-
-<span class="sd">    &quot;&quot;&quot;</span></div>
-
-
-
-<div class="viewcode-block" id="contains_minimum_tokens"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.tweets_ingestion_aws.contains_minimum_tokens">[docs]</a><span class="k">def</span> <span class="nf">contains_minimum_tokens</span><span class="p">(</span><span class="n">tweet_full_text</span><span class="p">,</span> <span class="n">min_num_tokens</span><span class="p">,</span> <span class="n">min_num_chars</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to check if tweet contains minimum(min_num_tokens) number of tokens or not.</span>
+<div class="viewcode-block" id="update_tweet_table"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.tweets_ingestion_aws.update_tweet_table">[docs]</a><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">update_tweet_table</span><span class="p">(</span><span class="n">Temp_Tweets_Table</span><span class="p">,</span> <span class="n">tweet</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">datetime_now</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to upsert the crawled tweets in the tweets_table</span>
 
 <span class="sd">    Args: </span>
-<span class="sd">        tweet_full_text (str) : scraped tweet text</span>
-<span class="sd">        min_num_tokens (int) : Minimum number of tokens a tweet should have. Defined in the config table.</span>
-<span class="sd">        min_num_chars (int) : Minimum number of characters that a token should have. Defined in the config table.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        Bool: True if the tweet have minimum number of tokens, otherwise False.</span>
+<span class="sd">        tweets_table (AWS DynamoDB Table) : &quot;Tweets&quot; Table from DynamoDB</span>
+<span class="sd">        tweet (object) : The tweets scraped (response of sntwitter.TwitterSearchScraper)</span>
+<span class="sd">        ticker_name (Str) :  The string which will be used to store tweets along with the Ticker name in DynamoDB Table.</span>
+<span class="sd">        datetime_now (date) : The current date and time at the time of scraping.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">text_for_tokens</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^a-zA-Z0-9</span><span class="se">\\</span><span class="s1">s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tweet_full_text</span><span class="p">)</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text_for_tokens</span><span class="p">)</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()]</span>
-    <span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_num_chars</span><span class="p">]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_num_tokens</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">return</span> <span class="kc">True</span></div>
-
-
-
-<div class="viewcode-block" id="filter_tweet"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.tweets_ingestion_aws.filter_tweet">[docs]</a><span class="k">def</span> <span class="nf">filter_tweet</span><span class="p">(</span><span class="n">tweet_text</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to check if a given sentence contains at least one word or bigram or phrase</span>
-<span class="sd">    from the RELEVANT_WORDS list and does not contain any word from the FILTER_OUT_WORDS list.</span>
-<span class="sd">    </span>
-<span class="sd">    Args: </span>
-<span class="sd">        tweet_text (str) : scraped tweet text</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        Bool: True if the sentence is relevant, False otherwise.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="n">tweet_text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nb">any</span><span class="p">((</span><span class="n">word</span> <span class="ow">in</span> <span class="n">FILTER_OUT_WORDS</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">)):</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">if</span> <span class="nb">any</span><span class="p">((</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">RELEVANT_WORDS</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">)):</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">bigram</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">bigram</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">RELEVANT_WORDS</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
-        <span class="n">phrase3</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span>
-        <span class="n">phrase4</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">4</span><span class="p">])</span>
-        <span class="n">phrase5</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">5</span><span class="p">])</span>
-        <span class="n">phrase6</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">])</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">phrase3</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="n">phrase4</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="n">phrase5</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="n">phrase6</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">in</span> <span class="n">RELEVANT_WORDS</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">return</span> <span class="kc">False</span></div>
-
-
-
-<div class="viewcode-block" id="contains_irrelavant_words"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words">[docs]</a><span class="k">def</span> <span class="nf">contains_irrelavant_words</span><span class="p">(</span><span class="n">tweet_text</span><span class="p">,</span> <span class="n">blacklist</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to check if tweet contains words from blacklist.</span>
-
-<span class="sd">    Args: </span>
-<span class="sd">        tweet_text (str) : scraped tweet text</span>
-<span class="sd">        blacklist (str) : string present in the Exclusion_Tweet_String attribute of the config table</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        Bool: True if the sentence contains word/words from the blacklist, False otherwise. </span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">blacklist</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="n">blacklist</span> <span class="o">=</span> <span class="n">blacklist</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">blacklist</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">tweet_text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">return</span> <span class="kc">False</span></div>
-
-
-
-<div class="viewcode-block" id="crawl_tweets_by_keyword"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword">[docs]</a><span class="k">def</span> <span class="nf">crawl_tweets_by_keyword</span><span class="p">(</span><span class="n">Temp_Tweets_Table</span><span class="p">,</span> <span class="n">ticker_tweet_keywords</span><span class="p">,</span> <span class="n">ticker_tweet_exclusions</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">tweet_followersCount</span><span class="p">,</span> <span class="n">tweet_minimum_tokens</span><span class="p">,</span> <span class="n">tweet_minimum_chars</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Main Function for crawling tweets using snscrape library</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        temp_tweets_table (AWS DynamoDB Table) : &quot;Tweets&quot; Table from DynamoDB</span>
-<span class="sd">        ticker_tweet_keywords (Str) : The query string which has to be passed to Sncscrape which will return tweets about the specific company based on the keywords.</span>
-<span class="sd">        ticker_tweet_exclusions (Str) : The query string which has to be passed to Sncscrape which will not return tweets about the specific company based on the exclusion string.</span>
-<span class="sd">        ticker_name (Str) : The string which will be used to store tweets along with the Ticker name in DynamoDB Table.</span>
-<span class="sd">        tweet_followersCount (int) : The number used to store tweets only if the follower count of editor is greater than the defined number.</span>
-<span class="sd">        tweet_minimum_tokens (int) : The number used to store tweets only if the number of tokens of the tweet is greater than the defined number.</span>
-<span class="sd">        tweet_minimum_chars (int) : The number used to store tweets only if the number of characters of the tweet is greater than the defined number.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">sntwitter</span><span class="o">.</span><span class="n">TwitterSearchScraper</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">ticker_tweet_keywords</span><span class="si">}</span><span class="s1">) lang:en since:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; -filter:retweets&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_items</span><span class="p">():</span>
-        <span class="n">datetime_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followersCount</span> <span class="o">&lt;</span> <span class="n">tweet_followersCount</span><span class="p">:</span>
-            <span class="k">continue</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">contains_minimum_tokens</span><span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">tweet_minimum_tokens</span><span class="p">,</span> <span class="n">tweet_minimum_chars</span><span class="p">):</span>
-            <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">contains_irrelavant_words</span><span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">ticker_tweet_exclusions</span><span class="p">):</span>
-            <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">filter_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
-            <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">update_tweet_table</span><span class="p">(</span><span class="n">Temp_Tweets_Table</span><span class="p">,</span> <span class="n">tweet</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">datetime_now</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of tweets for </span><span class="si">{</span><span class="n">ticker_name</span><span class="si">}</span><span class="s1"> entered in the table : &#39;</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span></div>
+    <span class="n">tweets_month</span> <span class="o">=</span> <span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">date</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
+    <span class="n">tweet_id</span> <span class="o">=</span> <span class="n">ticker_name</span> <span class="o">+</span> <span class="s1">&#39; +UNIQUE_T_AND_N_ID_SEPARATOR+ &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tweets_month&#39;</span><span class="p">:</span> <span class="n">tweets_month</span><span class="p">,</span> <span class="s1">&#39;tweets_ID&#39;</span><span class="p">:</span> <span class="n">tweet_id</span><span class="p">,</span> <span class="s1">&#39;tweet_for&#39;</span><span class="p">:</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="s1">&#39;tweet_by&#39;</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;tweet_date&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">date</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">),</span> <span class="s1">&#39;crawled_date&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">datetime_now</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">),</span> <span class="s1">&#39;tweet_text&#39;</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;tweet_link&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">tweet</span><span class="p">),</span> <span class="s1">&#39;tweet_ner_flag&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;events_detection_flag&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+    <span class="n">Temp_Tweets_Table</span><span class="o">.</span><span class="n">put_item</span><span class="p">(</span><span class="n">Item</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
 
 

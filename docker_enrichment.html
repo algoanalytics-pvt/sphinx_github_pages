@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="docker_enrichment.access_files package" href="docker_enrichment.access_files.html" />
-    <link rel="prev" title="docker_debrief package" href="docker_debrief.html" /> 
+    <link rel="prev" title="fabric_backend_AWS" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,69 +45,35 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">fabric_backend_AWS</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">docker_enrichment package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="docker_enrichment.access_files.html">docker_enrichment.access_files package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.EnrichmentWrapper">docker_enrichment.EnrichmentWrapper module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.EnrichmentWrapper.Update_table"><code class="docutils literal notranslate"><span class="pre">Update_table()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.EnrichmentWrapper.enrichment"><code class="docutils literal notranslate"><span class="pre">enrichment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.EnrichmentWrapper.fetch_data"><code class="docutils literal notranslate"><span class="pre">fetch_data()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.EnrichmentWrapper.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.EnrichmentWrapper.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.main">docker_enrichment.main module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.find_mult_class"><code class="docutils literal notranslate"><span class="pre">find_mult_class()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.get_sentiment"><code class="docutils literal notranslate"><span class="pre">get_sentiment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.get_sentiment_class"><code class="docutils literal notranslate"><span class="pre">get_sentiment_class()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.Update_table"><code class="docutils literal notranslate"><span class="pre">Update_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.fetch_data_from_table"><code class="docutils literal notranslate"><span class="pre">fetch_data_from_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.get_ticker_names_and_id"><code class="docutils literal notranslate"><span class="pre">get_ticker_names_and_id()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.main_new_v3_copy_2">docker_enrichment.main_new_v3_copy_2 module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.compute_summary_updated"><code class="docutils literal notranslate"><span class="pre">compute_summary_updated()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.find_mult_class"><code class="docutils literal notranslate"><span class="pre">find_mult_class()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.get_sentiment"><code class="docutils literal notranslate"><span class="pre">get_sentiment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.get_sentiment_class"><code class="docutils literal notranslate"><span class="pre">get_sentiment_class()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.upload_data"><code class="docutils literal notranslate"><span class="pre">upload_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.fetch_data_from_table"><code class="docutils literal notranslate"><span class="pre">fetch_data_from_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.get_ticker_names_and_id"><code class="docutils literal notranslate"><span class="pre">get_ticker_names_and_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main_new_v3_copy_2.update_table"><code class="docutils literal notranslate"><span class="pre">update_table()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.new_main_v4">docker_enrichment.new_main_v4 module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.compute_summary_updated"><code class="docutils literal notranslate"><span class="pre">compute_summary_updated()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.extract_org_frequency"><code class="docutils literal notranslate"><span class="pre">extract_org_frequency()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.extract_sents"><code class="docutils literal notranslate"><span class="pre">extract_sents()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.find_mult_class"><code class="docutils literal notranslate"><span class="pre">find_mult_class()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.get_sentiment_class"><code class="docutils literal notranslate"><span class="pre">get_sentiment_class()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.get_sentiment_modified"><code class="docutils literal notranslate"><span class="pre">get_sentiment_modified()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.upload_data"><code class="docutils literal notranslate"><span class="pre">upload_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.fetch_config_data"><code class="docutils literal notranslate"><span class="pre">fetch_config_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.fetch_data_from_table"><code class="docutils literal notranslate"><span class="pre">fetch_data_from_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.get_ticker_names_and_id"><code class="docutils literal notranslate"><span class="pre">get_ticker_names_and_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.new_main_v4.update_table"><code class="docutils literal notranslate"><span class="pre">update_table()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_topics.html">docker_topics package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
 </ul>
 </li>
@@ -146,12 +112,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docker_enrichment.access_files.html">docker_enrichment.access_files package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="docker_enrichment.access_files.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.access_files.html#module-docker_enrichment.access_files.db_server">docker_enrichment.access_files.db_server module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.access_files.html#docker_enrichment.access_files.db_server.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.access_files.html#module-docker_enrichment.access_files.vault">docker_enrichment.access_files.vault module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.access_files.html#docker_enrichment.access_files.vault.retrieveSecrets"><code class="docutils literal notranslate"><span class="pre">retrieveSecrets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.access_files.html#module-docker_enrichment.access_files.cosmos">docker_enrichment.access_files.cosmos module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.access_files.html#docker_enrichment.access_files.cosmos.get_container"><code class="docutils literal notranslate"><span class="pre">get_container()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.access_files.html#docker_enrichment.access_files.cosmos.get_db"><code class="docutils literal notranslate"><span class="pre">get_db()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.access_files.html#docker_enrichment.access_files.cosmos.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docker_enrichment.access_files.html#module-docker_enrichment.access_files">Module contents</a></li>
@@ -163,467 +127,135 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-docker_enrichment.EnrichmentWrapper">
-<span id="docker-enrichment-enrichmentwrapper-module"></span><h2>docker_enrichment.EnrichmentWrapper module<a class="headerlink" href="#module-docker_enrichment.EnrichmentWrapper" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.Update_table">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">Update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#Update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.Update_table" title="Permalink to this definition"></a></dt>
-<dd><p>About function Update_table
-Function to perform enrichment for given items</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>table  - One of the initialized tables from which data needs to be fetched 
-item  - item (record) which need to be updated
-Sentiment- Sentiment list to be updated to item
-Ner- Ner list to be updated to item</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.enrichment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_of_news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.enrichment" title="Permalink to this definition"></a></dt>
-<dd><p>Perform enrichment on a batch of news using a specified endpoint URL.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>batch_of_news (list): List of news items to perform enrichment on.
-endpoint_url (str): URL of the endpoint for performing enrichment.</p>
-</dd>
-<dt>Returns:</dt><dd><p>dict: Enriched data received in the response as a dictionary.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.fetch_data">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">fetch_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#fetch_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.fetch_data" title="Permalink to this definition"></a></dt>
-<dd><p>Fetch data items from a specified table based on filter attributes.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>table (TableResource): One of the initialized tables from which data needs to be fetched 
-filter_attr (str): To fetch only the records meeting a condition based on ‘filter_attr’ column ..example:select * from table where filter_attr = Null</p>
-</dd>
-<dt>Returns:</dt><dd><p>list: List of data items fetched from the table.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.get_connection">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.get_connection" title="Permalink to this definition"></a></dt>
-<dd><p>Create and return a connection to the DynamoDB resource.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>boto3.resource: Connection to the DynamoDB resource.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.EnrichmentWrapper.perform_enrichment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.EnrichmentWrapper.</span></span><span class="sig-name descname"><span class="pre">perform_enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/EnrichmentWrapper.html#perform_enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.EnrichmentWrapper.perform_enrichment" title="Permalink to this definition"></a></dt>
-<dd><p>About function perform_enrichment
-Function to perform enrichment for given items</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>table  - One of the initialized tables from which data needs to be fetched 
-items  - Items of Dynamo DB received from fetch_data fucntion</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
 <section id="module-docker_enrichment.main">
 <span id="docker-enrichment-main-module"></span><h2>docker_enrichment.main module<a class="headerlink" href="#module-docker_enrichment.main" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.analyze_sentiment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">analyze_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#analyze_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.analyze_sentiment" title="Permalink to this definition"></a></dt>
-<dd><p>Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</p>
-<p>The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. 
-We will perform softmax on outputs and return numpy array of pt_predictions.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>doc (str): The input document or text to analyze.</p>
-</dd>
-<dt>Returns:</dt><dd><p>numpy.ndarray: Numpy array of sentiment predictions.</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="docker_enrichment.main.Update_table">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">Update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#Update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.Update_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.compute_summary">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">compute_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#compute_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.compute_summary" title="Permalink to this definition"></a></dt>
-<dd><p>Compute a summary of the input text using a pre-trained summarization model.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): The input text to be summarized.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: The generated summary of the input text.</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="docker_enrichment.main.fetch_data_from_table">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">fetch_data_from_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_names</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#fetch_data_from_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.fetch_data_from_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.find_events">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">find_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#find_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.find_events" title="Permalink to this definition"></a></dt>
-<dd><p>Find sentences containing ‘events’ from the provided text.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): Text from which we need to find desired ‘events’.</p>
+<dt class="sig sig-object py" id="docker_enrichment.main.get_ticker_names_and_id">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
+<dd><p>Function to get ticker_id and the ticker name</p>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>sector: str</dt><dd><p>Name of Sector - IT or BANK</p>
 </dd>
-<dt>Returns:</dt><dd><p>events (list of strings): Sentences containing ‘events’ as a list.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.find_mult_class">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">find_mult_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#find_mult_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.find_mult_class" title="Permalink to this definition"></a></dt>
-<dd><p>Take an input text sentence of ‘events’ and classify it into different pre-defined categories.</p>
-<p>The categories considered are: ‘Debt’, ‘Dividend’, ‘Employment’, ‘Financial Results’, ‘Investment &amp; Funding’,
-‘Litigation’, ‘Macroeconomics’, ‘Merger &amp; Acquisition’, ‘Partnership &amp; JointVenture’, ‘Products &amp; Services’,
-‘Rating &amp; Recommendation’, ‘Securities Turnover’, and ‘Share Repurchase’.</p>
-<p>Args:
-text: The input sentence as a string (e.g., a paragraph of relevant event sentences).</p>
-<p>Returns:
-Dictionary: Returns a dictionary of sentences (events), corresponding labels, and their probabilities.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.get_sentiment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">get_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#get_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.get_sentiment" title="Permalink to this definition"></a></dt>
-<dd><p>Perform sentiment analysis on the input sentence.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>sentence (str): Input sentence to analyze.</p>
-</dd>
-<dt>Returns:</dt><dd><p>dict: Sentiment analysis results including text, sentiment scores, sentiment class, and identified entities.</p>
+<dt>table: str </dt><dd><p>Name of config table - algoDDB.Table(‘ConfigTable’)</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.get_sentiment_class">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">get_sentiment_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_sent_4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sent_5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sent_6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#get_sentiment_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.get_sentiment_class" title="Permalink to this definition"></a></dt>
-<dd><p>Determine the sentiment class based on the given sentiment scores.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>neg (float): Negative sentiment score.
-pos (float): Positive sentiment score.
-neut (float): Neutral sentiment score.</p>
+</div></blockquote>
+</section>
+<section id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ticker_id: str</dt><dd><p>ticker symbol of the company</p>
 </dd>
-<dt>Returns:</dt><dd><p>str: Sentiment class (‘positive’, ‘negative’, or ‘neutral’).</p>
+<dt>ticker_name: str</dt><dd><p>name of the company</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.perform_enrichment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">perform_enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#perform_enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.perform_enrichment" title="Permalink to this definition"></a></dt>
-<dd><p>Perform enrichment on the given article.
-Summarization, and Event Detection on the article.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>article (str): The text of the article to perform enrichment on.</p>
-</dd>
-<dt>Returns:</dt><dd><p>dict: A dictionary containing the results of the enrichment process, including:
-“sentiment_analysis”, “ner_analysis”, “summary”, “events”</p>
-</dd>
-</dl>
+</div></blockquote>
+</section>
 </dd></dl>
 
 </section>
 <section id="module-docker_enrichment.main_new_v3_copy_2">
 <span id="docker-enrichment-main-new-v3-copy-2-module"></span><h2>docker_enrichment.main_new_v3_copy_2 module<a class="headerlink" href="#module-docker_enrichment.main_new_v3_copy_2" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.analyze_sentiment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">analyze_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#analyze_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.analyze_sentiment" title="Permalink to this definition"></a></dt>
-<dd><p>Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</p>
-<p>The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. 
-We will perform softmax on outputs and return numpy array of pt_predictions.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>doc (str): The input document or text to analyze.</p>
+<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.fetch_data_from_table">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">fetch_data_from_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#fetch_data_from_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.fetch_data_from_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.get_ticker_names_and_id">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
+<dd><p>Function to get ticker_id and the ticker name</p>
+<section id="id1">
+<h3>Parameters:<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>sector: str</dt><dd><p>Name of Sector - IT or BANK</p>
 </dd>
-<dt>Returns:</dt><dd><p>numpy.ndarray: Numpy array of sentiment predictions.</p>
+<dt>table: str </dt><dd><p>Name of config table - algoDDB.Table(‘ConfigTable’)</p>
 </dd>
 </dl>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Returns:<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ticker_id: str</dt><dd><p>ticker symbol of the company</p>
+</dd>
+<dt>ticker_name: str</dt><dd><p>name of the company</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.compute_summary">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">compute_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#compute_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.compute_summary" title="Permalink to this definition"></a></dt>
-<dd><p>Compute a summary of the input text using a pre-trained summarization model.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): The input text to be summarized.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: The generated summary of the input text.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.compute_summary_updated">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">compute_summary_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#compute_summary_updated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.compute_summary_updated" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the summary of the provided text using T5 model</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): The input text to summarize.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: The generated summary of the input text.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.find_events">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">find_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#find_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.find_events" title="Permalink to this definition"></a></dt>
-<dd><p>Find sentences containing ‘events’ from the provided text.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): Text from which we need to find desired ‘events’.</p>
-</dd>
-<dt>Returns:</dt><dd><p>events (list of strings): Sentences containing ‘events’ as a list.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.find_mult_class">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">find_mult_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#find_mult_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.find_mult_class" title="Permalink to this definition"></a></dt>
-<dd><p>Take an input text sentence of ‘events’ and classify it into different pre-defined categories.</p>
-<p>The categories considered are: ‘Debt’, ‘Dividend’, ‘Employment’, ‘Financial Results’, ‘Investment &amp; Funding’,
-‘Litigation’, ‘Macroeconomics’, ‘Merger &amp; Acquisition’, ‘Partnership &amp; JointVenture’, ‘Products &amp; Services’,
-‘Rating &amp; Recommendation’, ‘Securities Turnover’, and ‘Share Repurchase’.</p>
-<p>Args:
-text (str): The input sentence as a string (e.g., a paragraph of relevant event sentences).</p>
-<p>Returns:
-lists: top_2_events and all_events</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.get_connection">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.get_connection" title="Permalink to this definition"></a></dt>
-<dd><p>Create and return a connection to the DynamoDB resource.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>boto3.resource: Connection to the DynamoDB resource.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.get_sentiment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">get_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#get_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.get_sentiment" title="Permalink to this definition"></a></dt>
-<dd><p>Perform sentiment analysis on the given sentence.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>sentence (str): The input sentence to analyze.</p>
-</dd>
-<dt>Returns:</dt><dd><p>dict: A dictionary containing the sentiment analysis results.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.get_sentiment_class">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">get_sentiment_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_sent_4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sent_5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sent_6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#get_sentiment_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.get_sentiment_class" title="Permalink to this definition"></a></dt>
-<dd><p>Determine the sentiment class based on the given sentiment scores.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>neg (float): Negative sentiment score.
-pos (float): Positive sentiment score.
-neut (float): Neutral sentiment score.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: Sentiment class (‘positive’, ‘negative’, or ‘neutral’).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.perform_enrichment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">perform_enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#perform_enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.perform_enrichment" title="Permalink to this definition"></a></dt>
-<dd><p>Perform enrichment on the given article.</p>
-<p>The function performs  Targeted Sentiment Analysis (TSA),
-Summarization, and Event Detection on the article.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>article (str): The text of the article to perform enrichment on.
-tsa_keyword (str): The targeted keyword for sentiment analysis.</p>
-</dd>
-<dt>Returns:</dt><dd><p>dict: A dictionary containing the results of the enrichment process, including
-“sentiment_analysis”, “ner_analysis”, “summary”, “events”.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.upload_data">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">upload_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enriched_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#upload_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.upload_data" title="Permalink to this definition"></a></dt>
-<dd><p>Upload and process enriched data for a specific item.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>item (str): The type of item (e.g., “News”).
-enriched_data (dict): Enriched data associated with the item.</p>
-</dd>
-<dt>Returns:</dt><dd><p>int: The count of records updated in the table.</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="docker_enrichment.main_new_v3_copy_2.update_table">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.main_new_v3_copy_2.</span></span><span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main_new_v3_copy_2.html#update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main_new_v3_copy_2.update_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 <section id="module-docker_enrichment.new_main_v4">
 <span id="docker-enrichment-new-main-v4-module"></span><h2>docker_enrichment.new_main_v4 module<a class="headerlink" href="#module-docker_enrichment.new_main_v4" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.analyze_sentiment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">analyze_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#analyze_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.analyze_sentiment" title="Permalink to this definition"></a></dt>
-<dd><p>Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</p>
-<p>The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. 
-We will perform softmax on outputs and return numpy array of pt_predictions.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>doc (str): The input document or text to analyze.</p>
+<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.fetch_config_data">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">fetch_config_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#fetch_config_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.fetch_config_data" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Args:</dt><dd><p>table (boto3.resource): The DynamoDB table object.</p>
 </dd>
-<dt>Returns:</dt><dd><p>numpy.ndarray: Numpy array of sentiment predictions.</p>
+<dt>Returns:</dt><dd><p>list: A list of all the items in the table.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.compute_summary">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">compute_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#compute_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.compute_summary" title="Permalink to this definition"></a></dt>
-<dd><p>Compute a summary of the input text using a pre-trained summarization model.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): The input text to be summarized.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: The generated summary of the input text.</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.fetch_data_from_table">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">fetch_data_from_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#fetch_data_from_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.fetch_data_from_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.compute_summary_updated">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">compute_summary_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#compute_summary_updated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.compute_summary_updated" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the summary of the provided text using T5 model</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): The input text to summarize.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: The generated summary of the input text.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.extract_org_frequency">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">extract_org_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#extract_org_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.extract_org_frequency" title="Permalink to this definition"></a></dt>
-<dd><p>Extracts organizations (ORG entities) from the given article and returns their frequency.</p>
-<dl>
-<dt>Args:</dt><dd><p>article (str): The input article to extract organizations from.</p>
-</dd>
-<dt>Returns:</dt><dd><p>list: A list of dictionaries, each containing the ‘entity’ (organization) and ‘frequency’ keys.</p>
-</dd>
-<dt>Example:</dt><dd><p>article = “An article about technology companies such as Google, Apple, and Microsoft.”
-result = extract_org_frequency(article)
-print(result)
-Output: [{‘entity’: ‘Google’, ‘frequency’: 1}, {‘entity’: ‘Apple’, ‘frequency’: 1},</p>
+<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.get_ticker_names_and_id">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
+<dd><p>Function to get ticker_id and the ticker name
+Parameters:
+———-</p>
 <blockquote>
-<div><p>{‘entity’: ‘Microsoft’, ‘frequency’: 1}]</p>
+<div><dl class="simple">
+<dt>sectors: str</dt><dd><p>Name of Sector - IT or BANK</p>
+</dd>
+<dt>table: str </dt><dd><p>Name of config table - algoDDB.Table(‘ConfigTable’)</p>
+</dd>
+</dl>
 </div></blockquote>
+<section id="id3">
+<h3>Returns:<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ticker_name: str</dt><dd><p>name of the company</p>
 </dd>
 </dl>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.extract_sents">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">extract_sents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">company_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#extract_sents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.extract_sents" title="Permalink to this definition"></a></dt>
-<dd><p>Extract sentences addressing the target company using coreferencing.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): The news article text.
-company_name (str): The target company name in lowercase.</p>
-</dd>
-<dt>Returns:</dt><dd><p>list: List of important lines from the news as sentences.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.find_events">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">find_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#find_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.find_events" title="Permalink to this definition"></a></dt>
-<dd><p>Find sentences containing ‘events’ from the provided text.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text (str): Text from which we need to find desired ‘events’.</p>
-</dd>
-<dt>Returns:</dt><dd><p>events (list of strings): Sentences containing ‘events’ as a list.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.find_mult_class">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">find_mult_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#find_mult_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.find_mult_class" title="Permalink to this definition"></a></dt>
-<dd><p>Take an input text sentence of ‘events’ and classify it into different pre-defined categories.</p>
-<p>The categories considered are: ‘Debt’, ‘Dividend’, ‘Employment’, ‘Financial Results’, ‘Investment &amp; Funding’,
-‘Litigation’, ‘Macroeconomics’, ‘Merger &amp; Acquisition’, ‘Partnership &amp; JointVenture’, ‘Products &amp; Services’,
-‘Rating &amp; Recommendation’, ‘Securities Turnover’, and ‘Share Repurchase’.</p>
-<p>Args:
-text: The input sentence as a string (e.g., a paragraph of relevant event sentences).</p>
-<p>Returns:
-lists: top_2_events and all_events</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.get_connection">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.get_connection" title="Permalink to this definition"></a></dt>
-<dd><p>Create and return a connection to the DynamoDB resource.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>boto3.resource: Connection to the DynamoDB resource.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.get_sentiment_class">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">get_sentiment_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neut</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#get_sentiment_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.get_sentiment_class" title="Permalink to this definition"></a></dt>
-<dd><p>Determine the sentiment class based on the given sentiment scores.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>neg (float): Negative sentiment score.
-pos (float): Positive sentiment score.
-neut (float): Neutral sentiment score.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: Sentiment class (‘positive’, ‘negative’, or ‘neutral’).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.get_sentiment_modified">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">get_sentiment_modified</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#get_sentiment_modified"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.get_sentiment_modified" title="Permalink to this definition"></a></dt>
-<dd><p>This modified function does not perform NER since the entity which we are focusing
-on is the same company to which the news belongs and that has been passed as 
-TSA_keyword.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>sentence(str): The sentence to perform sentiment analysis on.</p>
-</dd>
-<dt>Returns</dt><dd><p>dict: Sentiment analysis results including text, sentiment scores, and sentiment class.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.perform_enrichment">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">perform_enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tsa_keyword</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#perform_enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.perform_enrichment" title="Permalink to this definition"></a></dt>
-<dd><p>Perform enrichment on the given article.</p>
-<p>The function performs  Targeted Sentiment Analysis (TSA),
-Summarization, and Event Detection on the article.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>article (str): The text of the article to perform enrichment on.
-tsa_keyword (str): The targeted keyword for sentiment analysis.</p>
-</dd>
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>dict: A dictionary containing the results of the enrichment process, including:</dt><dd><ul class="simple">
-<li><p>‘sentiment_analysis’: The sentiment analysis results as a string.</p></li>
-<li><p>‘ner_org_freq’: The organization frequency analysis results as a string.</p></li>
-<li><p>‘summary’: The generated summary of the article as a string.</p></li>
-<li><p>‘events’: The detected events, including all events and top 2 events, as a string.</p></li>
-</ul>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.upload_data">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">upload_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enriched_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#upload_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.upload_data" title="Permalink to this definition"></a></dt>
-<dd><p>Upload and process enriched data for a specific item.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>item (str): The type of item (e.g., “News”).
-enriched_data (dict): Enriched data associated with the item.</p>
-</dd>
-<dt>Returns:</dt><dd><p>int: The count of records updated in the table.</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="docker_enrichment.new_main_v4.update_table">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.new_main_v4.</span></span><span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_org_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/new_main_v4.html#update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.new_main_v4.update_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 <section id="module-docker_enrichment">
@@ -635,7 +267,7 @@ enriched_data (dict): Enriched data associated with the item.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="docker_debrief.html" class="btn btn-neutral float-left" title="docker_debrief package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="fabric_backend_AWS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="docker_enrichment.access_files.html" class="btn btn-neutral float-right" title="docker_enrichment.access_files package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
