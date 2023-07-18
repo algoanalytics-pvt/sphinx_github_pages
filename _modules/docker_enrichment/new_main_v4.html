@@ -397,6 +397,28 @@
 
 
 
+<div class="viewcode-block" id="find_sent_with_company"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.find_sent_with_company">[docs]</a><span class="k">def</span> <span class="nf">find_sent_with_company</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">new_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">split_sentences</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="n">new_sentences</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">split_sentences</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="n">keyword_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">keywords_list</span> <span class="o">=</span> <span class="n">keyword</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">keywords_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">keyword</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">new_sentences</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">company_name</span> <span class="ow">in</span> <span class="n">keywords_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">company_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">keyword_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">keyword_sentences</span></div>
+
+
+
 <div class="viewcode-block" id="perform_enrichment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.perform_enrichment">[docs]</a><span class="k">def</span> <span class="nf">perform_enrichment</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tsa_keyword</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform enrichment on the given article.</span>
@@ -421,7 +443,12 @@
     <span class="n">ner_org_analysis</span> <span class="o">=</span> <span class="n">extract_org_frequency</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PERFORMING Targeted Sentiment Analysis&#39;</span><span class="p">)</span>
     <span class="n">start_time2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">batch</span> <span class="o">=</span> <span class="n">extract_sents</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tsa_keyword</span><span class="p">)</span>
+    <span class="n">extracted</span> <span class="o">=</span> <span class="n">extract_sents</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tsa_keyword</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extracted</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">extracted</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">find_sent_with_company</span><span class="p">(</span><span class="n">keyword_tsa</span><span class="p">,</span> <span class="n">article</span><span class="p">))</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="n">extracted</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="n">extracted</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tokenize time --- </span><span class="si">%s</span><span class="s1"> seconds ---&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time1</span><span class="p">))</span>
     <span class="n">sentiment_analysis_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">:</span>
