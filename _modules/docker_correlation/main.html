@@ -99,7 +99,12 @@
 
 <div class="viewcode-block" id="extract_new_data"><a class="viewcode-back" href="../../docker_correlation.html#docker_correlation.main.extract_new_data">[docs]</a><span class="k">def</span> <span class="nf">extract_new_data</span><span class="p">():</span>
     <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">,</span> <span class="s1">&#39;news_date&#39;</span><span class="p">,</span> <span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reading last 4 days news data&#39;</span><span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">read_news_data1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Data reading completed in </span><span class="si">{</span><span class="n">total_time</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
             <span class="n">date</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span>
@@ -118,7 +123,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write json object to json file</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        file_name (string): filename (currenty ticker symbols)</span>
+<span class="sd">        file_name (string): filename (currently ticker symbols)</span>
 <span class="sd">        data (dict): dict as json object to write to file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
