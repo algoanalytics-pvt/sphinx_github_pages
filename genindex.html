@@ -78,6 +78,7 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
@@ -211,15 +212,17 @@
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary">(in module docker_enrichment.new_main_v4)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.compute_summary_updated">compute_summary_updated() (in module docker_enrichment.main_new_v3_copy_2)</a>
 
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary_updated">(in module docker_enrichment.new_main_v4)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_trend_prediction.html#docker_trend_prediction.Trend_prediction.compute_trend_variable">compute_trend_variable() (in module docker_trend_prediction.Trend_prediction)</a>
+</li>
+      <li><a href="docker_correlation.html#docker_correlation.main.config_table">config_table() (in module docker_correlation.main)</a>
 </li>
       <li><a href="docker_tweets.html#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words">contains_irrelavant_words() (in module docker_tweets.tweets_ingestion_aws)</a>
 </li>
@@ -263,6 +266,34 @@
 </li>
       <li><a href="docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.display_training_results">display_training_results() (in module docker_stock_prediction.docker_stock_prediction.stock_prediction_2)</a>
 </li>
+      <li>
+    docker_correlation
+
+      <ul>
+        <li><a href="docker_correlation.html#module-docker_correlation">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_correlation.generate_results
+
+      <ul>
+        <li><a href="docker_correlation.html#module-docker_correlation.generate_results">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_correlation.main
+
+      <ul>
+        <li><a href="docker_correlation.html#module-docker_correlation.main">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_correlation.news_extraction_dynamodb
+
+      <ul>
+        <li><a href="docker_correlation.html#module-docker_correlation.news_extraction_dynamodb">module</a>
+</li>
+      </ul></li>
       <li>
     docker_debrief
 
@@ -396,6 +427,8 @@
         <li><a href="docker_search.html#module-docker_search.create_models">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     docker_search.fetch_from_DB
 
@@ -410,8 +443,6 @@
         <li><a href="docker_search.html#module-docker_search.models">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     docker_search.remove_older_docs
 
@@ -585,6 +616,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docker_correlation.html#docker_correlation.main.extract_new_data">extract_new_data() (in module docker_correlation.main)</a>
+</li>
       <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.extract_org_frequency">extract_org_frequency() (in module docker_enrichment.new_main_v4)</a>
 </li>
       <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.extract_sents">extract_sents() (in module docker_enrichment.new_main_v4)</a>
@@ -746,6 +779,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docker_correlation.html#docker_correlation.main.initialize_table">initialize_table() (in module docker_correlation.main)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -781,6 +822,14 @@
     module
 
       <ul>
+        <li><a href="docker_correlation.html#module-docker_correlation">docker_correlation</a>
+</li>
+        <li><a href="docker_correlation.html#module-docker_correlation.generate_results">docker_correlation.generate_results</a>
+</li>
+        <li><a href="docker_correlation.html#module-docker_correlation.main">docker_correlation.main</a>
+</li>
+        <li><a href="docker_correlation.html#module-docker_correlation.news_extraction_dynamodb">docker_correlation.news_extraction_dynamodb</a>
+</li>
         <li><a href="docker_debrief.html#module-docker_debrief">docker_debrief</a>
 </li>
         <li><a href="docker_debrief.html#module-docker_debrief.access_file">docker_debrief.access_file</a>
@@ -882,10 +931,12 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docker_tweets.html#docker_tweets.news_ingestion_aws.news_lang_check">news_lang_check() (in module docker_tweets.news_ingestion_aws)</a>
+      <li><a href="docker_correlation.html#docker_correlation.generate_results.new_results">new_results() (in module docker_correlation.generate_results)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docker_tweets.html#docker_tweets.news_ingestion_aws.news_lang_check">news_lang_check() (in module docker_tweets.news_ingestion_aws)</a>
+</li>
       <li><a href="docker_tweets.html#docker_tweets.news_ingestion_aws.news_longDesc_check">news_longDesc_check() (in module docker_tweets.news_ingestion_aws)</a>
 </li>
   </ul></td>
@@ -950,14 +1001,16 @@
         <li><a href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_news_data">(in module docker_topics_earning_call_transcripts.main)</a>
 </li>
       </ul></li>
+      <li><a href="docker_correlation.html#docker_correlation.news_extraction_dynamodb.read_news_data1">read_news_data1() (in module docker_correlation.news_extraction_dynamodb)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_debrief.html#docker_debrief.get_dynamodb_data.read_tweets_data">read_tweets_data() (in module docker_debrief.get_dynamodb_data)</a>
 
       <ul>
         <li><a href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_tweets_data">(in module docker_topics_earning_call_transcripts.main)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_search.html#docker_search.fetch_from_DB.remove_duplicates">remove_duplicates() (in module docker_search.fetch_from_DB)</a>
 </li>
       <li><a href="docker_search.html#docker_search.remove_older_docs.remove_older_docs">remove_older_docs() (in module docker_search.remove_older_docs)</a>
@@ -1090,8 +1143,12 @@
         <li><a href="docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.write_data_to_RDS">(in module docker_stock_prediction.docker_stock_prediction.stock_prediction_2)</a>
 </li>
       </ul></li>
-      <li><a href="docker_debrief.html#docker_debrief.helper.write_json_file">write_json_file() (in module docker_debrief.helper)</a>
+      <li><a href="docker_correlation.html#docker_correlation.main.write_json_file">write_json_file() (in module docker_correlation.main)</a>
+
+      <ul>
+        <li><a href="docker_debrief.html#docker_debrief.helper.write_json_file">(in module docker_debrief.helper)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

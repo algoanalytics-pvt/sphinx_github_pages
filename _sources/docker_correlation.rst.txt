@@ -1,0 +1,37 @@
+docker\_correlation package
+===========================
+
+Submodules
+----------
+
+docker\_correlation.generate\_results module
+--------------------------------------------
+
+.. automodule:: docker_correlation.generate_results
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_correlation.main module
+-------------------------------
+
+.. automodule:: docker_correlation.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_correlation.news\_extraction\_dynamodb module
+-----------------------------------------------------
+
+.. automodule:: docker_correlation.news_extraction_dynamodb
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_correlation
+   :members:
+   :undoc-members:
+   :show-inheritance:

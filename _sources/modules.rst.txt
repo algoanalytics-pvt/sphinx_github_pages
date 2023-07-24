@@ -4,6 +4,7 @@ fabric_backend_AWS
 .. toctree::
    :maxdepth: 4
 
+   docker_correlation
    docker_debrief
    docker_enrichment
    docker_microservices
