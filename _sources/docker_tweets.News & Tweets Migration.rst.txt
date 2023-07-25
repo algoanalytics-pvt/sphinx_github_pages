@@ -1,0 +1,21 @@
+docker\_tweets.News \& Tweets Migration package
+===============================================
+
+Submodules
+----------
+
+docker\_tweets.News \& Tweets Migration.s3\_to\_dynamo module
+-------------------------------------------------------------
+
+.. automodule:: docker_tweets.News & Tweets Migration.s3_to_dynamo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_tweets.News & Tweets Migration
+   :members:
+   :undoc-members:
+   :show-inheritance:

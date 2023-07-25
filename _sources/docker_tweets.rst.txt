@@ -1,6 +1,14 @@
 docker\_tweets package
 ======================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   docker_tweets.News & Tweets Migration
+
 Submodules
 ----------
 
