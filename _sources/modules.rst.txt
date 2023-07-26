@@ -11,6 +11,7 @@ fabric_backend_AWS
    docker_search
    docker_stock_ingestion
    docker_stock_prediction
+   docker_todays_sentiment
    docker_topics
    docker_topics_earning_call_transcripts
    docker_trend_prediction
