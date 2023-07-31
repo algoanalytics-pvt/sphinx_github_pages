@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_news_aggregator.create_visualizations &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">fabric_backend_AWS</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_news_aggregator.create_visualizations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_news_aggregator.create_visualizations</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="get_news_distrib_across_days"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_distrib_across_days">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_news_distrib_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+    <span class="n">news_dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">)]</span>
+    <span class="n">sorted_dates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">news_dates</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">sorted_dates</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;news_distrib_across_days&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_news_cum_plot"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_cum_plot">[docs]</a><span class="k">def</span> <span class="nf">get_news_cum_plot</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+    <span class="n">news_dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">)]</span>
+    <span class="n">sorted_dates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">news_dates</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">sorted_dates</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))]</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;news_cum_plot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_news_source_distrib"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_source_distrib">[docs]</a><span class="k">def</span> <span class="nf">get_news_source_distrib</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+    <span class="n">news_sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;news_source&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">)]</span>
+    <span class="n">news_sources</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">news_sources</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;news_sources&#39;</span><span class="p">])</span>
+    <span class="n">news_sources</span> <span class="o">=</span> <span class="n">news_sources</span><span class="p">[</span><span class="s1">&#39;news_sources&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">cat</span> <span class="o">=</span> <span class="s1">&#39;Others&#39;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">news_sources</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">limit</span><span class="p">:][</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">news_sources</span> <span class="o">=</span> <span class="n">news_sources</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">limit</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">news_sources</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">news_sources</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;news_sources&#39;</span><span class="p">:</span> <span class="n">cat</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">])])</span>
+    <span class="n">news_sources</span><span class="p">[</span><span class="s1">&#39;%_count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">news_sources</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">news_sources</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">news_sources</span><span class="p">[</span><span class="s1">&#39;news_sources&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">news_sources</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;news_source_distrib&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_sentiment_score"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_score">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_score</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+    <span class="n">senti_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span>
+            <span class="n">senti_score</span> <span class="o">+=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;positive&#39;</span><span class="p">:</span>
+            <span class="n">senti_score</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">senti_score</span> <span class="o">+=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">senti_score</span></div>
+
+
+
+<div class="viewcode-block" id="get_normalized_sentiment_score"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_normalized_sentiment_score">[docs]</a><span class="k">def</span> <span class="nf">get_normalized_sentiment_score</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+    <span class="n">pos_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">neg_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span>
+            <span class="n">neg_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;positive&#39;</span><span class="p">:</span>
+            <span class="n">pos_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">if</span> <span class="n">pos_count</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">neg_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">pos_count</span> <span class="o">-</span> <span class="n">neg_count</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pos_count</span> <span class="o">+</span> <span class="n">neg_count</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_avg_sent_score_across_days"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_avg_sent_score_across_days">[docs]</a><span class="k">def</span> <span class="nf">get_avg_sent_score_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
+        <span class="n">news_article</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">scores</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">scores</span><span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_normalized_sentiment_score</span><span class="p">(</span><span class="n">news_article</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scores</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_normalized_sentiment_score</span><span class="p">(</span><span class="n">news_article</span><span class="p">)]</span>
+    <span class="n">avg_sent_score</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="ow">in</span> <span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">avg_sent_score</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">avg_sent_score</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">avg_sent_score</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)))</span>
+    <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">avg_sent_score</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;avg_sent_across_days&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_sentiment_lables"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_lables">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_lables</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+    <span class="n">senti_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">senti_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">senti_list</span></div>
+
+
+
+<div class="viewcode-block" id="get_sentiment_stacked_barchart"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_stacked_barchart">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_stacked_barchart</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">positives</span><span class="p">,</span> <span class="n">negatives</span><span class="p">,</span> <span class="n">neutral</span><span class="p">)</span> <span class="o">=</span> <span class="p">([],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[])</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
+        <span class="n">news_article</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">senti_list</span> <span class="o">=</span> <span class="n">get_sentiment_lables</span><span class="p">(</span><span class="n">news_article</span><span class="p">)</span>
+        <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="n">positives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">senti_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;positive&#39;</span><span class="p">))</span>
+        <span class="n">negatives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">senti_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;negative&#39;</span><span class="p">))</span>
+        <span class="n">neutral</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">senti_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;neutral&#39;</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">dates</span><span class="p">,</span> <span class="s1">&#39;positives&#39;</span><span class="p">:</span> <span class="n">positives</span><span class="p">,</span> <span class="s1">&#39;negatives&#39;</span><span class="p">:</span> <span class="n">negatives</span><span class="p">,</span> <span class="s1">&#39;neutral&#39;</span><span class="p">:</span> <span class="n">neutral</span><span class="p">})</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">pos_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;positives&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">neg_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;negatives&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">neutral_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;neutral&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;sentiment_stacked_barchart&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dates&#39;</span><span class="p">:</span> <span class="n">dates</span><span class="p">,</span> <span class="s1">&#39;pos_count&#39;</span><span class="p">:</span> <span class="n">pos_count</span><span class="p">,</span> <span class="s1">&#39;neg_count&#39;</span><span class="p">:</span> <span class="n">neg_count</span><span class="p">,</span> <span class="s1">&#39;neutral_count&#39;</span><span class="p">:</span> <span class="n">neutral_count</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_event_label_heatmap"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_event_label_heatmap">[docs]</a><span class="k">def</span> <span class="nf">get_event_label_heatmap</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="n">event_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Share Repurchase&#39;</span><span class="p">,</span> <span class="s1">&#39;Other&#39;</span><span class="p">,</span> <span class="s1">&#39;Partnership &amp; JointVenture&#39;</span><span class="p">,</span> <span class="s1">&#39;Macroeconomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Debt&#39;</span><span class="p">,</span> <span class="s1">&#39;Merger &amp; Acquisition&#39;</span><span class="p">,</span> <span class="s1">&#39;Litigation&#39;</span><span class="p">,</span> <span class="s1">&#39;Securities Turnover&#39;</span><span class="p">,</span> <span class="s1">&#39;Employment&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating &amp; Recommendation&#39;</span><span class="p">,</span> <span class="s1">&#39;Dividend&#39;</span><span class="p">,</span> <span class="s1">&#39;Investment &amp; Funding&#39;</span><span class="p">,</span> <span class="s1">&#39;Products &amp; Services&#39;</span><span class="p">,</span> <span class="s1">&#39;Financial Results&#39;</span><span class="p">])</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">get_top_event</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
+        <span class="n">news_article</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;All_Events&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">events</span> <span class="o">==</span> <span class="s1">&#39;Null&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+            <span class="n">top_event</span> <span class="o">=</span> <span class="n">get_top_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">event_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+                <span class="n">event_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="n">top_event</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">event_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="n">top_event</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">event_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;event_label_heatmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_entity_tree_diagram"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_entity_tree_diagram">[docs]</a><span class="k">def</span> <span class="nf">get_entity_tree_diagram</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="n">top_entities</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="n">entity_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
+        <span class="n">news_article</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;ner_analysis&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">entity</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">entity_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">entity_dict</span><span class="p">[</span><span class="n">entity</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">entity_dict</span><span class="p">[</span><span class="n">entity</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">sorted_entities</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">event</span> <span class="k">for</span> <span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="n">sorted_entities</span><span class="p">][:</span><span class="n">top_entities</span><span class="p">]</span>
+    <span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="n">freq</span> <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="ow">in</span> <span class="n">sorted_entities</span><span class="p">][:</span><span class="n">top_entities</span><span class="p">]</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">freq</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">frequencies</span><span class="p">]</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;entity_tree_diagram&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;events&#39;</span><span class="p">:</span> <span class="n">events</span><span class="p">,</span> <span class="s1">&#39;sizes&#39;</span><span class="p">:</span> <span class="n">sizes</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_news_articles"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_articles">[docs]</a><span class="k">def</span> <span class="nf">get_news_articles</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;news_articles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
+        <span class="n">news_article</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;news_articles&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="s1">&#39;summary&#39;</span><span class="p">:</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">],</span> <span class="s1">&#39;news_date&#39;</span><span class="p">:</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">],</span> <span class="s1">&#39;news_link&#39;</span><span class="p">:</span> <span class="n">news_article</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]})</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_ner_org_freq"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_ner_org_freq">[docs]</a><span class="k">def</span> <span class="nf">get_ner_org_freq</span><span class="p">(</span><span class="n">news_output</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+    <span class="n">ner_output</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">news_output</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])):</span>
+        <span class="n">ner_record</span> <span class="o">=</span> <span class="n">news_output</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;ner_org_freq&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ner_record</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ner_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ner_record</span><span class="p">)</span>
+    <span class="n">combined_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">ner_output</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">frequency</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">combined_dict</span><span class="p">:</span>
+                <span class="n">combined_dict</span><span class="p">[</span><span class="n">entity</span><span class="p">]</span> <span class="o">+=</span> <span class="n">frequency</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">combined_dict</span><span class="p">[</span><span class="n">entity</span><span class="p">]</span> <span class="o">=</span> <span class="n">frequency</span>
+    <span class="n">sorted_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">combined_dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">top_15_pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorted_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">15</span><span class="p">]</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;ner_org_freq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">top_15_pairs</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="get_price_line_chart"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_price_line_chart">[docs]</a><span class="k">def</span> <span class="nf">get_price_line_chart</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+    <span class="n">date_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">date_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">date_list</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Open&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;get_price_line_chart&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="make_cumulative_vol_chart"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.make_cumulative_vol_chart">[docs]</a><span class="k">def</span> <span class="nf">make_cumulative_vol_chart</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">):</span>
+    <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">cumulative_volume</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">cumulative_volume</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;make_cumulative_vol_chart&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+<div class="viewcode-block" id="create_visualizations"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.create_visualizations">[docs]</a><span class="k">def</span> <span class="nf">create_visualizations</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_news_distrib_across_days&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_news_distrib_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No News for get_news_distrib_across_days</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_news_cum_plot&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_news_cum_plot</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No News for get_news_cum_plot</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_news_source_distrib&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_news_source_distrib</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No news in get_news_source_distrib</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_avg_sent_score_across_days&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_avg_sent_score_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No sentiment found in get_avg_sent_score_across_days</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_sentiment_stacked_barchart&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_sentiment_stacked_barchart</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No sentiment found in get_sentiment_stacked_barchart</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_event_label_heatmap&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_event_label_heatmap</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No events for get_event_label_heatmap</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_entity_tree_diagram&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_entity_tree_diagram</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No entity for get_entity_tree_diagram</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get_ner_org_freq&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_ner_org_freq</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No ner for get_ner_org_freq</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Get news and date and summary&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output_dict</span> <span class="o">=</span> <span class="n">get_news_articles</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No news Articles </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output_dict</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Algo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

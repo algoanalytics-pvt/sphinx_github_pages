@@ -1,0 +1,37 @@
+docker\_news\_aggregator package
+================================
+
+Submodules
+----------
+
+docker\_news\_aggregator.app module
+-----------------------------------
+
+.. automodule:: docker_news_aggregator.app
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_news\_aggregator.create\_visualizations module
+------------------------------------------------------
+
+.. automodule:: docker_news_aggregator.create_visualizations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_news\_aggregator.fetch\_data module
+-------------------------------------------
+
+.. automodule:: docker_news_aggregator.fetch_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_news_aggregator
+   :members:
+   :undoc-members:
+   :show-inheritance:

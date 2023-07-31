@@ -8,6 +8,7 @@ fabric_backend_AWS
    docker_debrief
    docker_enrichment
    docker_microservices
+   docker_news_aggregator
    docker_search
    docker_stock_ingestion
    docker_stock_prediction
