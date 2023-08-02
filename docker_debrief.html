@@ -85,6 +85,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_debrief.main">docker_debrief.main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_debrief.main.a_intro"><code class="docutils literal notranslate"><span class="pre">a_intro()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_debrief.main.lambd_func"><code class="docutils literal notranslate"><span class="pre">lambd_func()</span></code></a></li>
 </ul>
 </li>
@@ -496,6 +497,35 @@ data (dict): dict as json object to write to file</p>
 </section>
 <section id="module-docker_debrief.main">
 <span id="docker-debrief-main-module"></span><h2>docker_debrief.main module<a class="headerlink" href="#module-docker_debrief.main" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_debrief.main.a_intro">
+<span class="sig-prename descclassname"><span class="pre">docker_debrief.main.</span></span><span class="sig-name descname"><span class="pre">a_intro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/main.html#a_intro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.main.a_intro" title="Permalink to this definition"></a></dt>
+<dd><p>This script fetches data from DynamoDB and S3, processes it, and creates summary JSON files.</p>
+<p>Dependencies:
+- <cite>create_json</cite> module provides functions like <cite>working_check</cite>, <cite>read_data_from_s3</cite>, <cite>fetch_data_summary</cite>, and <cite>fetch_debrief_data</cite>.
+- <cite>get_dynamodb_data</cite> module provides functions like <cite>read_data_dynamodb</cite>, <cite>read_news_data</cite>, and <cite>read_tweets_data</cite>.
+- <cite>access_file</cite> module provides <cite>get_secret</cite> function to retrieve secret credentials.
+- <cite>helper</cite> module provides <cite>write_json_file</cite> function to write JSON data to files.</p>
+<dl class="simple">
+<dt>CreatedBy: </dt><dd><ol class="arabic simple">
+<li><p>Shreyas R Chim &lt;<a class="reference external" href="mailto:schim&#37;&#52;&#48;alagoanalytics&#46;com">schim<span>&#64;</span>alagoanalytics<span>&#46;</span>com</a>&gt;</p></li>
+<li><p>Kalash Gandhi &lt;<a class="reference external" href="mailto:kgandhi&#37;&#52;&#48;algoanalytics&#46;com">kgandhi<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p></li>
+</ol>
+</dd>
+<dt>Updated by:</dt><dd><ol class="arabic simple">
+<li><p>Anoushka Rao &lt;<a class="reference external" href="mailto:arao&#37;&#52;&#48;algoanalytics&#46;com">arao<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p></li>
+<li><p>Mansi Maurya &lt;<a class="reference external" href="mailto:mmaurya&#37;&#52;&#48;algoanalytics&#46;com">mmaurya<span>&#64;</span>algoanalytics<span>&#46;</span>com</a>&gt;</p></li>
+</ol>
+</dd>
+<dt>Last Updated Date:</dt><dd><p>05th July 2023</p>
+</dd>
+<dt>Changes Made In Code:</dt><dd><ul class="simple">
+<li><p>Added docstrings to functions.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_debrief.main.lambd_func">
 <span class="sig-prename descclassname"><span class="pre">docker_debrief.main.</span></span><span class="sig-name descname"><span class="pre">lambd_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_debrief/main.html#lambd_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_debrief.main.lambd_func" title="Permalink to this definition"></a></dt>
