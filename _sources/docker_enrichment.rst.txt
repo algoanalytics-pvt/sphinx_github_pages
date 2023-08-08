@@ -4,6 +4,30 @@ docker\_enrichment package
 Submodules
 ----------
 
+docker\_enrichment.db\_operations module
+----------------------------------------
+
+.. automodule:: docker_enrichment.db_operations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.event\_detection module
+------------------------------------------
+
+.. automodule:: docker_enrichment.event_detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.main module
+------------------------------
+
+.. automodule:: docker_enrichment.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 docker\_enrichment.main\_v5 module
 ----------------------------------
 
@@ -12,10 +36,42 @@ docker\_enrichment.main\_v5 module
    :undoc-members:
    :show-inheritance:
 
+docker\_enrichment.model\_loading module
+----------------------------------------
+
+.. automodule:: docker_enrichment.model_loading
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 docker\_enrichment.new\_main\_v4 module
 ---------------------------------------
 
 .. automodule:: docker_enrichment.new_main_v4
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.org\_frequency module
+----------------------------------------
+
+.. automodule:: docker_enrichment.org_frequency
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.summarization module
+---------------------------------------
+
+.. automodule:: docker_enrichment.summarization
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.tsa module
+-----------------------------
+
+.. automodule:: docker_enrichment.tsa
    :members:
    :undoc-members:
    :show-inheritance:

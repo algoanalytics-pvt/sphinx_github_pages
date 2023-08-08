@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_enrichment.tsa &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">fabric_backend_AWS</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_enrichment.tsa</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_enrichment.tsa</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="extract_sents"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.tsa.extract_sents">[docs]</a><span></span><span class="k">def</span> <span class="nf">extract_sents</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">company_name</span><span class="p">,</span> <span class="n">nlp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  This function is extracting sentences addressing the target company using coreferencing</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">clusters</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">coref_clusters</span>
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+        <span class="n">mentions</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">]</span>
+    <span class="n">final_cluster</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">keywords_list</span> <span class="o">=</span> <span class="n">company_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">keywords_list</span> <span class="o">=</span> <span class="n">company_name</span>
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+        <span class="n">mentions</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">mentions</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">company_name</span> <span class="ow">in</span> <span class="n">keywords_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">company_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">element</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                    <span class="n">target</span> <span class="o">=</span> <span class="n">mentions</span>
+                    <span class="n">final_cluster</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
+    <span class="n">final_cluster</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">final_cluster</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">final_cluster</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">start_pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">sentiment_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
+        <span class="n">end_pos</span> <span class="o">=</span> <span class="n">start_pos</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">final_cluster</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start_pos</span> <span class="ow">and</span> <span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">end_pos</span><span class="p">:</span>
+                    <span class="n">sentiment_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+                    <span class="k">break</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Company keyword not found in sentence&#39;</span><span class="p">)</span>
+        <span class="n">start_pos</span> <span class="o">=</span> <span class="n">end_pos</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">sentiment_sentences</span></div>
+
+
+
+<div class="viewcode-block" id="find_sent_with_company"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.tsa.find_sent_with_company">[docs]</a><span class="k">def</span> <span class="nf">find_sent_with_company</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">new_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">split_sentences</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="n">new_sentences</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">split_sentences</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="n">keyword_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">keywords_list</span> <span class="o">=</span> <span class="n">keyword</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">keywords_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">keyword</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">new_sentences</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">company_name</span> <span class="ow">in</span> <span class="n">keywords_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">company_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">keyword_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">keyword_sentences</span></div>
+
+
+
+<div class="viewcode-block" id="get_sentiment_modified"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.tsa.get_sentiment_modified">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_modified</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_sentiment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  This modified function does not perform NER since the entity which we are focusing</span>
+<span class="sd">  on is the same company to which the news belongs and that has been passed as </span>
+<span class="sd">  TSA_keyword.</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">      -------------</span>
+<span class="sd">      1. sentence: str</span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">    1. sentiment_analysis : dict</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+    <span class="n">predictions_np</span> <span class="o">=</span> <span class="n">analyze_sentiment</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_sentiment</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions_np</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions_np</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">neut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions_np</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">sentiment_class</span> <span class="o">=</span> <span class="n">get_sentiment_class</span><span class="p">(</span><span class="n">neg</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">neut</span><span class="p">)</span>
+    <span class="n">sentiment_analysis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">sentence</span><span class="p">,</span> <span class="s1">&#39;negative_sentiment_score&#39;</span><span class="p">:</span> <span class="n">neg</span><span class="p">,</span> <span class="s1">&#39;positive_sentiment_score&#39;</span><span class="p">:</span> <span class="n">pos</span><span class="p">,</span> <span class="s1">&#39;neutral_sentiment_score&#39;</span><span class="p">:</span> <span class="n">neut</span><span class="p">,</span> <span class="s1">&#39;sentiment_class&#39;</span><span class="p">:</span> <span class="n">sentiment_class</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">sentiment_analysis</span></div>
+
+
+
+<div class="viewcode-block" id="analyze_sentiment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.tsa.analyze_sentiment">[docs]</a><span class="k">def</span> <span class="nf">analyze_sentiment</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_sentiment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</span>
+<span class="sd">    </span>
+<span class="sd">    The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. </span>
+<span class="sd">    We will perform softmax on outputs and return numpy array of pt_predictions.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">      -------------</span>
+<span class="sd">            1. doc : a single string</span>
+<span class="sd">      Returns</span>
+<span class="sd">      ----------</span>
+<span class="sd">        pt_predictions.detach().numpy(): numpy array of pt_predictions </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pt_batch</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model_sentiment</span><span class="p">(</span><span class="o">**</span><span class="n">pt_batch</span><span class="p">)</span>
+    <span class="n">pt_predictions</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pt_predictions</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="get_sentiment_class"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.tsa.get_sentiment_class">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_class</span><span class="p">(</span><span class="n">neg</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">neut</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">neg</span> <span class="ow">and</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">neut</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span>
+    <span class="k">elif</span> <span class="n">neg</span> <span class="o">&gt;</span> <span class="n">pos</span> <span class="ow">and</span> <span class="n">neg</span> <span class="o">&gt;</span> <span class="n">neut</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;negative&#39;</span>
+    <span class="k">elif</span> <span class="n">neut</span> <span class="o">&gt;</span> <span class="n">neg</span> <span class="ow">and</span> <span class="n">neut</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;neutral&#39;</span>
+    <span class="k">return</span> <span class="n">sentiment_class</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Algo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

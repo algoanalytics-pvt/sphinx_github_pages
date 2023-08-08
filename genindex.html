@@ -133,6 +133,8 @@
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.analyze_sentiment">(in module docker_enrichment.new_main_v4)</a>
 </li>
+        <li><a href="docker_enrichment.html#docker_enrichment.tsa.analyze_sentiment">(in module docker_enrichment.tsa)</a>
+</li>
       </ul></li>
       <li><a href="docker_search.html#docker_search.fetch_from_DB.assign_unique_ids">assign_unique_ids() (in module docker_search.fetch_from_DB)</a>
 </li>
@@ -217,11 +219,15 @@
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary">(in module docker_enrichment.new_main_v4)</a>
 </li>
+        <li><a href="docker_enrichment.html#docker_enrichment.summarization.compute_summary">(in module docker_enrichment.summarization)</a>
+</li>
       </ul></li>
       <li><a href="docker_enrichment.html#docker_enrichment.main_v5.compute_summary_updated">compute_summary_updated() (in module docker_enrichment.main_v5)</a>
 
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary_updated">(in module docker_enrichment.new_main_v4)</a>
+</li>
+        <li><a href="docker_enrichment.html#docker_enrichment.summarization.compute_summary_updated">(in module docker_enrichment.summarization)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -363,6 +369,27 @@
 </li>
       </ul></li>
       <li>
+    docker_enrichment.db_operations
+
+      <ul>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.db_operations">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_enrichment.event_detection
+
+      <ul>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.event_detection">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_enrichment.main
+
+      <ul>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.main">module</a>
+</li>
+      </ul></li>
+      <li>
     docker_enrichment.main_v5
 
       <ul>
@@ -370,10 +397,38 @@
 </li>
       </ul></li>
       <li>
+    docker_enrichment.model_loading
+
+      <ul>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.model_loading">module</a>
+</li>
+      </ul></li>
+      <li>
     docker_enrichment.new_main_v4
 
       <ul>
         <li><a href="docker_enrichment.html#module-docker_enrichment.new_main_v4">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_enrichment.org_frequency
+
+      <ul>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.org_frequency">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_enrichment.summarization
+
+      <ul>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.summarization">module</a>
+</li>
+      </ul></li>
+      <li>
+    docker_enrichment.tsa
+
+      <ul>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.tsa">module</a>
 </li>
       </ul></li>
       <li>
@@ -411,6 +466,8 @@
         <li><a href="docker_search.html#module-docker_search.create_models">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     docker_search.fetch_from_DB
 
@@ -439,8 +496,6 @@
         <li><a href="docker_search.tests.html#module-docker_search.tests">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     docker_search.tests.test_api
 
@@ -627,18 +682,22 @@
         <li><a href="docker_todays_sentiment.html#docker_todays_sentiment.main.extract_new_data">(in module docker_todays_sentiment.main)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_enrichment.html#docker_enrichment.main_v5.extract_org_frequency">extract_org_frequency() (in module docker_enrichment.main_v5)</a>
 
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.extract_org_frequency">(in module docker_enrichment.new_main_v4)</a>
 </li>
+        <li><a href="docker_enrichment.html#docker_enrichment.org_frequency.extract_org_frequency">(in module docker_enrichment.org_frequency)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_enrichment.html#docker_enrichment.main_v5.extract_sents">extract_sents() (in module docker_enrichment.main_v5)</a>
 
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.extract_sents">(in module docker_enrichment.new_main_v4)</a>
+</li>
+        <li><a href="docker_enrichment.html#docker_enrichment.tsa.extract_sents">(in module docker_enrichment.tsa)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -647,32 +706,42 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docker_enrichment.html#docker_enrichment.main_v5.fetch_config_data">fetch_config_data() (in module docker_enrichment.main_v5)</a>
+      <li><a href="docker_enrichment.html#docker_enrichment.db_operations.fetch_config_data">fetch_config_data() (in module docker_enrichment.db_operations)</a>
 
       <ul>
+        <li><a href="docker_enrichment.html#docker_enrichment.main_v5.fetch_config_data">(in module docker_enrichment.main_v5)</a>
+</li>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.fetch_config_data">(in module docker_enrichment.new_main_v4)</a>
 </li>
       </ul></li>
       <li><a href="docker_search.html#docker_search.fetch_from_DB.fetch_data">fetch_data() (in module docker_search.fetch_from_DB)</a>
 </li>
-      <li><a href="docker_enrichment.html#docker_enrichment.main_v5.fetch_data_from_table">fetch_data_from_table() (in module docker_enrichment.main_v5)</a>
+      <li><a href="docker_enrichment.html#docker_enrichment.db_operations.fetch_data_from_table">fetch_data_from_table() (in module docker_enrichment.db_operations)</a>
 
       <ul>
+        <li><a href="docker_enrichment.html#docker_enrichment.main_v5.fetch_data_from_table">(in module docker_enrichment.main_v5)</a>
+</li>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.fetch_data_from_table">(in module docker_enrichment.new_main_v4)</a>
 </li>
       </ul></li>
       <li><a href="docker_debrief.html#docker_debrief.create_json.fetch_data_summary">fetch_data_summary() (in module docker_debrief.create_json)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_debrief.html#docker_debrief.create_json.fetch_debrief_data">fetch_debrief_data() (in module docker_debrief.create_json)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_tweets.html#docker_tweets.tweets_ingestion_aws.filter_tweet">filter_tweet() (in module docker_tweets.tweets_ingestion_aws)</a>
+</li>
+      <li><a href="docker_enrichment.html#docker_enrichment.event_detection.find_events">find_events() (in module docker_enrichment.event_detection)</a>
+</li>
+      <li><a href="docker_enrichment.html#docker_enrichment.event_detection.find_mult_class">find_mult_class() (in module docker_enrichment.event_detection)</a>
 </li>
       <li><a href="docker_enrichment.html#docker_enrichment.main_v5.find_sent_with_company">find_sent_with_company() (in module docker_enrichment.main_v5)</a>
 
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.find_sent_with_company">(in module docker_enrichment.new_main_v4)</a>
+</li>
+        <li><a href="docker_enrichment.html#docker_enrichment.tsa.find_sent_with_company">(in module docker_enrichment.tsa)</a>
 </li>
       </ul></li>
       <li><a href="docker_tweets.html#docker_tweets.news_ingestion_aws.Find_url">Find_url() (in module docker_tweets.news_ingestion_aws)</a>
@@ -703,9 +772,11 @@
         <li><a href="docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_classifier">(in module docker_stock_prediction.docker_stock_prediction.stock_prediction_2)</a>
 </li>
       </ul></li>
-      <li><a href="docker_enrichment.html#docker_enrichment.main_v5.get_connection">get_connection() (in module docker_enrichment.main_v5)</a>
+      <li><a href="docker_enrichment.html#docker_enrichment.main.get_connection">get_connection() (in module docker_enrichment.main)</a>
 
       <ul>
+        <li><a href="docker_enrichment.html#docker_enrichment.main_v5.get_connection">(in module docker_enrichment.main_v5)</a>
+</li>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.get_connection">(in module docker_enrichment.new_main_v4)</a>
 </li>
         <li><a href="docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.get_connection">(in module docker_stock_ingestion.stock_ingestion)</a>
@@ -741,10 +812,10 @@
 </li>
       <li><a href="docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_cum_plot">get_news_cum_plot() (in module docker_news_aggregator.create_visualizations)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_distrib_across_days">get_news_distrib_across_days() (in module docker_news_aggregator.create_visualizations)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_enrichment.html#docker_enrichment.main_v5.get_news_labels">get_news_labels() (in module docker_enrichment.main_v5)</a>
 </li>
       <li><a href="docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_source_distrib">get_news_source_distrib() (in module docker_news_aggregator.create_visualizations)</a>
@@ -772,6 +843,8 @@
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_class">(in module docker_enrichment.new_main_v4)</a>
 </li>
+        <li><a href="docker_enrichment.html#docker_enrichment.tsa.get_sentiment_class">(in module docker_enrichment.tsa)</a>
+</li>
       </ul></li>
       <li><a href="docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_lables">get_sentiment_lables() (in module docker_news_aggregator.create_visualizations)</a>
 </li>
@@ -780,14 +853,18 @@
       <ul>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_modified">(in module docker_enrichment.new_main_v4)</a>
 </li>
+        <li><a href="docker_enrichment.html#docker_enrichment.tsa.get_sentiment_modified">(in module docker_enrichment.tsa)</a>
+</li>
       </ul></li>
       <li><a href="docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_score">get_sentiment_score() (in module docker_news_aggregator.create_visualizations)</a>
 </li>
       <li><a href="docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_stacked_barchart">get_sentiment_stacked_barchart() (in module docker_news_aggregator.create_visualizations)</a>
 </li>
-      <li><a href="docker_enrichment.html#docker_enrichment.main_v5.get_ticker_names_and_id">get_ticker_names_and_id() (in module docker_enrichment.main_v5)</a>
+      <li><a href="docker_enrichment.html#docker_enrichment.db_operations.get_ticker_names_and_id">get_ticker_names_and_id() (in module docker_enrichment.db_operations)</a>
 
       <ul>
+        <li><a href="docker_enrichment.html#docker_enrichment.main_v5.get_ticker_names_and_id">(in module docker_enrichment.main_v5)</a>
+</li>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.get_ticker_names_and_id">(in module docker_enrichment.new_main_v4)</a>
 </li>
         <li><a href="docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_ticker_names_and_id">(in module docker_stock_prediction.docker_stock_prediction.stock_prediction_1)</a>
@@ -825,17 +902,25 @@
 </li>
       <li><a href="docker_search.html#docker_search.models.load_document_store">load_document_store() (in module docker_search.models)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_enrichment.html#docker_enrichment.main_v5.load_pickle_file">load_pickle_file() (in module docker_enrichment.main_v5)</a>
 </li>
       <li><a href="docker_search.html#docker_search.models.load_preprocessor">load_preprocessor() (in module docker_search.models)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_search.html#docker_search.models.load_query_classifier">load_query_classifier() (in module docker_search.models)</a>
 </li>
       <li><a href="docker_search.html#docker_search.models.load_reader">load_reader() (in module docker_search.models)</a>
 </li>
       <li><a href="docker_search.html#docker_search.models.load_retriever">load_retriever() (in module docker_search.models)</a>
+</li>
+      <li><a href="docker_enrichment.html#docker_enrichment.model_loading.loading_DistilBert">loading_DistilBert() (in module docker_enrichment.model_loading)</a>
+</li>
+      <li><a href="docker_enrichment.html#docker_enrichment.model_loading.loading_event_detection_model">loading_event_detection_model() (in module docker_enrichment.model_loading)</a>
+</li>
+      <li><a href="docker_enrichment.html#docker_enrichment.model_loading.loading_sent_model">loading_sent_model() (in module docker_enrichment.model_loading)</a>
+</li>
+      <li><a href="docker_enrichment.html#docker_enrichment.model_loading.loading_summ_model">loading_summ_model() (in module docker_enrichment.model_loading)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -877,9 +962,23 @@
 </li>
         <li><a href="docker_enrichment.html#module-docker_enrichment">docker_enrichment</a>
 </li>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.db_operations">docker_enrichment.db_operations</a>
+</li>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.event_detection">docker_enrichment.event_detection</a>
+</li>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.main">docker_enrichment.main</a>
+</li>
         <li><a href="docker_enrichment.html#module-docker_enrichment.main_v5">docker_enrichment.main_v5</a>
 </li>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.model_loading">docker_enrichment.model_loading</a>
+</li>
         <li><a href="docker_enrichment.html#module-docker_enrichment.new_main_v4">docker_enrichment.new_main_v4</a>
+</li>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.org_frequency">docker_enrichment.org_frequency</a>
+</li>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.summarization">docker_enrichment.summarization</a>
+</li>
+        <li><a href="docker_enrichment.html#module-docker_enrichment.tsa">docker_enrichment.tsa</a>
 </li>
         <li><a href="docker_microservices.html#module-docker_microservices">docker_microservices</a>
 </li>
@@ -990,20 +1089,22 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docker_enrichment.html#docker_enrichment.main_v5.perform_enrichment">perform_enrichment() (in module docker_enrichment.main_v5)</a>
+      <li><a href="docker_enrichment.html#docker_enrichment.main.perform_enrichment">perform_enrichment() (in module docker_enrichment.main)</a>
 
       <ul>
+        <li><a href="docker_enrichment.html#docker_enrichment.main_v5.perform_enrichment">(in module docker_enrichment.main_v5)</a>
+</li>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.perform_enrichment">(in module docker_enrichment.new_main_v4)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.process_output">process_output() (in module docker_stock_prediction.docker_stock_prediction.stock_prediction_1)</a>
 
       <ul>
         <li><a href="docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.process_output">(in module docker_stock_prediction.docker_stock_prediction.stock_prediction_2)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_search.html#docker_search.utils.process_prediction">process_prediction() (in module docker_search.utils)</a>
 </li>
       <li><a href="docker_search.html#docker_search.utils.process_qna_prediction">process_qna_prediction() (in module docker_search.utils)</a>
@@ -1090,13 +1191,15 @@
 </li>
       <li><a href="docker_search.tests.html#docker_search.tests.test_api.test_semantic_search_pipeline">test_semantic_search_pipeline() (in module docker_search.tests.test_api)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_search.tests.html#docker_search.tests.test_api.test_semantic_search_tweets_response">test_semantic_search_tweets_response() (in module docker_search.tests.test_api)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_search.tests.html#docker_search.tests.test_utils.test_wrong_type">test_wrong_type() (in module docker_search.tests.test_utils)</a>
 </li>
       <li><a href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.text_preprocessing_fn">text_preprocessing_fn() (in module docker_topics_earning_call_transcripts.main)</a>
+</li>
+      <li><a href="docker_enrichment.html#docker_enrichment.org_frequency.time_func">time_func() (in module docker_enrichment.org_frequency)</a>
 </li>
       <li><a href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Negative">Topic_Modeling_Negative() (in module docker_topics_earning_call_transcripts.earning_call_main)</a>
 </li>
@@ -1122,9 +1225,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docker_search.html#docker_search.update_embeddings.update_embeddings">update_embeddings() (in module docker_search.update_embeddings)</a>
 </li>
-      <li><a href="docker_enrichment.html#docker_enrichment.main_v5.update_table">update_table() (in module docker_enrichment.main_v5)</a>
+      <li><a href="docker_enrichment.html#docker_enrichment.db_operations.update_table">update_table() (in module docker_enrichment.db_operations)</a>
 
       <ul>
+        <li><a href="docker_enrichment.html#docker_enrichment.main_v5.update_table">(in module docker_enrichment.main_v5)</a>
+</li>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.update_table">(in module docker_enrichment.new_main_v4)</a>
 </li>
       </ul></li>
@@ -1134,9 +1239,11 @@
 </li>
       <li><a href="docker_debrief.html#docker_debrief.create_json.updated_dict">updated_dict() (in module docker_debrief.create_json)</a>
 </li>
-      <li><a href="docker_enrichment.html#docker_enrichment.main_v5.upload_data">upload_data() (in module docker_enrichment.main_v5)</a>
+      <li><a href="docker_enrichment.html#docker_enrichment.db_operations.upload_data">upload_data() (in module docker_enrichment.db_operations)</a>
 
       <ul>
+        <li><a href="docker_enrichment.html#docker_enrichment.main_v5.upload_data">(in module docker_enrichment.main_v5)</a>
+</li>
         <li><a href="docker_enrichment.html#docker_enrichment.new_main_v4.upload_data">(in module docker_enrichment.new_main_v4)</a>
 </li>
       </ul></li>
