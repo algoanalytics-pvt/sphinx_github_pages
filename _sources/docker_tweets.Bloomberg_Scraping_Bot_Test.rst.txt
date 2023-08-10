@@ -1,0 +1,21 @@
+docker\_tweets.Bloomberg\_Scraping\_Bot\_Test package
+=====================================================
+
+Submodules
+----------
+
+docker\_tweets.Bloomberg\_Scraping\_Bot\_Test.rotating\_proxies module
+----------------------------------------------------------------------
+
+.. automodule:: docker_tweets.Bloomberg_Scraping_Bot_Test.rotating_proxies
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_tweets.Bloomberg_Scraping_Bot_Test
+   :members:
+   :undoc-members:
+   :show-inheritance:
