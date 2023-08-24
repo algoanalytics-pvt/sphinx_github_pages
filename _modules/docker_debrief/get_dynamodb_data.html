@@ -10,11 +10,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_debrief.get_dynamodb_data</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="read_news_data"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_news_data">[docs]</a><span></span><span class="k">def</span> <span class="nf">read_news_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
+<div class="viewcode-block" id="read_news_data">
+<a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_news_data">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">read_news_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fetch news data from the DynamoDB table based on given parameters.</span>
 
@@ -106,7 +108,10 @@
 
 
 
-<div class="viewcode-block" id="read_tweets_data"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_tweets_data">[docs]</a><span class="k">def</span> <span class="nf">read_tweets_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
+
+<div class="viewcode-block" id="read_tweets_data">
+<a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_tweets_data">[docs]</a>
+<span class="k">def</span> <span class="nf">read_tweets_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fetch tweets data from the DynamoDB table based on given parameters.</span>
 
@@ -145,7 +150,10 @@
 
 
 
-<div class="viewcode-block" id="create_default"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.create_default">[docs]</a><span class="k">def</span> <span class="nf">create_default</span><span class="p">():</span>
+
+<div class="viewcode-block" id="create_default">
+<a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.create_default">[docs]</a>
+<span class="k">def</span> <span class="nf">create_default</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a default dictionary with initial values for sentiment score and total.</span>
 
@@ -156,7 +164,10 @@
 
 
 
-<div class="viewcode-block" id="read_data_dynamodb"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_data_dynamodb">[docs]</a><span class="k">def</span> <span class="nf">read_data_dynamodb</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
+
+<div class="viewcode-block" id="read_data_dynamodb">
+<a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_data_dynamodb">[docs]</a>
+<span class="k">def</span> <span class="nf">read_data_dynamodb</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read whole data from dynamodb table and returns the json object</span>
 
 <span class="sd">    Args:</span>
@@ -176,7 +187,10 @@
 
 
 
-<div class="viewcode-block" id="sum_get_total_tweets"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_tweets">[docs]</a><span class="k">def</span> <span class="nf">sum_get_total_tweets</span><span class="p">(</span><span class="n">ticker_name</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">until</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">):</span>
+
+<div class="viewcode-block" id="sum_get_total_tweets">
+<a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_tweets">[docs]</a>
+<span class="k">def</span> <span class="nf">sum_get_total_tweets</span><span class="p">(</span><span class="n">ticker_name</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">until</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get tweets for a given ticker from a specified time range.</span>
 
@@ -241,7 +255,10 @@
 
 
 
-<div class="viewcode-block" id="sum_get_total_news"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_news">[docs]</a><span class="k">def</span> <span class="nf">sum_get_total_news</span><span class="p">(</span><span class="n">ticker_name</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">until</span><span class="p">,</span> <span class="n">all_news</span><span class="p">):</span>
+
+<div class="viewcode-block" id="sum_get_total_news">
+<a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_news">[docs]</a>
+<span class="k">def</span> <span class="nf">sum_get_total_news</span><span class="p">(</span><span class="n">ticker_name</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">until</span><span class="p">,</span> <span class="n">all_news</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get news for a given ticker from since to until.</span>
 
@@ -316,6 +333,7 @@
         <span class="k">if</span> <span class="n">dt_obj</span> <span class="o">&lt;=</span> <span class="n">until</span> <span class="ow">and</span> <span class="n">dt_obj</span> <span class="o">&gt;=</span> <span class="n">yesterday</span><span class="p">:</span>
             <span class="n">today_news_count</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">news_count</span><span class="p">,</span> <span class="n">news_sent</span><span class="p">,</span> <span class="n">today_news_count</span><span class="p">,</span> <span class="n">today_news_sent</span><span class="p">)</span></div>
+
 
 
 

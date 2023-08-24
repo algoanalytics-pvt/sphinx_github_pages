@@ -10,11 +10,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_enrichment.new_main_v4</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
+<div class="viewcode-block" id="a_intro">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.a_intro">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This code performs the following tasks on an article:</span>
 <span class="sd">    Extracts articles from the table.</span>
@@ -95,7 +97,10 @@
 
 
 
-<div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_connection">[docs]</a><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
+
+<div class="viewcode-block" id="get_connection">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_connection">[docs]</a>
+<span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create and return a connection to the DynamoDB resource.</span>
 
@@ -107,7 +112,10 @@
 
 
 
-<div class="viewcode-block" id="get_ticker_names_and_id"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_ticker_names_and_id">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">get_ticker_names_and_id</span><span class="p">(</span><span class="n">sectors</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_ticker_names_and_id">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_ticker_names_and_id">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_ticker_names_and_id</span><span class="p">(</span><span class="n">sectors</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get ticker names based on sectors from a given table.</span>
 
@@ -133,7 +141,10 @@
 
 
 
-<div class="viewcode-block" id="fetch_data_from_table"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.fetch_data_from_table">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_data_from_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filter_attr</span><span class="p">):</span>
+
+<div class="viewcode-block" id="fetch_data_from_table">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.fetch_data_from_table">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_data_from_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filter_attr</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fetch data from specified table based on the provided filter attribute.</span>
 
@@ -172,7 +183,10 @@
 
 
 
-<div class="viewcode-block" id="get_sentiment_class"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_class">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_class</span><span class="p">(</span><span class="n">neg</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">neut</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_sentiment_class">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_class">[docs]</a>
+<span class="k">def</span> <span class="nf">get_sentiment_class</span><span class="p">(</span><span class="n">neg</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">neut</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine the sentiment class based on the given sentiment scores.</span>
 
@@ -194,7 +208,10 @@
 
 
 
-<div class="viewcode-block" id="get_sentiment_modified"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_modified">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_modified</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_sentiment_modified">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_modified">[docs]</a>
+<span class="k">def</span> <span class="nf">get_sentiment_modified</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  This modified function does not perform NER since the entity which we are focusing</span>
 <span class="sd">  on is the same company to which the news belongs and that has been passed as </span>
@@ -215,7 +232,10 @@
 
 
 
-<div class="viewcode-block" id="analyze_sentiment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.analyze_sentiment">[docs]</a><span class="k">def</span> <span class="nf">analyze_sentiment</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+
+<div class="viewcode-block" id="analyze_sentiment">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.analyze_sentiment">[docs]</a>
+<span class="k">def</span> <span class="nf">analyze_sentiment</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</span>
 <span class="sd">    </span>
 <span class="sd">    The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. </span>
@@ -235,7 +255,10 @@
 
 
 
-<div class="viewcode-block" id="extract_org_frequency"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.extract_org_frequency">[docs]</a><span class="k">def</span> <span class="nf">extract_org_frequency</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+
+<div class="viewcode-block" id="extract_org_frequency">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.extract_org_frequency">[docs]</a>
+<span class="k">def</span> <span class="nf">extract_org_frequency</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extracts organizations (ORG entities) from the given article and returns their frequency.</span>
 
@@ -263,7 +286,10 @@
 
 
 
-<div class="viewcode-block" id="compute_summary"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary">[docs]</a><span class="k">def</span> <span class="nf">compute_summary</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+<div class="viewcode-block" id="compute_summary">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_summary</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute a summary of the input text using a pre-trained summarization model.</span>
 
@@ -290,7 +316,10 @@
 
 
 
-<div class="viewcode-block" id="compute_summary_updated"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary_updated">[docs]</a><span class="k">def</span> <span class="nf">compute_summary_updated</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+<div class="viewcode-block" id="compute_summary_updated">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary_updated">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_summary_updated</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the summary of the provided text using T5 model</span>
 
@@ -314,7 +343,10 @@
 
 
 
-<div class="viewcode-block" id="event_classification"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.event_classification">[docs]</a><span class="k">def</span> <span class="nf">event_classification</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+
+<div class="viewcode-block" id="event_classification">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.event_classification">[docs]</a>
+<span class="k">def</span> <span class="nf">event_classification</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tokenizes an article into sentences and predicts the events for each sentence using a pre-trained model.</span>
 
@@ -350,7 +382,10 @@
 
 
 
-<div class="viewcode-block" id="extract_sents"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.extract_sents">[docs]</a><span class="k">def</span> <span class="nf">extract_sents</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">company_name</span><span class="p">):</span>
+
+<div class="viewcode-block" id="extract_sents">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.extract_sents">[docs]</a>
+<span class="k">def</span> <span class="nf">extract_sents</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">company_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Extract sentences addressing the target company using coreferencing.</span>
 
@@ -397,7 +432,10 @@
 
 
 
-<div class="viewcode-block" id="find_sent_with_company"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.find_sent_with_company">[docs]</a><span class="k">def</span> <span class="nf">find_sent_with_company</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+
+<div class="viewcode-block" id="find_sent_with_company">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.find_sent_with_company">[docs]</a>
+<span class="k">def</span> <span class="nf">find_sent_with_company</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
     <span class="n">sentences</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
     <span class="n">new_sentences</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
@@ -419,7 +457,10 @@
 
 
 
-<div class="viewcode-block" id="perform_enrichment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.perform_enrichment">[docs]</a><span class="k">def</span> <span class="nf">perform_enrichment</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tsa_keyword</span><span class="p">):</span>
+
+<div class="viewcode-block" id="perform_enrichment">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.perform_enrichment">[docs]</a>
+<span class="k">def</span> <span class="nf">perform_enrichment</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tsa_keyword</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform enrichment on the given article.</span>
 
@@ -475,7 +516,10 @@
 
 
 
-<div class="viewcode-block" id="update_table"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.update_table">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">update_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">record_id</span><span class="p">,</span> <span class="n">record_month</span><span class="p">,</span> <span class="n">ner_org_freq</span><span class="p">,</span> <span class="n">Sentiment</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">top_events</span><span class="p">,</span> <span class="n">all_events</span><span class="p">):</span>
+
+<div class="viewcode-block" id="update_table">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.update_table">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">update_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">record_id</span><span class="p">,</span> <span class="n">record_month</span><span class="p">,</span> <span class="n">ner_org_freq</span><span class="p">,</span> <span class="n">Sentiment</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">top_events</span><span class="p">,</span> <span class="n">all_events</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update a table with the provided data.</span>
 
@@ -510,7 +554,10 @@
 
 
 
-<div class="viewcode-block" id="fetch_config_data"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.fetch_config_data">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_config_data</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
+
+<div class="viewcode-block" id="fetch_config_data">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.fetch_config_data">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_config_data</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fetch configuration data from a database table.</span>
 
@@ -530,7 +577,10 @@
 
 
 
-<div class="viewcode-block" id="upload_data"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.upload_data">[docs]</a><span class="k">def</span> <span class="nf">upload_data</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">enriched_data</span><span class="p">):</span>
+
+<div class="viewcode-block" id="upload_data">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.upload_data">[docs]</a>
+<span class="k">def</span> <span class="nf">upload_data</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">enriched_data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Upload and process enriched data for a specific item.</span>
 
@@ -570,6 +620,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*****************table updated with enriched data******************************&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Count: &#39;</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">count</span></div>
+
 
 
 

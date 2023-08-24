@@ -10,11 +10,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_topics_earning_call_transcripts.main</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="clean_text_modified"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.clean_text_modified">[docs]</a><span></span><span class="k">def</span> <span class="nf">clean_text_modified</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<div class="viewcode-block" id="clean_text_modified">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.clean_text_modified">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">clean_text_modified</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make text lowercase, remove text in square brackets,remove links,remove punctuation</span>
 <span class="sd">    and remove words containing numbers.&quot;&quot;&quot;</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -86,7 +88,10 @@
 
 
 
-<div class="viewcode-block" id="text_preprocessing_fn"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.text_preprocessing_fn">[docs]</a><span class="k">def</span> <span class="nf">text_preprocessing_fn</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+<div class="viewcode-block" id="text_preprocessing_fn">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.text_preprocessing_fn">[docs]</a>
+<span class="k">def</span> <span class="nf">text_preprocessing_fn</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cleaning and parsing the text.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -105,7 +110,10 @@
 
 
 
-<div class="viewcode-block" id="Optimal_Model"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Optimal_Model">[docs]</a><span class="k">def</span> <span class="nf">Optimal_Model</span><span class="p">(</span><span class="n">tokenized_reviews</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Optimal_Model">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Optimal_Model">[docs]</a>
+<span class="k">def</span> <span class="nf">Optimal_Model</span><span class="p">(</span><span class="n">tokenized_reviews</span><span class="p">):</span>
     <span class="n">dictionary</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="p">(</span><span class="n">tokenized_reviews</span><span class="p">)</span>
     <span class="n">doc_term_matrix</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span><span class="o">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">rev</span><span class="p">)</span> <span class="k">for</span> <span class="n">rev</span> <span class="ow">in</span> <span class="n">tokenized_reviews</span><span class="p">]</span>
     <span class="n">tfidf</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TfidfModel</span><span class="p">(</span><span class="n">doc_term_matrix</span><span class="p">,</span> <span class="n">smartirs</span><span class="o">=</span><span class="s1">&#39;ntc&#39;</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -118,7 +126,10 @@
 
 
 
-<div class="viewcode-block" id="format_topics_sentences"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.format_topics_sentences">[docs]</a><span class="k">def</span> <span class="nf">format_topics_sentences</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_topics_sentences">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.format_topics_sentences">[docs]</a>
+<span class="k">def</span> <span class="nf">format_topics_sentences</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
     <span class="n">sent_topics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">corpus</span><span class="p">]):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -136,7 +147,10 @@
 
 
 
-<div class="viewcode-block" id="Word_Cloud_Freq"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Word_Cloud_Freq">[docs]</a><span class="k">def</span> <span class="nf">Word_Cloud_Freq</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ideal_topic_num</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Word_Cloud_Freq">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Word_Cloud_Freq">[docs]</a>
+<span class="k">def</span> <span class="nf">Word_Cloud_Freq</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ideal_topic_num</span><span class="p">):</span>
     <span class="n">topics</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">strip_punctuation</span><span class="p">,</span> <span class="n">strip_numeric</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">show_topics</span><span class="p">(</span><span class="n">num_topics</span><span class="o">=</span><span class="n">ideal_topic_num</span><span class="p">):</span>
@@ -149,7 +163,10 @@
 
 
 
-<div class="viewcode-block" id="Topic_Modeling_Tweets"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Topic_Modeling_Tweets">[docs]</a><span class="k">def</span> <span class="nf">Topic_Modeling_Tweets</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">company</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Topic_Modeling_Tweets">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Topic_Modeling_Tweets">[docs]</a>
+<span class="k">def</span> <span class="nf">Topic_Modeling_Tweets</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">company</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tweet_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tweet_date</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tweet_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tweet_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -196,7 +213,10 @@
 
 
 
-<div class="viewcode-block" id="Topic_Modeling_News"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Topic_Modeling_News">[docs]</a><span class="k">def</span> <span class="nf">Topic_Modeling_News</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">company</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Topic_Modeling_News">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Topic_Modeling_News">[docs]</a>
+<span class="k">def</span> <span class="nf">Topic_Modeling_News</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">company</span><span class="p">):</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;New_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">news_date</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;New_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;New_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -244,7 +264,10 @@
 
 
 
-<div class="viewcode-block" id="get_ticker_names_and_id"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.get_ticker_names_and_id">[docs]</a><span class="k">def</span> <span class="nf">get_ticker_names_and_id</span><span class="p">(</span><span class="n">sector</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_ticker_names_and_id">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.get_ticker_names_and_id">[docs]</a>
+<span class="k">def</span> <span class="nf">get_ticker_names_and_id</span><span class="p">(</span><span class="n">sector</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
     <span class="n">ticker_id</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">ticker_name</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">FilterExpression</span><span class="o">=</span><span class="n">Attr</span><span class="p">(</span><span class="s1">&#39;Sector&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">sector</span><span class="p">))</span>
@@ -255,7 +278,10 @@
 
 
 
-<div class="viewcode-block" id="read_tweets_data"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_tweets_data">[docs]</a><span class="k">def</span> <span class="nf">read_tweets_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
+
+<div class="viewcode-block" id="read_tweets_data">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_tweets_data">[docs]</a>
+<span class="k">def</span> <span class="nf">read_tweets_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
     <span class="n">tweets_table</span> <span class="o">=</span> <span class="n">dynamodb_client</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;Tweets_Table&#39;</span><span class="p">)</span>
     <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">str_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -279,7 +305,10 @@
 
 
 
-<div class="viewcode-block" id="read_news_data"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_news_data">[docs]</a><span class="k">def</span> <span class="nf">read_news_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
+
+<div class="viewcode-block" id="read_news_data">
+<a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_news_data">[docs]</a>
+<span class="k">def</span> <span class="nf">read_news_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
     <span class="n">news_table</span> <span class="o">=</span> <span class="n">dynamodb_client</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;News_Table&#39;</span><span class="p">)</span>
     <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">str_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -300,6 +329,7 @@
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
         <span class="n">news_dict</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">news_dict</span><span class="p">)</span></div>
+
 
 
 

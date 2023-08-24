@@ -10,11 +10,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_search.models</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
+<div class="viewcode-block" id="a_intro">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.models.a_intro">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is used to load the models and document stores.</span>
 <span class="sd">    The models are assumed to be present at MODEL_DIR, with the query and passage encoding</span>
 <span class="sd">    models at QUERY_ENCODER_DIR and PASSAGE_ENCODER_DIR environment variables respectively.</span>
@@ -97,7 +99,10 @@
 
 
 
-<div class="viewcode-block" id="load_document_store"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_store">[docs]</a><span class="k">def</span> <span class="nf">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="load_document_store">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_store">[docs]</a>
+<span class="k">def</span> <span class="nf">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Load the FAISS Document Store Index, for the given type of &quot;news&quot; or &quot;tweets&quot;. The </span>
 <span class="sd">    DocumentStore index is assumed to be present at DOCUMENT_STORE_DIR environment variable </span>
 <span class="sd">    with a naming convention of f&quot;{type}_faiss_index.faiss&quot; </span>
@@ -122,7 +127,10 @@
 
 
 
-<div class="viewcode-block" id="load_retriever"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_retriever">[docs]</a><span class="k">def</span> <span class="nf">load_retriever</span><span class="p">(</span><span class="n">document_store</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="load_retriever">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_retriever">[docs]</a>
+<span class="k">def</span> <span class="nf">load_retriever</span><span class="p">(</span><span class="n">document_store</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Load a DensePassageRetriever (DPR) for the given type of &quot;news&quot; or &quot;tweets&quot;. </span>
 <span class="sd">    </span>
 <span class="sd">    The retriever models are assumed to be present at RETRIEVER_DIR, with the query and passage encoding</span>
@@ -150,7 +158,10 @@
 
 
 
-<div class="viewcode-block" id="load_document_search_pipeline"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_search_pipeline">[docs]</a><span class="k">def</span> <span class="nf">load_document_search_pipeline</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="load_document_search_pipeline">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_search_pipeline">[docs]</a>
+<span class="k">def</span> <span class="nf">load_document_search_pipeline</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Returns a DocumentSearchPipeline for the given type of &#39;news&#39; or &#39;tweets&#39;.</span>
 <span class="sd">    </span>
 <span class="sd">    It loads DocumentStore and Retriever first, then constructs pipeline.</span>
@@ -172,7 +183,10 @@
 
 
 
-<div class="viewcode-block" id="load_preprocessor"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_preprocessor">[docs]</a><span class="k">def</span> <span class="nf">load_preprocessor</span><span class="p">():</span>
+
+<div class="viewcode-block" id="load_preprocessor">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_preprocessor">[docs]</a>
+<span class="k">def</span> <span class="nf">load_preprocessor</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Load Haystack PreProcessor to process documents.</span>
 
 <span class="sd">    Returns:</span>
@@ -183,7 +197,10 @@
 
 
 
-<div class="viewcode-block" id="load_query_classifier"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_query_classifier">[docs]</a><span class="k">def</span> <span class="nf">load_query_classifier</span><span class="p">():</span>
+
+<div class="viewcode-block" id="load_query_classifier">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_query_classifier">[docs]</a>
+<span class="k">def</span> <span class="nf">load_query_classifier</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Load a Question vs Statement classifier.</span>
 
 <span class="sd">    Returns:</span>
@@ -201,7 +218,10 @@
 
 
 
-<div class="viewcode-block" id="load_reader"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_reader">[docs]</a><span class="k">def</span> <span class="nf">load_reader</span><span class="p">():</span>
+
+<div class="viewcode-block" id="load_reader">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_reader">[docs]</a>
+<span class="k">def</span> <span class="nf">load_reader</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Load Haystack FARMReader to extract answers from the documents.</span>
 
 <span class="sd">    Returns:</span>
@@ -214,6 +234,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Make sure the environment variables are correctly set and that the reader model is at the correct path.&#39;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;If the document stores and models do not exist, create them by running create_models.py&#39;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Exception Info: </span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
 
 
 

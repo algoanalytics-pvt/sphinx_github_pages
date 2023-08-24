@@ -10,11 +10,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_tweets.news_ingestion_aws</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
+<div class="viewcode-block" id="a_intro">
+<a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.a_intro">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is used to search news articles using pygooglenews api, scrape the news articles and add the news into the dynamodb News table. In this file, </span>
 <span class="sd">    basic data preprocessing is also done by checking the news article language and if the news contains specific user defined keywords, if the conditions are passed </span>
 <span class="sd">    then the news is added to the news table.</span>
@@ -87,7 +89,10 @@
 
 
 
-<div class="viewcode-block" id="Find_url"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.Find_url">[docs]</a><span class="k">def</span> <span class="nf">Find_url</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Find_url">
+<a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.Find_url">[docs]</a>
+<span class="k">def</span> <span class="nf">Find_url</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Finds if a url is present in a news article. This function is used for cleaning news articles </span>
 <span class="sd">    from Business Standard source, as Business standard returns unnecessary content while scraping </span>
 <span class="sd">    before the main article.</span>
@@ -105,7 +110,10 @@
 
 
 
-<div class="viewcode-block" id="get_content"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.get_content">[docs]</a><span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="n">link</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_content">
+<a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.get_content">[docs]</a>
+<span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="n">link</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Uses &quot;Article&quot; function from &quot;newspaper3k&quot; library to scrape the news article.</span>
 
 <span class="sd">    Args:</span>
@@ -125,7 +133,10 @@
 
 
 
-<div class="viewcode-block" id="news_lang_check"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.news_lang_check">[docs]</a><span class="k">def</span> <span class="nf">news_lang_check</span><span class="p">(</span><span class="n">description</span><span class="p">):</span>
+
+<div class="viewcode-block" id="news_lang_check">
+<a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.news_lang_check">[docs]</a>
+<span class="k">def</span> <span class="nf">news_lang_check</span><span class="p">(</span><span class="n">description</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Checks if the news article scraped is of english language.</span>
 
 <span class="sd">    Args: </span>
@@ -154,7 +165,10 @@
 
 
 
-<div class="viewcode-block" id="news_longDesc_check"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.news_longDesc_check">[docs]</a><span class="k">def</span> <span class="nf">news_longDesc_check</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">key_words</span><span class="p">):</span>
+
+<div class="viewcode-block" id="news_longDesc_check">
+<a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.news_longDesc_check">[docs]</a>
+<span class="k">def</span> <span class="nf">news_longDesc_check</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">key_words</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Checks if certain keywords are present in the scraped news article.</span>
 
 <span class="sd">    Args:</span>
@@ -181,7 +195,10 @@
 
 
 
-<div class="viewcode-block" id="add_news_article"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.add_news_article">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">keywords</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+
+<div class="viewcode-block" id="add_news_article">
+<a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.add_news_article">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">add_news_article</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">news_id</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">long_description</span><span class="p">,</span> <span class="n">keywords</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Checks if the scraped news articles pass certain conditions like language check and keyword check </span>
 <span class="sd">    and on the basis of those results adds news articles to news table.</span>
 
@@ -258,7 +275,10 @@
 
 
 
-<div class="viewcode-block" id="crawl_news_by_keyword"><a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.crawl_news_by_keyword">[docs]</a><span class="k">def</span> <span class="nf">crawl_news_by_keyword</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">ticker_news_keywords</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">text_search</span><span class="p">):</span>
+
+<div class="viewcode-block" id="crawl_news_by_keyword">
+<a class="viewcode-back" href="../../docker_tweets.html#docker_tweets.news_ingestion_aws.crawl_news_by_keyword">[docs]</a>
+<span class="k">def</span> <span class="nf">crawl_news_by_keyword</span><span class="p">(</span><span class="n">news_table</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">ticker_news_keywords</span><span class="p">,</span> <span class="n">ticker_symbol</span><span class="p">,</span> <span class="n">longDesc_keywords</span><span class="p">,</span> <span class="n">text_search</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Main Function for crawling news using pygooglenews library</span>
 
 <span class="sd">    Args:</span>
@@ -376,6 +396,7 @@
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception in crawl_news_by_keyword function: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of news for </span><span class="si">{</span><span class="n">ticker_symbol</span><span class="si">}</span><span class="s1"> entered in the table : &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></div>
+
 
 
 

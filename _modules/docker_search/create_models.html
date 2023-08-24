@@ -10,11 +10,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_search.create_models</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="a_intro"><a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.a_intro">[docs]</a><span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
+<div class="viewcode-block" id="a_intro">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.a_intro">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">a_intro</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This file is use to create all the models required for running Semantic Search.</span>
 <span class="sd">    This is meant to be executed only one time around when starting with a fresh retriever model, or in case some mistake results in previous data to be lost.</span>
 <span class="sd">    This does not fetch the data, it only creates the resources. So, the fetch data program must be run</span>
@@ -97,7 +99,10 @@
 
 
 
-<div class="viewcode-block" id="create_resources"><a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.create_resources">[docs]</a><span class="k">def</span> <span class="nf">create_resources</span><span class="p">():</span>
+
+<div class="viewcode-block" id="create_resources">
+<a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.create_resources">[docs]</a>
+<span class="k">def</span> <span class="nf">create_resources</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Create all resources required for running Semantic Search. This is meant to be executed only one time</span>
 <span class="sd">    around when starting with a fresh retriever model, or in case some mistake results in previous data to be lost.</span>
 <span class="sd">    This does not fetch the data, it only creates the resources. So, the fetch data program must be run</span>
@@ -131,6 +136,7 @@
     <span class="n">classifier_model</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QUERY_CLASSIFIER_DIR&#39;</span><span class="p">])</span>
     <span class="n">reader</span> <span class="o">=</span> <span class="n">FARMReader</span><span class="p">(</span><span class="s1">&#39;deepset/minilm-uncased-squad2&#39;</span><span class="p">)</span>
     <span class="n">reader</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;READER_DIR&#39;</span><span class="p">])</span></div>
+
 
 
 

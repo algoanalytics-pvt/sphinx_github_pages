@@ -10,11 +10,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for docker_news_aggregator.create_visualizations</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="get_news_distrib_across_days"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_distrib_across_days">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_news_distrib_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+<div class="viewcode-block" id="get_news_distrib_across_days">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_distrib_across_days">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">get_news_distrib_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
     <span class="n">news_dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">)]</span>
     <span class="n">sorted_dates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">news_dates</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
@@ -81,7 +83,10 @@
 
 
 
-<div class="viewcode-block" id="get_news_cum_plot"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_cum_plot">[docs]</a><span class="k">def</span> <span class="nf">get_news_cum_plot</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_news_cum_plot">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_cum_plot">[docs]</a>
+<span class="k">def</span> <span class="nf">get_news_cum_plot</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
     <span class="n">news_dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">)]</span>
     <span class="n">sorted_dates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">news_dates</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
@@ -94,7 +99,10 @@
 
 
 
-<div class="viewcode-block" id="get_news_source_distrib"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_source_distrib">[docs]</a><span class="k">def</span> <span class="nf">get_news_source_distrib</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_news_source_distrib">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_source_distrib">[docs]</a>
+<span class="k">def</span> <span class="nf">get_news_source_distrib</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
     <span class="n">news_sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;news_source&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">)]</span>
     <span class="n">news_sources</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">news_sources</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;news_sources&#39;</span><span class="p">])</span>
@@ -112,7 +120,10 @@
 
 
 
-<div class="viewcode-block" id="get_sentiment_score"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_score">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_score</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_sentiment_score">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_score">[docs]</a>
+<span class="k">def</span> <span class="nf">get_sentiment_score</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
     <span class="n">senti_score</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -127,7 +138,10 @@
 
 
 
-<div class="viewcode-block" id="get_normalized_sentiment_score"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_normalized_sentiment_score">[docs]</a><span class="k">def</span> <span class="nf">get_normalized_sentiment_score</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_normalized_sentiment_score">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_normalized_sentiment_score">[docs]</a>
+<span class="k">def</span> <span class="nf">get_normalized_sentiment_score</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
     <span class="n">pos_count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">neg_count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
@@ -146,7 +160,10 @@
 
 
 
-<div class="viewcode-block" id="get_avg_sent_score_across_days"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_avg_sent_score_across_days">[docs]</a><span class="k">def</span> <span class="nf">get_avg_sent_score_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_avg_sent_score_across_days">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_avg_sent_score_across_days">[docs]</a>
+<span class="k">def</span> <span class="nf">get_avg_sent_score_across_days</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
@@ -167,7 +184,10 @@
 
 
 
-<div class="viewcode-block" id="get_sentiment_lables"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_lables">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_lables</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_sentiment_lables">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_lables">[docs]</a>
+<span class="k">def</span> <span class="nf">get_sentiment_lables</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
     <span class="n">senti_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -177,7 +197,10 @@
 
 
 
-<div class="viewcode-block" id="get_sentiment_stacked_barchart"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_stacked_barchart">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_stacked_barchart</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_sentiment_stacked_barchart">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_sentiment_stacked_barchart">[docs]</a>
+<span class="k">def</span> <span class="nf">get_sentiment_stacked_barchart</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">positives</span><span class="p">,</span> <span class="n">negatives</span><span class="p">,</span> <span class="n">neutral</span><span class="p">)</span> <span class="o">=</span> <span class="p">([],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[])</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
@@ -199,7 +222,10 @@
 
 
 
-<div class="viewcode-block" id="get_event_label_heatmap"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_event_label_heatmap">[docs]</a><span class="k">def</span> <span class="nf">get_event_label_heatmap</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_event_label_heatmap">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_event_label_heatmap">[docs]</a>
+<span class="k">def</span> <span class="nf">get_event_label_heatmap</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="n">event_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Share Repurchase&#39;</span><span class="p">,</span> <span class="s1">&#39;Other&#39;</span><span class="p">,</span> <span class="s1">&#39;Partnership &amp; JointVenture&#39;</span><span class="p">,</span> <span class="s1">&#39;Macroeconomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Debt&#39;</span><span class="p">,</span> <span class="s1">&#39;Merger &amp; Acquisition&#39;</span><span class="p">,</span> <span class="s1">&#39;Litigation&#39;</span><span class="p">,</span> <span class="s1">&#39;Securities Turnover&#39;</span><span class="p">,</span> <span class="s1">&#39;Employment&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating &amp; Recommendation&#39;</span><span class="p">,</span> <span class="s1">&#39;Dividend&#39;</span><span class="p">,</span> <span class="s1">&#39;Investment &amp; Funding&#39;</span><span class="p">,</span> <span class="s1">&#39;Products &amp; Services&#39;</span><span class="p">,</span> <span class="s1">&#39;Financial Results&#39;</span><span class="p">])</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
 
@@ -223,7 +249,10 @@
 
 
 
-<div class="viewcode-block" id="get_entity_tree_diagram"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_entity_tree_diagram">[docs]</a><span class="k">def</span> <span class="nf">get_entity_tree_diagram</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_entity_tree_diagram">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_entity_tree_diagram">[docs]</a>
+<span class="k">def</span> <span class="nf">get_entity_tree_diagram</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="n">top_entities</span> <span class="o">=</span> <span class="mi">50</span>
     <span class="n">entity_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
@@ -244,7 +273,10 @@
 
 
 
-<div class="viewcode-block" id="get_news_articles"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_articles">[docs]</a><span class="k">def</span> <span class="nf">get_news_articles</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_news_articles">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_news_articles">[docs]</a>
+<span class="k">def</span> <span class="nf">get_news_articles</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="n">output_dict</span><span class="p">[</span><span class="s1">&#39;news_articles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">total_news_articles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_news_articles</span><span class="p">):</span>
@@ -254,7 +286,10 @@
 
 
 
-<div class="viewcode-block" id="get_ner_org_freq"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_ner_org_freq">[docs]</a><span class="k">def</span> <span class="nf">get_ner_org_freq</span><span class="p">(</span><span class="n">news_output</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_ner_org_freq">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_ner_org_freq">[docs]</a>
+<span class="k">def</span> <span class="nf">get_ner_org_freq</span><span class="p">(</span><span class="n">news_output</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
     <span class="n">ner_output</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">news_output</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">])):</span>
         <span class="n">ner_record</span> <span class="o">=</span> <span class="n">news_output</span><span class="p">[</span><span class="s1">&#39;news_dict&#39;</span><span class="p">][</span><span class="n">ticker_name</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;ner_org_freq&#39;</span><span class="p">]</span>
@@ -278,7 +313,10 @@
 
 
 
-<div class="viewcode-block" id="get_price_line_chart"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_price_line_chart">[docs]</a><span class="k">def</span> <span class="nf">get_price_line_chart</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_price_line_chart">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.get_price_line_chart">[docs]</a>
+<span class="k">def</span> <span class="nf">get_price_line_chart</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">):</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
     <span class="n">date_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -291,7 +329,10 @@
 
 
 
-<div class="viewcode-block" id="make_cumulative_vol_chart"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.make_cumulative_vol_chart">[docs]</a><span class="k">def</span> <span class="nf">make_cumulative_vol_chart</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">):</span>
+
+<div class="viewcode-block" id="make_cumulative_vol_chart">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.make_cumulative_vol_chart">[docs]</a>
+<span class="k">def</span> <span class="nf">make_cumulative_vol_chart</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">):</span>
     <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">yfin_json_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
     <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
@@ -303,7 +344,10 @@
 
 
 
-<div class="viewcode-block" id="create_visualizations"><a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.create_visualizations">[docs]</a><span class="k">def</span> <span class="nf">create_visualizations</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">):</span>
+
+<div class="viewcode-block" id="create_visualizations">
+<a class="viewcode-back" href="../../docker_news_aggregator.html#docker_news_aggregator.create_visualizations.create_visualizations">[docs]</a>
+<span class="k">def</span> <span class="nf">create_visualizations</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -353,6 +397,7 @@
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No news Articles </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">output_dict</span></div>
+
 
 
 
