@@ -10,6 +10,7 @@ fabric_backend_AWS
    docker_microservices
    docker_news_aggregator
    docker_search
+   docker_search_ec2
    docker_stock_ingestion
    docker_stock_prediction
    docker_todays_sentiment
