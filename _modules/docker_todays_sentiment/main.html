@@ -184,6 +184,27 @@
 
 
 
+<div class="viewcode-block" id="working_check">
+<a class="viewcode-back" href="../../docker_todays_sentiment.html#docker_todays_sentiment.main.working_check">[docs]</a>
+<span class="k">def</span> <span class="nf">working_check</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check and return a list of working days in the BSE calendar.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of working days as strings in the format &#39;YYYY-MM-DD&#39;&quot;&quot;&quot;</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="n">first_date_of_month</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">first_date_of_month</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">bse</span> <span class="o">=</span> <span class="n">mcal</span><span class="o">.</span><span class="n">get_calendar</span><span class="p">(</span><span class="s1">&#39;BSE&#39;</span><span class="p">)</span>
+    <span class="n">early</span> <span class="o">=</span> <span class="n">bse</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">first_date_of_month</span><span class="p">),</span> <span class="n">end_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">end_date</span><span class="p">))</span>
+    <span class="n">early</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">list_working_days</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">early</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]:</span>
+        <span class="n">list_working_days</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">date</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">list_working_days</span></div>
+
+
+
+
 <div class="viewcode-block" id="write_json_file">
 <a class="viewcode-back" href="../../docker_todays_sentiment.html#docker_todays_sentiment.main.write_json_file">[docs]</a>
 <span class="k">def</span> <span class="nf">write_json_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
