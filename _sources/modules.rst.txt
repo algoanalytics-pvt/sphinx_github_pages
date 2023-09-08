@@ -18,3 +18,4 @@ fabric_backend_AWS
    docker_topics_earning_call_transcripts
    docker_trend_prediction
    docker_tweets
+   new_docker_news_aggregator
