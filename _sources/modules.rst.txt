@@ -4,6 +4,7 @@ fabric_backend_AWS
 .. toctree::
    :maxdepth: 4
 
+   add_1_year_data_to_s3
    docker_correlation
    docker_debrief
    docker_enrichment
