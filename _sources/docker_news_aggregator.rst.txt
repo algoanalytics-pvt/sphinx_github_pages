@@ -4,6 +4,22 @@ docker\_news\_aggregator package
 Submodules
 ----------
 
+docker\_news\_aggregator.add\_jsons\_to\_s3\_bucket module
+----------------------------------------------------------
+
+.. automodule:: docker_news_aggregator.add_jsons_to_s3_bucket
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_news\_aggregator.add\_to\_json module
+---------------------------------------------
+
+.. automodule:: docker_news_aggregator.add_to_json
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 docker\_news\_aggregator.app module
 -----------------------------------
 
@@ -24,6 +40,14 @@ docker\_news\_aggregator.fetch\_data module
 -------------------------------------------
 
 .. automodule:: docker_news_aggregator.fetch_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_news\_aggregator.fetch\_data\_for\_today module
+-------------------------------------------------------
+
+.. automodule:: docker_news_aggregator.fetch_data_for_today
    :members:
    :undoc-members:
    :show-inheritance:

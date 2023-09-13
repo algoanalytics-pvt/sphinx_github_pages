@@ -52,7 +52,19 @@
 <li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">docker_news_aggregator package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-news-aggregator-app-module">docker_news_aggregator.app module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_news_aggregator.add_jsons_to_s3_bucket">docker_news_aggregator.add_jsons_to_s3_bucket module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_news_aggregator.add_jsons_to_s3_bucket.add_to_bucket"><code class="docutils literal notranslate"><span class="pre">add_to_bucket()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_news_aggregator.add_jsons_to_s3_bucket.write_json_file"><code class="docutils literal notranslate"><span class="pre">write_json_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_news_aggregator.add_to_json">docker_news_aggregator.add_to_json module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_news_aggregator.add_to_json.get_news_data_json"><code class="docutils literal notranslate"><span class="pre">get_news_data_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_news_aggregator.app">docker_news_aggregator.app module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_news_aggregator.app.get_news_data_json"><code class="docutils literal notranslate"><span class="pre">get_news_data_json()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_news_aggregator.create_visualizations">docker_news_aggregator.create_visualizations module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#docker_news_aggregator.create_visualizations.create_visualizations"><code class="docutils literal notranslate"><span class="pre">create_visualizations()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_news_aggregator.create_visualizations.get_avg_sent_score_across_days"><code class="docutils literal notranslate"><span class="pre">get_avg_sent_score_across_days()</span></code></a></li>
@@ -72,6 +84,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#docker-news-aggregator-fetch-data-module">docker_news_aggregator.fetch_data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-news-aggregator-fetch-data-for-today-module">docker_news_aggregator.fetch_data_for_today module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_news_aggregator">Module contents</a></li>
 </ul>
 </li>
@@ -119,8 +132,69 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="docker-news-aggregator-app-module">
-<h2>docker_news_aggregator.app module<a class="headerlink" href="#docker-news-aggregator-app-module" title="Link to this heading"></a></h2>
+<section id="module-docker_news_aggregator.add_jsons_to_s3_bucket">
+<span id="docker-news-aggregator-add-jsons-to-s3-bucket-module"></span><h2>docker_news_aggregator.add_jsons_to_s3_bucket module<a class="headerlink" href="#module-docker_news_aggregator.add_jsons_to_s3_bucket" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_news_aggregator.add_jsons_to_s3_bucket.add_to_bucket">
+<span class="sig-prename descclassname"><span class="pre">docker_news_aggregator.add_jsons_to_s3_bucket.</span></span><span class="sig-name descname"><span class="pre">add_to_bucket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_news_aggregator/add_jsons_to_s3_bucket.html#add_to_bucket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_news_aggregator.add_jsons_to_s3_bucket.add_to_bucket" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_news_aggregator.add_jsons_to_s3_bucket.write_json_file">
+<span class="sig-prename descclassname"><span class="pre">docker_news_aggregator.add_jsons_to_s3_bucket.</span></span><span class="sig-name descname"><span class="pre">write_json_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_news_aggregator/add_jsons_to_s3_bucket.html#write_json_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_news_aggregator.add_jsons_to_s3_bucket.write_json_file" title="Link to this definition"></a></dt>
+<dd><p>Write json object to json file
+Args:file_name (sting): filename (currenty ticker symbols)
+data (dict): dict as json object to write to file</p>
+</dd></dl>
+
+</section>
+<section id="module-docker_news_aggregator.add_to_json">
+<span id="docker-news-aggregator-add-to-json-module"></span><h2>docker_news_aggregator.add_to_json module<a class="headerlink" href="#module-docker_news_aggregator.add_to_json" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_news_aggregator.add_to_json.get_news_data_json">
+<span class="sig-prename descclassname"><span class="pre">docker_news_aggregator.add_to_json.</span></span><span class="sig-name descname"><span class="pre">get_news_data_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_news_aggregator/add_to_json.html#get_news_data_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_news_aggregator.add_to_json.get_news_data_json" title="Link to this definition"></a></dt>
+<dd><p>Get News data for a particular company in JSON format</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item (NewsInput): Input data containing start date, end date, and ticker name</p>
+</dd>
+<dt>Responses:</dt><dd><dl class="simple">
+<dt>200:</dt><dd><p>description: Successful response</p>
+</dd>
+<dt>400:</dt><dd><p>description: Bad request</p>
+</dd>
+<dt>404:</dt><dd><p>description: News data not found</p>
+</dd>
+<dt>500:</dt><dd><p>description: Internal server error</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-docker_news_aggregator.app">
+<span id="docker-news-aggregator-app-module"></span><h2>docker_news_aggregator.app module<a class="headerlink" href="#module-docker_news_aggregator.app" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_news_aggregator.app.get_news_data_json">
+<span class="sig-prename descclassname"><span class="pre">docker_news_aggregator.app.</span></span><span class="sig-name descname"><span class="pre">get_news_data_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_news_aggregator/app.html#get_news_data_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_news_aggregator.app.get_news_data_json" title="Link to this definition"></a></dt>
+<dd><p>Get News data for a particular company in JSON format</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item (NewsInput): Input data containing start date, end date, and ticker name</p>
+</dd>
+<dt>Responses:</dt><dd><dl class="simple">
+<dt>200:</dt><dd><p>description: Successful response</p>
+</dd>
+<dt>400:</dt><dd><p>description: Bad request</p>
+</dd>
+<dt>404:</dt><dd><p>description: News data not found</p>
+</dd>
+<dt>500:</dt><dd><p>description: Internal server error</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-docker_news_aggregator.create_visualizations">
 <span id="docker-news-aggregator-create-visualizations-module"></span><h2>docker_news_aggregator.create_visualizations module<a class="headerlink" href="#module-docker_news_aggregator.create_visualizations" title="Link to this heading"></a></h2>
@@ -202,6 +276,9 @@
 </section>
 <section id="docker-news-aggregator-fetch-data-module">
 <h2>docker_news_aggregator.fetch_data module<a class="headerlink" href="#docker-news-aggregator-fetch-data-module" title="Link to this heading"></a></h2>
+</section>
+<section id="docker-news-aggregator-fetch-data-for-today-module">
+<h2>docker_news_aggregator.fetch_data_for_today module<a class="headerlink" href="#docker-news-aggregator-fetch-data-for-today-module" title="Link to this heading"></a></h2>
 </section>
 <section id="module-docker_news_aggregator">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_news_aggregator" title="Link to this heading"></a></h2>
