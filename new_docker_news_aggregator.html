@@ -61,6 +61,11 @@
 <li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">new_docker_news_aggregator package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-new_docker_news_aggregator.add_jsons_to_s3_bucket">new_docker_news_aggregator.add_jsons_to_s3_bucket module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#new_docker_news_aggregator.add_jsons_to_s3_bucket.add_to_bucket"><code class="docutils literal notranslate"><span class="pre">add_to_bucket()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new_docker_news_aggregator.add_jsons_to_s3_bucket.write_json_file"><code class="docutils literal notranslate"><span class="pre">write_json_file()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-new_docker_news_aggregator.add_to_json">new_docker_news_aggregator.add_to_json module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#new_docker_news_aggregator.add_to_json.get_news_data_json"><code class="docutils literal notranslate"><span class="pre">get_news_data_json()</span></code></a></li>
 </ul>
@@ -125,6 +130,22 @@
 <h1>new_docker_news_aggregator package<a class="headerlink" href="#new-docker-news-aggregator-package" title="Link to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-new_docker_news_aggregator.add_jsons_to_s3_bucket">
+<span id="new-docker-news-aggregator-add-jsons-to-s3-bucket-module"></span><h2>new_docker_news_aggregator.add_jsons_to_s3_bucket module<a class="headerlink" href="#module-new_docker_news_aggregator.add_jsons_to_s3_bucket" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="new_docker_news_aggregator.add_jsons_to_s3_bucket.add_to_bucket">
+<span class="sig-prename descclassname"><span class="pre">new_docker_news_aggregator.add_jsons_to_s3_bucket.</span></span><span class="sig-name descname"><span class="pre">add_to_bucket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/new_docker_news_aggregator/add_jsons_to_s3_bucket.html#add_to_bucket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#new_docker_news_aggregator.add_jsons_to_s3_bucket.add_to_bucket" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="new_docker_news_aggregator.add_jsons_to_s3_bucket.write_json_file">
+<span class="sig-prename descclassname"><span class="pre">new_docker_news_aggregator.add_jsons_to_s3_bucket.</span></span><span class="sig-name descname"><span class="pre">write_json_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/new_docker_news_aggregator/add_jsons_to_s3_bucket.html#write_json_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#new_docker_news_aggregator.add_jsons_to_s3_bucket.write_json_file" title="Link to this definition"></a></dt>
+<dd><p>Write json object to json file
+Args:file_name (sting): filename (currenty ticker symbols)
+data (dict): dict as json object to write to file</p>
+</dd></dl>
+
 </section>
 <section id="module-new_docker_news_aggregator.add_to_json">
 <span id="new-docker-news-aggregator-add-to-json-module"></span><h2>new_docker_news_aggregator.add_to_json module<a class="headerlink" href="#module-new_docker_news_aggregator.add_to_json" title="Link to this heading"></a></h2>

@@ -4,6 +4,14 @@ new\_docker\_news\_aggregator package
 Submodules
 ----------
 
+new\_docker\_news\_aggregator.add\_jsons\_to\_s3\_bucket module
+---------------------------------------------------------------
+
+.. automodule:: new_docker_news_aggregator.add_jsons_to_s3_bucket
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 new\_docker\_news\_aggregator.add\_to\_json module
 --------------------------------------------------
 
