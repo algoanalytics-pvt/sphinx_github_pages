@@ -63,6 +63,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.main">docker_enrichment.main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.aggregate_sentiment_news_level"><code class="docutils literal notranslate"><span class="pre">aggregate_sentiment_news_level()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
 </ul>
@@ -288,6 +289,13 @@ if no related categories are found.</p>
 </section>
 <section id="module-docker_enrichment.main">
 <span id="docker-enrichment-main-module"></span><h2>docker_enrichment.main module<a class="headerlink" href="#module-docker_enrichment.main" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.main.aggregate_sentiment_news_level">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">aggregate_sentiment_news_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentiment_analysis_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#aggregate_sentiment_news_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.aggregate_sentiment_news_level" title="Link to this definition"></a></dt>
+<dd><p>args: List of dictionaries representing sentiment at sentence level
+returns: Sentiment class and score at News level (Whole article)</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main.get_connection">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.get_connection" title="Link to this definition"></a></dt>
