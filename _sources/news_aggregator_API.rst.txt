@@ -1,0 +1,37 @@
+news\_aggregator\_API package
+=============================
+
+Submodules
+----------
+
+news\_aggregator\_API.app module
+--------------------------------
+
+.. automodule:: news_aggregator_API.app
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+news\_aggregator\_API.create\_visualizations module
+---------------------------------------------------
+
+.. automodule:: news_aggregator_API.create_visualizations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+news\_aggregator\_API.fetch\_data module
+----------------------------------------
+
+.. automodule:: news_aggregator_API.fetch_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: news_aggregator_API
+   :members:
+   :undoc-members:
+   :show-inheritance:

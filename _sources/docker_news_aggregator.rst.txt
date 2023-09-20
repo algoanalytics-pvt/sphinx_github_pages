@@ -28,6 +28,22 @@ docker\_news\_aggregator.fetch\_data module
    :undoc-members:
    :show-inheritance:
 
+docker\_news\_aggregator.fetch\_data\_for\_today module
+-------------------------------------------------------
+
+.. automodule:: docker_news_aggregator.fetch_data_for_today
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_news\_aggregator.main module
+------------------------------------
+
+.. automodule:: docker_news_aggregator.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
