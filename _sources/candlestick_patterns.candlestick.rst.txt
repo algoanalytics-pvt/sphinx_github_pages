@@ -1,0 +1,21 @@
+candlestick\_patterns.candlestick package
+=========================================
+
+Submodules
+----------
+
+candlestick\_patterns.candlestick.candlestick module
+----------------------------------------------------
+
+.. automodule:: candlestick_patterns.candlestick.candlestick
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: candlestick_patterns.candlestick
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,53 @@
+candlestick\_patterns package
+=============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   candlestick_patterns.candlestick
+
+Submodules
+----------
+
+candlestick\_patterns.Data\_Process module
+------------------------------------------
+
+.. automodule:: candlestick_patterns.Data_Process
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+candlestick\_patterns.Indecisive\_Detection module
+--------------------------------------------------
+
+.. automodule:: candlestick_patterns.Indecisive_Detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+candlestick\_patterns.Patterns\_Map module
+------------------------------------------
+
+.. automodule:: candlestick_patterns.Patterns_Map
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+candlestick\_patterns.upload module
+-----------------------------------
+
+.. automodule:: candlestick_patterns.upload
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: candlestick_patterns
+   :members:
+   :undoc-members:
+   :show-inheritance:

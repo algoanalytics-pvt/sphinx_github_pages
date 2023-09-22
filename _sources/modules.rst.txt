@@ -4,6 +4,7 @@ fabric_backend_AWS
 .. toctree::
    :maxdepth: 4
 
+   candlestick_patterns
    docker_correlation
    docker_debrief
    docker_enrichment
