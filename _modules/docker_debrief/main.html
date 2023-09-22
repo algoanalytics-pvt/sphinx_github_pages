@@ -116,20 +116,20 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
     <span class="n">required</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="s1">&#39;profitMargins&#39;</span><span class="p">,</span> <span class="s1">&#39;returnOnEquity&#39;</span><span class="p">,</span> <span class="s1">&#39;priceToBook&#39;</span><span class="p">,</span> <span class="s1">&#39;dividendYield&#39;</span><span class="p">,</span> <span class="s1">&#39;trailingPE&#39;</span><span class="p">,</span> <span class="s1">&#39;longBusinessSummary&#39;</span><span class="p">]</span>
     <span class="n">company_information</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">error_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">missing_attributes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">required</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
                 <span class="n">company_information</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">missing_attributes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">company_information</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
     <span class="n">company_information</span><span class="p">[</span><span class="s1">&#39;longBusinessSummary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">company_information</span><span class="p">[</span><span class="s1">&#39;longBusinessSummary&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error_list: &#39;</span><span class="p">,</span> <span class="n">error_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;missing_attributes: &#39;</span><span class="p">,</span> <span class="n">missing_attributes</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;company_information: &#39;</span><span class="p">,</span> <span class="n">company_information</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">company_information</span><span class="p">,</span> <span class="n">error_list</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="p">(</span><span class="n">company_information</span><span class="p">,</span> <span class="n">missing_attributes</span><span class="p">)</span></div>
 
 
 
@@ -149,14 +149,14 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">ticker</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;Ticker_Symbol&#39;</span><span class="p">]</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stock: &#39;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">)</span>
-                <span class="p">(</span><span class="n">company_info</span><span class="p">,</span> <span class="n">error_list</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_company_information</span><span class="p">(</span><span class="n">ticker</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">company_info</span><span class="p">,</span> <span class="n">missing_attributes</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_company_information</span><span class="p">(</span><span class="n">ticker</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">company_info</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Company information fetched for </span><span class="si">{</span><span class="n">ticker</span><span class="si">}</span><span class="s1"> &#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">error_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error fetching </span><span class="si">{</span><span class="n">error_list</span><span class="si">}</span><span class="s1"> for </span><span class="si">{</span><span class="n">ticker</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_attributes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Missed fetching </span><span class="si">{</span><span class="n">missing_attributes</span><span class="si">}</span><span class="s1"> for </span><span class="si">{</span><span class="n">ticker</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
                 <span class="n">all_info</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">all_info</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not the right time&#39;</span><span class="p">)</span>
