@@ -121,6 +121,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.org_frequency">docker_enrichment.org_frequency module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.org_frequency.clean_result"><code class="docutils literal notranslate"><span class="pre">clean_result()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.org_frequency.extract_org_frequency"><code class="docutils literal notranslate"><span class="pre">extract_org_frequency()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.org_frequency.time_func"><code class="docutils literal notranslate"><span class="pre">time_func()</span></code></a></li>
 </ul>
@@ -872,6 +873,25 @@ enriched_data (dict): Enriched data associated with the item.</p>
 </section>
 <section id="module-docker_enrichment.org_frequency">
 <span id="docker-enrichment-org-frequency-module"></span><h2>docker_enrichment.org_frequency module<a class="headerlink" href="#module-docker_enrichment.org_frequency" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.org_frequency.clean_result">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.org_frequency.</span></span><span class="sig-name descname"><span class="pre">clean_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/org_frequency.html#clean_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.org_frequency.clean_result" title="Link to this definition"></a></dt>
+<dd><p>This function takes the output from the spacy model and cleans repetition of
+ORG names.</p>
+<p>args: Result from spacy model - extract_org_frequency_spacy, ( Dictionary )</p>
+<p>returns: Cleaned result without repeated ORG names. ( Dictionary )</p>
+<dl>
+<dt>Example:</dt><dd><p>article = “An article about technology companies such as Google, and Google’s Success.”
+result = extract_org_frequency(article)
+print(result)
+Output: [{‘entity’: ‘Google’, ‘frequency’: 1}, {‘entity’: ‘Google’s Success’, ‘frequency’: 1}]</p>
+<p>result = clean_result(result)
+print(result)
+Output: [{‘entity’: ‘Google’, ‘frequency’: 2}]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.org_frequency.extract_org_frequency">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.org_frequency.</span></span><span class="sig-name descname"><span class="pre">extract_org_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/org_frequency.html#extract_org_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.org_frequency.extract_org_frequency" title="Link to this definition"></a></dt>
