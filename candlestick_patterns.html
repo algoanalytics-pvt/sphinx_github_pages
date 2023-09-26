@@ -66,7 +66,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-candlestick_patterns.upload">candlestick_patterns.upload module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#candlestick_patterns.upload.download_data_from_s3_file"><code class="docutils literal notranslate"><span class="pre">download_data_from_s3_file()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#candlestick_patterns.upload.download_files_from_s3"><code class="docutils literal notranslate"><span class="pre">download_files_from_s3()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#candlestick_patterns.upload.upload_data_to_s3"><code class="docutils literal notranslate"><span class="pre">upload_data_to_s3()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#candlestick_patterns.upload.upload_json_file_to_s3"><code class="docutils literal notranslate"><span class="pre">upload_json_file_to_s3()</span></code></a></li>
 </ul>
 </li>
@@ -172,9 +174,35 @@
 <section id="module-candlestick_patterns.upload">
 <span id="candlestick-patterns-upload-module"></span><h2>candlestick_patterns.upload module<a class="headerlink" href="#module-candlestick_patterns.upload" title="Link to this heading"></a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="candlestick_patterns.upload.download_data_from_s3_file">
+<span class="sig-prename descclassname"><span class="pre">candlestick_patterns.upload.</span></span><span class="sig-name descname"><span class="pre">download_data_from_s3_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/candlestick_patterns/upload.html#download_data_from_s3_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#candlestick_patterns.upload.download_data_from_s3_file" title="Link to this definition"></a></dt>
+<dd><p>Downloads the data present in given file location on S3 bucket</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>bucket_name (str): Name of bucket
+file_path (str): File path on S3</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: dict containing the data from the file on S3 bucket.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="candlestick_patterns.upload.download_files_from_s3">
 <span class="sig-prename descclassname"><span class="pre">candlestick_patterns.upload.</span></span><span class="sig-name descname"><span class="pre">download_files_from_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/candlestick_patterns/upload.html#download_files_from_s3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#candlestick_patterns.upload.download_files_from_s3" title="Link to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="candlestick_patterns.upload.upload_data_to_s3">
+<span class="sig-prename descclassname"><span class="pre">candlestick_patterns.upload.</span></span><span class="sig-name descname"><span class="pre">upload_data_to_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/candlestick_patterns/upload.html#upload_data_to_s3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#candlestick_patterns.upload.upload_data_to_s3" title="Link to this definition"></a></dt>
+<dd><p>This function uploads the data directly to the S3 bucket in respective files.
+Args:</p>
+<blockquote>
+<div><p>data_dict (dict): Dictionary Data
+ticker_id (str): Name of company
+bucket_name (str): bucket name
+file_name (str): Destination file</p>
+</div></blockquote>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="candlestick_patterns.upload.upload_json_file_to_s3">
