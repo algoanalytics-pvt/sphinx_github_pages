@@ -64,7 +64,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.main">docker_enrichment.main module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.aggregate_sentiment_news_level"><code class="docutils literal notranslate"><span class="pre">aggregate_sentiment_news_level()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.main.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
 </ul>
@@ -132,6 +131,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.tsa">docker_enrichment.tsa module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.tsa.aggregate_sentiment_news_level"><code class="docutils literal notranslate"><span class="pre">aggregate_sentiment_news_level()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.tsa.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.tsa.extract_sents"><code class="docutils literal notranslate"><span class="pre">extract_sents()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.tsa.find_sent_with_company"><code class="docutils literal notranslate"><span class="pre">find_sent_with_company()</span></code></a></li>
@@ -233,7 +233,7 @@ Parameters:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.db_operations.update_table">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.db_operations.</span></span><span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_org_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/db_operations.html#update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.db_operations.update_table" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.db_operations.</span></span><span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_org_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/db_operations.html#update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.db_operations.update_table" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -291,13 +291,6 @@ if no related categories are found.</p>
 </section>
 <section id="module-docker_enrichment.main">
 <span id="docker-enrichment-main-module"></span><h2>docker_enrichment.main module<a class="headerlink" href="#module-docker_enrichment.main" title="Link to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.main.aggregate_sentiment_news_level">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">aggregate_sentiment_news_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentiment_analysis_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#aggregate_sentiment_news_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.aggregate_sentiment_news_level" title="Link to this definition"></a></dt>
-<dd><p>args: List of dictionaries representing sentiment at sentence level
-returns: Sentiment class and score at News level (Whole article)</p>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.main.get_connection">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.main.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/main.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.main.get_connection" title="Link to this definition"></a></dt>
@@ -935,6 +928,13 @@ Output: [{‘entity’: ‘Google’, ‘frequency’: 1}, {‘entity’: ‘App
 </section>
 <section id="module-docker_enrichment.tsa">
 <span id="docker-enrichment-tsa-module"></span><h2>docker_enrichment.tsa module<a class="headerlink" href="#module-docker_enrichment.tsa" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.tsa.aggregate_sentiment_news_level">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.tsa.</span></span><span class="sig-name descname"><span class="pre">aggregate_sentiment_news_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentiment_analysis_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/tsa.html#aggregate_sentiment_news_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.tsa.aggregate_sentiment_news_level" title="Link to this definition"></a></dt>
+<dd><p>args: List of dictionaries representing sentiment at sentence level
+returns: Sentiment class and score at News level (Whole article)</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.tsa.analyze_sentiment">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.tsa.</span></span><span class="sig-name descname"><span class="pre">analyze_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_sentiment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/tsa.html#analyze_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.tsa.analyze_sentiment" title="Link to this definition"></a></dt>
