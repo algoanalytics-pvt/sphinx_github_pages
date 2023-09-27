@@ -98,30 +98,43 @@
 
 
 
-<div class="viewcode-block" id="loading_DistilBert">
-<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.model_loading.loading_DistilBert">[docs]</a>
-<span class="k">def</span> <span class="nf">loading_DistilBert</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loading the DistilBert model for summerization&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="loading_DistilBert_base">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.model_loading.loading_DistilBert_base">[docs]</a>
+<span class="k">def</span> <span class="nf">loading_DistilBert_base</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loading the DistilBert base model for summerization&#39;</span><span class="p">)</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+    <span class="n">tokenizer_event</span> <span class="o">=</span> <span class="n">DistilBertTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilbert-base-uncased&#39;</span><span class="p">)</span>
+    <span class="n">model_testing</span> <span class="o">=</span> <span class="n">DistilBertForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilbert-base-uncased&#39;</span><span class="p">,</span> <span class="n">num_labels</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">EVENT_CLASSIFICATION_MODEL_PATH</span> <span class="o">=</span> <span class="s1">&#39;classification_models/event_distilbert_model.pt&#39;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">finbert</span> <span class="o">=</span> <span class="n">FinbertEmbedding</span><span class="p">()</span>
+        <span class="n">model_testing</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">EVENT_CLASSIFICATION_MODEL_PATH</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERROR: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-    <span class="n">save_directory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;event_classification_model&#39;</span><span class="p">)</span>
-    <span class="n">tokenizer_event</span> <span class="o">=</span> <span class="n">DistilBertTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">save_directory</span><span class="p">)</span>
-    <span class="n">model_event</span> <span class="o">=</span> <span class="n">TFDistilBertForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">save_directory</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">tokenizer_event</span><span class="p">,</span> <span class="n">model_event</span><span class="p">,</span> <span class="n">finbert</span><span class="p">)</span></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using cpu&#39;</span><span class="p">)</span>
+        <span class="n">model_testing</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">EVENT_CLASSIFICATION_MODEL_PATH</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)))</span>
+    <span class="n">model_testing</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">tokenizer_event</span><span class="p">,</span> <span class="n">model_testing</span><span class="p">)</span></div>
 
 
 
 
-<div class="viewcode-block" id="loading_event_detection_model">
-<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.model_loading.loading_event_detection_model">[docs]</a>
-<span class="k">def</span> <span class="nf">loading_event_detection_model</span><span class="p">():</span>
-    <span class="n">EVENT_DETECTION_MODEL_PATH</span> <span class="o">=</span> <span class="s1">&#39;event_classification_model/model_90.joblib&#39;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loading the event detection model...&#39;</span><span class="p">)</span>
-    <span class="n">event_tokenizer</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span>
-    <span class="n">event_model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">EVENT_DETECTION_MODEL_PATH</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">event_tokenizer</span><span class="p">,</span> <span class="n">event_model</span><span class="p">)</span></div>
+<div class="viewcode-block" id="load_pickle_file">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.model_loading.load_pickle_file">[docs]</a>
+<span class="k">def</span> <span class="nf">load_pickle_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_</span></div>
+
+
+
+
+<div class="viewcode-block" id="loading_news_multiclass_models">
+<a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.model_loading.loading_news_multiclass_models">[docs]</a>
+<span class="k">def</span> <span class="nf">loading_news_multiclass_models</span><span class="p">():</span>
+    <span class="n">MODEL</span> <span class="o">=</span> <span class="n">load_pickle_file</span><span class="p">(</span><span class="s1">&#39;classification_models/nmc.pickle&#39;</span><span class="p">)</span>
+    <span class="n">ORIGINAL_LABELS</span> <span class="o">=</span> <span class="n">load_pickle_file</span><span class="p">(</span><span class="s1">&#39;classification_models/labels.pickle&#39;</span><span class="p">)</span>
+    <span class="n">VECTORIZER</span> <span class="o">=</span> <span class="n">load_pickle_file</span><span class="p">(</span><span class="s1">&#39;classification_models/tfidf_vectorizer.pickle&#39;</span><span class="p">)</span>
+    <span class="n">FEAT</span> <span class="o">=</span> <span class="n">load_pickle_file</span><span class="p">(</span><span class="s1">&#39;classification_models/model_features.pickle&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">MODEL</span><span class="p">,</span> <span class="n">ORIGINAL_LABELS</span><span class="p">,</span> <span class="n">VECTORIZER</span><span class="p">,</span> <span class="n">FEAT</span><span class="p">)</span></div>
 
 
 

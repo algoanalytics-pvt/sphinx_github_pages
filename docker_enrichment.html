@@ -58,9 +58,17 @@
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.db_operations.upload_data"><code class="docutils literal notranslate"><span class="pre">upload_data()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.event_classification">docker_enrichment.event_classification module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.event_classification.event_classification"><code class="docutils literal notranslate"><span class="pre">event_classification()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.event_detection">docker_enrichment.event_detection module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.event_detection.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.event_detection.find_mult_class"><code class="docutils literal notranslate"><span class="pre">find_mult_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.helper_func">docker_enrichment.helper_func module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.helper_func.time_func"><code class="docutils literal notranslate"><span class="pre">time_func()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.main">docker_enrichment.main module</a><ul>
@@ -93,10 +101,17 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.model_loading">docker_enrichment.model_loading module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.model_loading.loading_DistilBert"><code class="docutils literal notranslate"><span class="pre">loading_DistilBert()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.model_loading.loading_event_detection_model"><code class="docutils literal notranslate"><span class="pre">loading_event_detection_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.model_loading.load_pickle_file"><code class="docutils literal notranslate"><span class="pre">load_pickle_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.model_loading.loading_DistilBert_base"><code class="docutils literal notranslate"><span class="pre">loading_DistilBert_base()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.model_loading.loading_news_multiclass_models"><code class="docutils literal notranslate"><span class="pre">loading_news_multiclass_models()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.model_loading.loading_sent_model"><code class="docutils literal notranslate"><span class="pre">loading_sent_model()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.model_loading.loading_summ_model"><code class="docutils literal notranslate"><span class="pre">loading_summ_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.multiclass_Classification">docker_enrichment.multiclass_Classification module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.multiclass_Classification.clean_text_new"><code class="docutils literal notranslate"><span class="pre">clean_text_new()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.multiclass_Classification.get_news_labels"><code class="docutils literal notranslate"><span class="pre">get_news_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_enrichment.multiclass_Classification.stemming"><code class="docutils literal notranslate"><span class="pre">stemming()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docker_enrichment.new_main_v4">docker_enrichment.new_main_v4 module</a><ul>
@@ -233,13 +248,29 @@ Parameters:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.db_operations.update_table">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.db_operations.</span></span><span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_org_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/db_operations.html#update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.db_operations.update_table" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docker_enrichment.db_operations.</span></span><span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_org_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/db_operations.html#update_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.db_operations.update_table" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.db_operations.upload_data">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.db_operations.</span></span><span class="sig-name descname"><span class="pre">upload_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enriched_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">News_Table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/db_operations.html#upload_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.db_operations.upload_data" title="Link to this definition"></a></dt>
 <dd></dd></dl>
+
+</section>
+<section id="module-docker_enrichment.event_classification">
+<span id="docker-enrichment-event-classification-module"></span><h2>docker_enrichment.event_classification module<a class="headerlink" href="#module-docker_enrichment.event_classification" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.event_classification.event_classification">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.event_classification.</span></span><span class="sig-name descname"><span class="pre">event_classification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/event_classification.html#event_classification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.event_classification.event_classification" title="Link to this definition"></a></dt>
+<dd><p>Tokenizes an article into sentences and predicts the events for each sentence using a pre-trained model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>article (str): The input article as a string.</p>
+</dd>
+<dt>Returns:</dt><dd><p>top_2_events (list): A list of dictionaries containing the top 2 predicted events for each sentence.
+all_events (list): A list of dictionaries containing all predicted events for each sentence.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-docker_enrichment.event_detection">
@@ -287,6 +318,14 @@ if no related categories are found.</p>
 <p>Dictionary : Returns a dictionary of sentences (events), corresponding labels and its probability.</p>
 </section>
 </dd></dl>
+
+</section>
+<section id="module-docker_enrichment.helper_func">
+<span id="docker-enrichment-helper-func-module"></span><h2>docker_enrichment.helper_func module<a class="headerlink" href="#module-docker_enrichment.helper_func" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.helper_func.time_func">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.helper_func.</span></span><span class="sig-name descname"><span class="pre">time_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/helper_func.html#time_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.helper_func.time_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 <section id="module-docker_enrichment.main">
@@ -593,13 +632,18 @@ enriched_data (dict): Enriched data associated with the item.</p>
 <section id="module-docker_enrichment.model_loading">
 <span id="docker-enrichment-model-loading-module"></span><h2>docker_enrichment.model_loading module<a class="headerlink" href="#module-docker_enrichment.model_loading" title="Link to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.model_loading.loading_DistilBert">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.model_loading.</span></span><span class="sig-name descname"><span class="pre">loading_DistilBert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/model_loading.html#loading_DistilBert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.model_loading.loading_DistilBert" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="docker_enrichment.model_loading.load_pickle_file">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.model_loading.</span></span><span class="sig-name descname"><span class="pre">load_pickle_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/model_loading.html#load_pickle_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.model_loading.load_pickle_file" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="docker_enrichment.model_loading.loading_event_detection_model">
-<span class="sig-prename descclassname"><span class="pre">docker_enrichment.model_loading.</span></span><span class="sig-name descname"><span class="pre">loading_event_detection_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/model_loading.html#loading_event_detection_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.model_loading.loading_event_detection_model" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="docker_enrichment.model_loading.loading_DistilBert_base">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.model_loading.</span></span><span class="sig-name descname"><span class="pre">loading_DistilBert_base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/model_loading.html#loading_DistilBert_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.model_loading.loading_DistilBert_base" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.model_loading.loading_news_multiclass_models">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.model_loading.</span></span><span class="sig-name descname"><span class="pre">loading_news_multiclass_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/model_loading.html#loading_news_multiclass_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.model_loading.loading_news_multiclass_models" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -610,6 +654,41 @@ enriched_data (dict): Enriched data associated with the item.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.model_loading.loading_summ_model">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.model_loading.</span></span><span class="sig-name descname"><span class="pre">loading_summ_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/model_loading.html#loading_summ_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.model_loading.loading_summ_model" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-docker_enrichment.multiclass_Classification">
+<span id="docker-enrichment-multiclass-classification-module"></span><h2>docker_enrichment.multiclass_Classification module<a class="headerlink" href="#module-docker_enrichment.multiclass_Classification" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.multiclass_Classification.clean_text_new">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.multiclass_Classification.</span></span><span class="sig-name descname"><span class="pre">clean_text_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/multiclass_Classification.html#clean_text_new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.multiclass_Classification.clean_text_new" title="Link to this definition"></a></dt>
+<dd><p>text: a string</p>
+<p>return: modified initial string</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.multiclass_Classification.get_news_labels">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.multiclass_Classification.</span></span><span class="sig-name descname"><span class="pre">get_news_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MODEL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ORIGINAL_LABELS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VECTORIZER</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FEAT</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/multiclass_Classification.html#get_news_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.multiclass_Classification.get_news_labels" title="Link to this definition"></a></dt>
+<dd><p>Generates class from the given article and returns them in a list.</p>
+<dl>
+<dt>Args:</dt><dd><p>article (str): The input article to extract organizations from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of classes.</p>
+</dd>
+<dt>Example:</dt><dd><p>article = “An article about technology companies such as Google, Apple, and Microsoft.”
+result = extract_org_frequency(article)
+print(result)
+Output: [{‘entity’: ‘Google’, ‘frequency’: 1}, {‘entity’: ‘Apple’, ‘frequency’: 1},</p>
+<blockquote>
+<div><p>{‘entity’: ‘Microsoft’, ‘frequency’: 1}]</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_enrichment.multiclass_Classification.stemming">
+<span class="sig-prename descclassname"><span class="pre">docker_enrichment.multiclass_Classification.</span></span><span class="sig-name descname"><span class="pre">stemming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/multiclass_Classification.html#stemming"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.multiclass_Classification.stemming" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>

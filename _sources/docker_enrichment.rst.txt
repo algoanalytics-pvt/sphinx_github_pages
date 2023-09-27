@@ -12,10 +12,26 @@ docker\_enrichment.db\_operations module
    :undoc-members:
    :show-inheritance:
 
+docker\_enrichment.event\_classification module
+-----------------------------------------------
+
+.. automodule:: docker_enrichment.event_classification
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 docker\_enrichment.event\_detection module
 ------------------------------------------
 
 .. automodule:: docker_enrichment.event_detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.helper\_func module
+--------------------------------------
+
+.. automodule:: docker_enrichment.helper_func
    :members:
    :undoc-members:
    :show-inheritance:
@@ -40,6 +56,14 @@ docker\_enrichment.model\_loading module
 ----------------------------------------
 
 .. automodule:: docker_enrichment.model_loading
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.multiclass\_Classification module
+----------------------------------------------------
+
+.. automodule:: docker_enrichment.multiclass_Classification
    :members:
    :undoc-members:
    :show-inheritance:
