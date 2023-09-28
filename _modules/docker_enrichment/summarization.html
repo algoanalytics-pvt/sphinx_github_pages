@@ -73,7 +73,13 @@
 <a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.summarization.compute_summary">[docs]</a>
 <span></span><span class="k">def</span> <span class="nf">compute_summary</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">summarization_tokenizer</span><span class="p">,</span> <span class="n">summarization_model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the summary of the provided text</span>
+<span class="sd">    Compute a summary of the input text using a pre-trained summarization model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): The input text to be summarized.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The generated summary of the input text.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
