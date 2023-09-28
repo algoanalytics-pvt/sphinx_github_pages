@@ -71,7 +71,7 @@
   <h1>Source code for docker_enrichment.event_classification</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="event_classification">
 <a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.event_classification.event_classification">[docs]</a>
-<span></span><span class="k">def</span> <span class="nf">event_classification</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span></span><span class="k">def</span> <span class="nf">event_classification</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tokenizer_event</span><span class="p">,</span> <span class="n">model_testing</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tokenizes an article into sentences and predicts the events for each sentence using a pre-trained model.</span>
 
