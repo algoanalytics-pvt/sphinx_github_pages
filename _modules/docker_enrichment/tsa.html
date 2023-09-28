@@ -73,7 +73,14 @@
 <a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.tsa.extract_sents">[docs]</a>
 <span></span><span class="k">def</span> <span class="nf">extract_sents</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">company_name</span><span class="p">,</span> <span class="n">nlp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  This function is extracting sentences addressing the target company using coreferencing</span>
+<span class="sd">  Extract sentences addressing the target company using coreferencing.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      text (str): The news article text.</span>
+<span class="sd">      company_name (str): The target company name in lowercase.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      list: List of important lines from the news as sentences.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
     <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
     <span class="n">clusters</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">coref_clusters</span>
@@ -145,12 +152,10 @@
 <span class="sd">  on is the same company to which the news belongs and that has been passed as </span>
 <span class="sd">  TSA_keyword.</span>
 
-<span class="sd">  Parameters</span>
-<span class="sd">      -------------</span>
-<span class="sd">      1. sentence: str</span>
+<span class="sd">  Args:</span>
+<span class="sd">      sentence(str): The sentence to perform sentiment analysis on.</span>
 <span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">    1. sentiment_analysis : dict</span>
+<span class="sd">    dict: Sentiment analysis results including text, sentiment scores, and sentiment class.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
     <span class="n">predictions_np</span> <span class="o">=</span> <span class="n">analyze_sentiment</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_sentiment</span><span class="p">)</span>
     <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions_np</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
@@ -170,12 +175,13 @@
 <span class="sd">    </span>
 <span class="sd">    The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. </span>
 <span class="sd">    We will perform softmax on outputs and return numpy array of pt_predictions.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">      -------------</span>
-<span class="sd">            1. doc : a single string</span>
-<span class="sd">      Returns</span>
-<span class="sd">      ----------</span>
-<span class="sd">        pt_predictions.detach().numpy(): numpy array of pt_predictions </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        doc (str): The input document or text to analyze.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        numpy.ndarray: Numpy array of sentiment predictions.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pt_batch</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model_sentiment</span><span class="p">(</span><span class="o">**</span><span class="n">pt_batch</span><span class="p">)</span>
@@ -188,6 +194,17 @@
 <div class="viewcode-block" id="get_sentiment_class">
 <a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.tsa.get_sentiment_class">[docs]</a>
 <span class="k">def</span> <span class="nf">get_sentiment_class</span><span class="p">(</span><span class="n">neg</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">neut</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the sentiment class based on the given sentiment scores.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        neg (float): Negative sentiment score.</span>
+<span class="sd">        pos (float): Positive sentiment score.</span>
+<span class="sd">        neut (float): Neutral sentiment score.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Sentiment class (&#39;positive&#39;, &#39;negative&#39;, or &#39;neutral&#39;).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">neg</span> <span class="ow">and</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">neut</span><span class="p">:</span>
         <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span>
     <span class="k">elif</span> <span class="n">neg</span> <span class="o">&gt;</span> <span class="n">pos</span> <span class="ow">and</span> <span class="n">neg</span> <span class="o">&gt;</span> <span class="n">neut</span><span class="p">:</span>

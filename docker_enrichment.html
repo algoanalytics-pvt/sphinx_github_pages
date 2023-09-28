@@ -1019,24 +1019,26 @@ returns: Sentiment class and score at News level (Whole article)</p>
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.tsa.</span></span><span class="sig-name descname"><span class="pre">analyze_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_sentiment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/tsa.html#analyze_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.tsa.analyze_sentiment" title="Link to this definition"></a></dt>
 <dd><p>Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</p>
 <p>The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. 
-We will perform softmax on outputs and return numpy array of pt_predictions.
-Parameters</p>
-<blockquote>
-<div><blockquote>
-<div><ol class="arabic simple">
-<li><p>doc : a single string</p></li>
-</ol>
-</div></blockquote>
-<blockquote>
-<div><p>pt_predictions.detach().numpy(): numpy array of pt_predictions</p>
-</div></blockquote>
-</div></blockquote>
+We will perform softmax on outputs and return numpy array of pt_predictions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>doc (str): The input document or text to analyze.</p>
+</dd>
+<dt>Returns:</dt><dd><p>numpy.ndarray: Numpy array of sentiment predictions.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.tsa.extract_sents">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.tsa.</span></span><span class="sig-name descname"><span class="pre">extract_sents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">company_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/tsa.html#extract_sents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.tsa.extract_sents" title="Link to this definition"></a></dt>
-<dd><p>This function is extracting sentences addressing the target company using coreferencing</p>
+<dd><p>Extract sentences addressing the target company using coreferencing.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>text (str): The news article text.
+company_name (str): The target company name in lowercase.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: List of important lines from the news as sentences.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -1047,7 +1049,16 @@ Parameters</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.tsa.get_sentiment_class">
 <span class="sig-prename descclassname"><span class="pre">docker_enrichment.tsa.</span></span><span class="sig-name descname"><span class="pre">get_sentiment_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neut</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_enrichment/tsa.html#get_sentiment_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_enrichment.tsa.get_sentiment_class" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Determine the sentiment class based on the given sentiment scores.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>neg (float): Negative sentiment score.
+pos (float): Positive sentiment score.
+neut (float): Neutral sentiment score.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Sentiment class (‘positive’, ‘negative’, or ‘neutral’).</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="docker_enrichment.tsa.get_sentiment_modified">
@@ -1056,19 +1067,11 @@ Parameters</p>
 on is the same company to which the news belongs and that has been passed as 
 TSA_keyword.</p>
 <dl class="simple">
-<dt>Parameters</dt><dd><ol class="arabic simple">
-<li><p>sentence: str</p></li>
-</ol>
+<dt>Args:</dt><dd><p>sentence(str): The sentence to perform sentiment analysis on.</p>
+</dd>
+<dt>Returns</dt><dd><p>dict: Sentiment analysis results including text, sentiment scores, and sentiment class.</p>
 </dd>
 </dl>
-<section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>sentiment_analysis : dict</p></li>
-</ol>
-</div></blockquote>
-</section>
 </dd></dl>
 
 </section>
