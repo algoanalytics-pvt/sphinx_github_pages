@@ -1,0 +1,37 @@
+docker\_chatbot package
+=======================
+
+Submodules
+----------
+
+docker\_chatbot.app module
+--------------------------
+
+.. automodule:: docker_chatbot.app
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_chatbot.chatbot\_v2 module
+----------------------------------
+
+.. automodule:: docker_chatbot.chatbot_v2
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_chatbot.final\_chatbot module
+-------------------------------------
+
+.. automodule:: docker_chatbot.final_chatbot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_chatbot
+   :members:
+   :undoc-members:
+   :show-inheritance:

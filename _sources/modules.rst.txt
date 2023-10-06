@@ -5,6 +5,7 @@ fabric_backend_AWS
    :maxdepth: 4
 
    candlestick_patterns
+   docker_chatbot
    docker_correlation
    docker_debrief
    docker_enrichment

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>docker_topics package &mdash; Documentation for Fabric 1.0 documentation</title>
+  <title>docker_chatbot package &mdash; Documentation for Fabric 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="docker_topics_earning_call_transcripts package" href="docker_topics_earning_call_transcripts.html" />
-    <link rel="prev" title="docker_todays_sentiment package" href="docker_todays_sentiment.html" /> 
+    <link rel="next" title="docker_correlation package" href="docker_correlation.html" />
+    <link rel="prev" title="candlestick_patterns.candlestick package" href="candlestick_patterns.candlestick.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +46,21 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">fabric_backend_AWS</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="candlestick_patterns.html">candlestick_patterns package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docker_chatbot.html">docker_chatbot package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">docker_chatbot package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-chatbot-app-module">docker_chatbot.app module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_chatbot.chatbot_v2">docker_chatbot.chatbot_v2 module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_chatbot.chatbot_v2.get_result"><code class="docutils literal notranslate"><span class="pre">get_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_chatbot.final_chatbot">docker_chatbot.final_chatbot module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_chatbot.final_chatbot.get_result"><code class="docutils literal notranslate"><span class="pre">get_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_chatbot.final_chatbot.handler"><code class="docutils literal notranslate"><span class="pre">handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_chatbot">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="docker_correlation.html">docker_correlation package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a></li>
@@ -57,12 +71,7 @@
 <li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_todays_sentiment.html">docker_todays_sentiment package</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">docker_topics package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-topics-main-topics-module">docker_topics.main_topics module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-docker_topics">Module contents</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics.html">docker_topics package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
@@ -86,9 +95,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">fabric_backend_AWS</a></li>
-      <li class="breadcrumb-item active">docker_topics package</li>
+      <li class="breadcrumb-item active">docker_chatbot package</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/docker_topics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/docker_chatbot.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -96,16 +105,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="docker-topics-package">
-<h1>docker_topics package<a class="headerlink" href="#docker-topics-package" title="Link to this heading"></a></h1>
+  <section id="docker-chatbot-package">
+<h1>docker_chatbot package<a class="headerlink" href="#docker-chatbot-package" title="Link to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="docker-topics-main-topics-module">
-<h2>docker_topics.main_topics module<a class="headerlink" href="#docker-topics-main-topics-module" title="Link to this heading"></a></h2>
+<section id="docker-chatbot-app-module">
+<h2>docker_chatbot.app module<a class="headerlink" href="#docker-chatbot-app-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-docker_topics">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_topics" title="Link to this heading"></a></h2>
+<section id="module-docker_chatbot.chatbot_v2">
+<span id="docker-chatbot-chatbot-v2-module"></span><h2>docker_chatbot.chatbot_v2 module<a class="headerlink" href="#module-docker_chatbot.chatbot_v2" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_chatbot.chatbot_v2.get_result">
+<span class="sig-prename descclassname"><span class="pre">docker_chatbot.chatbot_v2.</span></span><span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_chatbot/chatbot_v2.html#get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_chatbot.chatbot_v2.get_result" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-docker_chatbot.final_chatbot">
+<span id="docker-chatbot-final-chatbot-module"></span><h2>docker_chatbot.final_chatbot module<a class="headerlink" href="#module-docker_chatbot.final_chatbot" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_chatbot.final_chatbot.get_result">
+<span class="sig-prename descclassname"><span class="pre">docker_chatbot.final_chatbot.</span></span><span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_chatbot/final_chatbot.html#get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_chatbot.final_chatbot.get_result" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_chatbot.final_chatbot.handler">
+<span class="sig-prename descclassname"><span class="pre">docker_chatbot.final_chatbot.</span></span><span class="sig-name descname"><span class="pre">handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_chatbot/final_chatbot.html#handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_chatbot.final_chatbot.handler" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-docker_chatbot">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_chatbot" title="Link to this heading"></a></h2>
 </section>
 </section>
 
@@ -113,8 +143,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="docker_todays_sentiment.html" class="btn btn-neutral float-left" title="docker_todays_sentiment package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="docker_topics_earning_call_transcripts.html" class="btn btn-neutral float-right" title="docker_topics_earning_call_transcripts package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="candlestick_patterns.candlestick.html" class="btn btn-neutral float-left" title="candlestick_patterns.candlestick package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker_correlation.html" class="btn btn-neutral float-right" title="docker_correlation package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
